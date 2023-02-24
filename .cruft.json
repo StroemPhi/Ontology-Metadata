@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/linkml/linkml-project-cookiecutter",
+  "commit": "e4f447783b959314e631108468f2dc41ca399805",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "Ontology-Metadata",
+      "__project_slug": "ontology_metadata",
+      "github_org": "stroemphi",
+      "__source_path": "src/ontology_metadata/schema/ontology_metadata.yaml",
+      "project_description": "A schema for ontology metadata.",
+      "full_name": "Philip Strömert",
+      "email": "philip.stroemert@tib.eu",
+      "__author": "Philip Strömert <philip.stroemert@tib.eu>",
+      "license": "GNU GPL v3.0",
+      "main_schema_class": "Ontology",
+      "create_python_classes": "Yes",
+      "use_schemasheets": "No",
+      "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
+      "google_sheet_tabs": "personinfo enums",
+      "__google_sheet_module": "personinfo_enums",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_template": "https://github.com/linkml/linkml-project-cookiecutter"
+    }
+  },
+  "directory": null
+}

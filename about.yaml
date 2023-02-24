@@ -1,0 +1,6 @@
+name: ontology_metadata
+author: Philip Strömert <philip.stroemert@tib.eu>
+description: A schema for ontology metadata.
+source_schema_path: src/ontology_metadata/schema/ontology_metadata.yaml
+google_sheet_id: 1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ
+google_sheet_tabs: personinfo enums
