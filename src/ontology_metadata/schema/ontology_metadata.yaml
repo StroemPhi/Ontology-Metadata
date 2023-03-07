@@ -222,7 +222,6 @@ slots:
     see_also:
       - http://omv.ontoware.org/2005/05/ontology#acronym
     range: string
-    required: false
     recommended: true
   license:
     slot_uri: dcterms:license
