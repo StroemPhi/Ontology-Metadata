@@ -212,10 +212,10 @@ slots:
       
       This metadatum is also recommended as required by:
 
-              * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
-              * https://w3id.org/mod/2.0
-              * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
-              * https://bioportal.bioontology.org/ontologies/OMV
+        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+        * https://w3id.org/mod/2.0
+        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+        * https://bioportal.bioontology.org/ontologies/OMV
     comments:
       - For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.
       - This property is declared only as recommended in this schema although it is technically required within the configuration of the TIB TS, as it can be derived directly from the required [preferredPrefix](preferredPrefix) if not present.
