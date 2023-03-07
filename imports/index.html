@@ -256,6 +256,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    Inheritance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     Applicable Classes
   </a>
@@ -266,26 +273,6 @@
   <a href="#properties" class="md-nav__link">
     Properties
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    Identifier and Mapping Information
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    Schema Source
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -317,9 +304,23 @@
 
 
 <h1 id="slot-imports">Slot: imports</h1>
-<p>URI: <a href="http://www.w3.org/2002/07/owl#imports">owl:imports</a></p>
-<!-- no inheritance hierarchy -->
-
+<p>Version information may also be accompanied by a description about changes between one version of the ontology and its predecessor.</p>
+<p>This metadatum is also recommended as required by:</p>
+<ul>
+<li>https://github.com/owlcs/miro/blob/master/miro.md#e4-incorporation-of-other-ontologies</li>
+<li>https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md</li>
+</ul>
+<p><em><strong>URI</strong>: <a href="http://www.w3.org/2002/07/owl#imports">owl:imports</a></em></p>
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../provenanceProperty/">provenanceProperty</a><ul>
+<li><a href="../versionInformation/">versionInformation</a><ul>
+<li><strong>imports</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -330,31 +331,42 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+<td>A mixin that provides the required properties needed to index an ontology or ...</td>
+</tr>
+<tr>
 <td><a href="../Ontology/">Ontology</a></td>
 <td>An OWL ontology</td>
+</tr>
+<tr>
+<td><a href="../SkosConceptScheme/">SkosConceptScheme</a></td>
+<td>A SKOS vocabulary serialized in RDF using the skos:ConceptScheme</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></li>
-</ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: http://purl.obolibrary.org/obo/omo/schema</li>
+<li>Range: <a href="../String/">String</a></li>
+<li>Required: True</li>
 </ul>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: imports
-from_schema: http://purl.obolibrary.org/obo/omo/schema
+description: &quot;Version information may also be accompanied by a description about changes\
+  \ between one version of the ontology and its predecessor.\n\nThis metadatum is\
+  \ also recommended as required by:\n\n  * https://github.com/owlcs/miro/blob/master/miro.md#e4-incorporation-of-other-ontologies\n\
+  \  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n&quot;
+from_schema: http://terminology.tib.eu/schema
 rank: 1000
+is_a: versionInformation
 slot_uri: owl:imports
+multivalued: false
 alias: imports
 domain_of:
-- Ontology
+- RequiredMetadata
 range: string
+required: true
 
 </code></pre>
 

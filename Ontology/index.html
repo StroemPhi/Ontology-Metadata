@@ -152,23 +152,14 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-    Usages
+<a class="md-nav__link" href="#comments">
+    Comments
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#identifier-and-mapping-information">
-    Identifier and Mapping Information
+<a class="md-nav__link" href="#see-also">
+    See Also
   </a>
-<nav aria-label="Identifier and Mapping Information" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schema-source">
-    Schema Source
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#mappings">
@@ -205,35 +196,67 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-ontology">Class: Ontology</h1>
-<p><em>An OWL ontology</em></p>
-<p>URI: <a href="http://www.w3.org/2002/07/owl#Ontology">owl:Ontology</a></p>
+<p>An OWL ontology.</p>
+<p><em><strong>URI</strong>: <a href="http://www.w3.org/2002/07/owl#Ontology">owl:Ontology</a></em></p>
 <div class="mermaid"> classDiagram
     class Ontology
-      NamedObject &lt;|-- Ontology
+      RequiredMetadata &lt;|-- Ontology
+      RecommendedMetadata &lt;|-- Ontology
+      OptionalMetadata &lt;|-- Ontology
 
-      Ontology : comment
+      Ontology : acronym
+      Ontology : alternativePrefix
+      Ontology : alternativeTitle
+      Ontology : applicationExample
+      Ontology : appliedMethodology
+      Ontology : audience
+      Ontology : citations
+      Ontology : comments
+      Ontology : competencyQuestions
+      Ontology : contactInfo
+      Ontology : contributor
       Ontology : created
       Ontology : creator
-      Ontology : has_ontology_root_term
-      Ontology : id
+      Ontology : derivedFrom
+      Ontology : description
+      Ontology : developmentEnvironment
+      Ontology : distributions
+      Ontology : documentation
+      Ontology : domainCovered
+      Ontology : exampleClass
+      Ontology : exampleIdentifier
+      Ontology : format
+      Ontology : fundingInfo
+      Ontology : homepage
+      Ontology : identifierPattern
       Ontology : imports
+      Ontology : issueTracker
+      Ontology : languageCovered
+      Ontology : languageExpressedIn
       Ontology : license
-      Ontology : source
+      Ontology : logo
+      Ontology : mailingList
+      Ontology : mappingRessources
+      Ontology : modificationDate
+      Ontology : otherIdentifier
+      Ontology : preferredPrefix
+      Ontology : publisher
+      Ontology : purl
+      Ontology : references
+      Ontology : relatedVersions
+      Ontology : rootTerms
+      Ontology : socialMediaAccount
+      Ontology : sourceRepository
+      Ontology : status
       Ontology : title
-      Ontology : type
       Ontology : versionInfo
       Ontology : versionIRI
+      Ontology : versionNotes
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Thing/">Thing</a><ul>
-<li><a href="../NamedObject/">NamedObject</a><ul>
-<li><strong>Ontology</strong></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><strong>Ontology</strong> [ <a href="../RequiredMetadata/">RequiredMetadata</a> <a href="../RecommendedMetadata/">RecommendedMetadata</a> <a href="../OptionalMetadata/">OptionalMetadata</a>]</li>
 </ul>
 <h2 id="slots">Slots</h2>
 <table>
@@ -247,168 +270,302 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../title/">title</a></td>
-<td>0..1 <br/> <a href="../NarrativeText/">NarrativeText</a></td>
-<td></td>
-<td>direct</td>
+<td><a href="../purl/">purl</a></td>
+<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The PURL of an ontology is its persistent identifier</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../has_ontology_root_term/">has_ontology_root_term</a></td>
-<td>0..* <br/> <a href="../Class/">Class</a></td>
-<td></td>
-<td>direct</td>
+<td><a href="../title/">title</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>The title or name of an ontology or SKOS vocabulary</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../preferredPrefix/">preferredPrefix</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>The official prefix of an ontology or vocabulary namespace according to the [...</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../acronym/">acronym</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>The ID is used as a short name for the ontology or SKOS vocabulary on the TIB...</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../license/">license</a></td>
-<td>0..1 <br/> <a href="../Thing/">Thing</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../source/">source</a></td>
-<td>0..* <br/> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../versionIRI/">versionIRI</a></td>
-<td>0..1 <br/> <a href="http://www.w3.org/2001/XMLSchema#anyURI">xsd:anyURI</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../versionInfo/">versionInfo</a></td>
-<td>0..1 <br/> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../comment/">comment</a></td>
-<td>0..* <br/> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></td>
-<td></td>
-<td>direct</td>
+<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The license of the ontology/vocabulary</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../creator/">creator</a></td>
-<td>0..* <br/> <a href="../Agent/">Agent</a></td>
-<td></td>
-<td>direct</td>
+<td>1..* <em>recommended</em> <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The ontology should state who was or is responsible for its development</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../versionInfo/">versionInfo</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>Some ontologies make use of semantic versioning and employ strings like 1</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../versionIRI/">versionIRI</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A version URI is a persistent identifier for a version of an ontology and is ...</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../versionNotes/">versionNotes</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>Version information may also be accompanied by a description about changes be...</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../created/">created</a></td>
-<td>0..1 <br/> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></td>
-<td>when the term came into being</td>
-<td>direct</td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>A property to provide the date when the ontology or a term thereof came into ...</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../modificationDate/">modificationDate</a></td>
+<td>1..* <br/> <a href="../String/">String</a></td>
+<td>A property to provide the date when a ressource was updated</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>The ontology should describe its own contents and scope with a few words or s...</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../issueTracker/">issueTracker</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>Ontologies should be managed with version control software like git</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../documentation/">documentation</a></td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>To familiarize interested others with the concepts and scope of your ontology...</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
 </tr>
 <tr>
 <td><a href="../imports/">imports</a></td>
-<td>0..1 <br/> <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></td>
-<td></td>
-<td>direct</td>
+<td>1..1 <br/> <a href="../String/">String</a></td>
+<td>Version information may also be accompanied by a description about changes be...</td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../id/">id</a></td>
-<td>1..1 <br/> <a href="http://www.w3.org/2001/XMLSchema#anyURI">xsd:anyURI</a></td>
-<td>this maps to the URI in RDF</td>
-<td><a href="../NamedObject/">NamedObject</a></td>
+<td><a href="../contributor/">contributor</a></td>
+<td>0..* <em>recommended</em> <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The ontology should state who was or is contributing to its development</td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
 </tr>
 <tr>
-<td><a href="../type/">type</a></td>
-<td>0..* <br/> <a href="http://www.w3.org/2001/XMLSchema#anyURI">xsd:anyURI</a></td>
+<td><a href="../contactInfo/">contactInfo</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
 <td></td>
-<td><a href="../Thing/">Thing</a></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../fundingInfo/">fundingInfo</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../audience/">audience</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../domainCovered/">domainCovered</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../languageCovered/">languageCovered</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../languageExpressedIn/">languageExpressedIn</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../status/">status</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../sourceRepository/">sourceRepository</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../distributions/">distributions</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../applicationExample/">applicationExample</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../references/">references</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../citations/">citations</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../derivedFrom/">derivedFrom</a></td>
+<td>0..* <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>A property to provide one or more sources from which a ressource was derived</td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../rootTerms/">rootTerms</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../RecommendedMetadata/">RecommendedMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../relatedVersions/">relatedVersions</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../socialMediaAccount/">socialMediaAccount</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../identifierPattern/">identifierPattern</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../format/">format</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../homepage/">homepage</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../publisher/">publisher</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../comments/">comments</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../exampleIdentifier/">exampleIdentifier</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../exampleClass/">exampleClass</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../mailingList/">mailingList</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../logo/">logo</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../otherIdentifier/">otherIdentifier</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../developmentEnvironment/">developmentEnvironment</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../mappingRessources/">mappingRessources</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../competencyQuestions/">competencyQuestions</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../appliedMethodology/">appliedMethodology</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../alternativeTitle/">alternativeTitle</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>An alternative title or name of an ontology or SKOS vocabulary</td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
+</tr>
+<tr>
+<td><a href="../alternativePrefix/">alternativePrefix</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>A prefix of an ontology or vocabulary namespace according to the [W3C specifi...</td>
+<td><a href="../OptionalMetadata/">OptionalMetadata</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../HasProvenance/">HasProvenance</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-<tr>
-<td><a href="../Term/">Term</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-<tr>
-<td><a href="../Class/">Class</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-<tr>
-<td><a href="../Property/">Property</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-<tr>
-<td><a href="../AnnotationProperty/">AnnotationProperty</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-<tr>
-<td><a href="../ObjectProperty/">ObjectProperty</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-<tr>
-<td><a href="../TransitiveProperty/">TransitiveProperty</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-<tr>
-<td><a href="../NamedIndividual/">NamedIndividual</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-<tr>
-<td><a href="../HomoSapiens/">HomoSapiens</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-<tr>
-<td><a href="../Agent/">Agent</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-<tr>
-<td><a href="../Image/">Image</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-<tr>
-<td><a href="../Subset/">Subset</a></td>
-<td><a href="../isDefinedBy/">isDefinedBy</a></td>
-<td>range</td>
-<td><a href="./">Ontology</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
+<h2 id="comments">Comments</h2>
 <ul>
-<li>from schema: http://purl.obolibrary.org/obo/omo/schema</li>
+<li>For the RDF implementation, we recommend using the URI provided here as a standard, but the URI listed under <strong>See Also</strong> might be used as an alternative for this class.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="http://schema.org/Ontology">schema:Ontology</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -425,7 +582,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>omoschema:Ontology</td>
+<td>tibts:Ontology</td>
 </tr>
 </tbody>
 </table>
@@ -434,46 +591,18 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Ontology
-description: An OWL ontology
-from_schema: http://purl.obolibrary.org/obo/omo/schema
+description: An OWL ontology.
+comments:
+- For the RDF implementation, we recommend using the URI provided here as a standard,
+  but the URI listed under **See Also** might be used as an alternative for this class.
+from_schema: http://terminology.tib.eu/schema
+see_also:
+- schema:Ontology
 rank: 1000
-is_a: NamedObject
-slots:
-- title
-- has_ontology_root_term
-- license
-- source
-- versionIRI
-- versionInfo
-- comment
-- creator
-- created
-- imports
-slot_usage:
-  title:
-    name: title
-    domain_of:
-    - Ontology
-    - Ontology
-    required: true
-  license:
-    name: license
-    domain_of:
-    - Ontology
-    - Ontology
-    required: true
-  versionIRI:
-    name: versionIRI
-    domain_of:
-    - Ontology
-    - Ontology
-    required: true
-  versionInfo:
-    name: versionInfo
-    domain_of:
-    - Ontology
-    - Ontology
-    required: true
+mixins:
+- RequiredMetadata
+- RecommendedMetadata
+- OptionalMetadata
 class_uri: owl:Ontology
 
 </code></pre>
@@ -481,202 +610,806 @@ class_uri: owl:Ontology
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Ontology
-description: An OWL ontology
-from_schema: http://purl.obolibrary.org/obo/omo/schema
+description: An OWL ontology.
+comments:
+- For the RDF implementation, we recommend using the URI provided here as a standard,
+  but the URI listed under **See Also** might be used as an alternative for this class.
+from_schema: http://terminology.tib.eu/schema
+see_also:
+- schema:Ontology
 rank: 1000
-is_a: NamedObject
-slot_usage:
-  title:
-    name: title
-    domain_of:
-    - Ontology
-    - Ontology
-    required: true
-  license:
-    name: license
-    domain_of:
-    - Ontology
-    - Ontology
-    required: true
-  versionIRI:
-    name: versionIRI
-    domain_of:
-    - Ontology
-    - Ontology
-    required: true
-  versionInfo:
-    name: versionInfo
-    domain_of:
-    - Ontology
-    - Ontology
-    required: true
+mixins:
+- RequiredMetadata
+- RecommendedMetadata
+- OptionalMetadata
 attributes:
+  purl:
+    name: purl
+    description: "The PURL of an ontology is its persistent identifier. It is usually\
+      \ used by within the ontology to state:\n`&lt;https://www.domain.de/myOntology&gt;\
+      \ rdf:type owl:Ontology.` \nIt is usually able to locate and retrieve the ontology\
+      \ on the world wide web, so pasting it into your web browser should retrieve\
+      \ a digital document. Furthermore, it is often configured to do content negotiation\
+      \ so that different related resources can be retrieved with the same identifier\
+      \ - e.g. the human-readable ontology documentation or different serializations\
+      \ of an ontology.        \nOntologies usually also use the PURL to identify\
+      \ their classes and properties, e.g. in statements like:          \n    `&lt;https://www.domain.de/myOntology#someProperty&gt;\
+      \ rdf:type owl:AnnotationProperty.`\nA working PURL is required to retrieve\
+      \ the ontology for indexing by the TIB Terminology Service.\nThis metadatum\
+      \ is also recommended by:\n\n  * http://purl.obolibrary.org/meta/context.jsonld\
+      \    \n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n\
+      \  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n\
+      \  * [ Best Practices for Implementing FAIR Vocabularies and Ontologies on the\
+      \ Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n"
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - vann:preferredNamespaceUri
+    - owl:ontologyIRI
+    aliases:
+    - namspace URI
+    rank: 1000
+    slot_uri: dcat:accessURL
+    multivalued: false
+    identifier: true
+    alias: purl
+    owner: Ontology
+    domain_of:
+    - RequiredMetadata
+    range: uriorcurie
+    required: true
   title:
     name: title
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
+    description: "The title or name of an ontology or SKOS vocabulary.\n\nThis metadatum\
+      \ is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n\
+      \  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n\
+      \  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://github.com/owlcs/miro/blob/master/miro.md#a1-ontology-name\n\
+      \  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * [Best\
+      \ Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n"
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - dc:title
+    - schema:name
     rank: 1000
     slot_uri: dcterms:title
     alias: title
     owner: Ontology
     domain_of:
-    - Ontology
-    - Ontology
-    range: narrative text
+    - RequiredMetadata
+    range: string
     required: true
-  has_ontology_root_term:
-    name: has_ontology_root_term
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
+  preferredPrefix:
+    name: preferredPrefix
+    description: "The official prefix of an ontology or vocabulary namespace according\
+      \ to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName)\
+      \ (e.g. **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/).\n\
+      \nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n\
+      \  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n\
+      \  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n\
+      \  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n\
+      \  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the\
+      \ Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n"
+    comments:
+    - The ontology should declare its own preferred prefix. The prefix should be unique.
+      You can check whether an ontology prefix is already in use on services like
+      [prefix.cc](https://prefix.cc) or [bioregistry.io](https://bioregistry.io).
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - idot:preferredPrefix
     rank: 1000
-    is_a: informative_property
-    slot_uri: IAO:0000700
-    multivalued: true
-    alias: has_ontology_root_term
+    slot_uri: vann:preferredNamespacePrefix
+    alias: preferredPrefix
     owner: Ontology
     domain_of:
-    - Ontology
-    range: Class
+    - RequiredMetadata
+    range: string
+    required: true
+  acronym:
+    name: acronym
+    description: "The ID is used as a short name for the ontology or SKOS vocabulary\
+      \ on the TIB Terminology Service ontology list. It can be the same string as\
+      \ the preferred prefix. It should be unique and not contain a hyphen.\n\nThis\
+      \ metadatum is also recommended as required by:\n\n        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n\
+      \        * https://w3id.org/mod/2.0\n        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n\
+      \        * https://bioportal.bioontology.org/ontologies/OMV\n"
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    - This property is declared only as recommended in this schema although it is
+      technically required within the configuration of the TIB TS, as it can be derived
+      directly from the required [preferredPrefix](preferredPrefix) if not present.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - http://omv.ontoware.org/2005/05/ontology#acronym
+    rank: 1000
+    slot_uri: mod:acronym
+    alias: acronym
+    owner: Ontology
+    domain_of:
+    - RequiredMetadata
+    range: string
+    required: false
+    recommended: true
   license:
     name: license
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
+    description: "The license of the ontology/vocabulary. Ontologies and SKOS vocabularies\
+      \ should refer to license documents on the web via PIDs. The license text helps\
+      \ others to evaluate how they may reuse the ontology/vocabulary.\nOnly ontologies\
+      \ with an open license will be published on the TIB Terminology Service.\n\n\
+      This metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n\
+      \  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n\
+      \  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n\
+      \  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15\
+      \ \n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on\
+      \ the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n"
+    todos:
+    - We should point to types of different licenses and give recommendations on which
+      to choose when.
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - http://purl.org/dc/terms/rights
+    - http://purl.org/dc/elements/1.1/rights
+    - http://creativecommons.org/ns#license
+    - http://dbpedia.org/ontology/license
     rank: 1000
-    is_a: informative_property
     slot_uri: dcterms:license
     alias: license
     owner: Ontology
     domain_of:
-    - Ontology
-    - Ontology
-    range: Thing
-    required: true
-  source:
-    name: source
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
-    exact_mappings:
-    - http://purl.org/dc/terms/source
-    - oio:source
-    rank: 1000
-    is_a: provenance_property
-    slot_uri: dcterms:source
-    multivalued: true
-    alias: source
-    owner: Ontology
-    domain_of:
-    - Ontology
-    - Axiom
-    range: string
-  versionIRI:
-    name: versionIRI
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
-    rank: 1000
-    is_a: version_property
-    slot_uri: owl:versionIRI
-    alias: versionIRI
-    owner: Ontology
-    domain_of:
-    - Ontology
-    - Ontology
+    - RequiredMetadata
     range: uriorcurie
     required: true
-  versionInfo:
-    name: versionInfo
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
-    rank: 1000
-    is_a: version_property
-    slot_uri: owl:versionInfo
-    alias: versionInfo
-    owner: Ontology
-    domain_of:
-    - Ontology
-    - Ontology
-    range: string
-    required: true
-  comment:
-    name: comment
-    comments:
-    - in obo format, a term cannot have more than one comment
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
-    rank: 1000
-    is_a: informative_property
-    slot_uri: rdfs:comment
-    multivalued: true
-    alias: comment
-    owner: Ontology
-    domain_of:
-    - HasUserInformation
-    - Ontology
-    - Axiom
-    range: string
   creator:
     name: creator
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
-    close_mappings:
+    description: "The ontology should state who was or is responsible for its development.\
+      \ It is recommended to not only provide the creators’ names but also to link\
+      \ to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify\
+      \ the creator is a must when using the dcterms:creator predicat. For a literal\
+      \ representations of a creator the predicate dc:creator is recommended to be\
+      \ in line with DCMI specs.\n\nThis metadatum is also recommended as required\
+      \ by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n\
+      \  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community\n\
+      \  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * [Best\
+      \ Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n"
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
     - prov:wasAttributedTo
+    - pav:createdBy
+    - dc:creator
+    - schema:creator
     rank: 1000
-    is_a: provenance_property
+    is_a: contributor
     slot_uri: dcterms:creator
     multivalued: true
     alias: creator
     owner: Ontology
     domain_of:
-    - HasProvenance
-    - Ontology
-    range: Agent
-    structured_pattern:
-      syntax: '{orcid_regex}'
-      interpolated: true
-      partial_match: false
+    - RequiredMetadata
+    range: uriorcurie
+    required: true
+    recommended: true
+  versionInfo:
+    name: versionInfo
+    description: "Some ontologies make use of semantic versioning and employ strings\
+      \ like 1.0.0 as a tag to distinguish one version of their ontology from a successor.\
+      \ Others employ the modification date, e.g. 2022-12-21.\n\nThis metadatum is\
+      \ also recommended as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n\
+      \  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://doi.org/10.1371/journal.pcbi.1009041\n\
+      \  * http://ceur-ws.org/Vol-3127/#paper-15\n  * [Best Practices for Implementing\
+      \ FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n"
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - pav:version
+    - schema:schemaVersion
+    rank: 1000
+    is_a: versionInformation
+    slot_uri: owl:versionInfo
+    multivalued: false
+    alias: versionInfo
+    owner: Ontology
+    domain_of:
+    - RequiredMetadata
+    range: string
+    required: true
+  versionIRI:
+    name: versionIRI
+    description: "A version URI is a persistent identifier for a version of an ontology\
+      \ and is used just like its PURL to reliably retrieve a former version of an\
+      \ ontology. Since a PURL usually only points to the latest version of an ontology,\
+      \ each ontology version should additionally state its version URI.\nThe textual\
+      \ version information is usually part of a version URI of an ontology.\nHere\
+      \ is an example from the Academic Event Ontology:\n```http://purl.obolibrary.org/obo/aeon/aeon-full.owl\n\
+      http://purl.obolibrary.org/obo/aeon/releases/2022-11-25/aeon-full.owl```\n\n\
+      Here is an example from ListDB Ontology:\n```https://w3id.org/listdb/onto/\n\
+      https://w3id.org/listdb/onto/0.0.1```\n\nHere is an example from the GND Ontology:\n\
+      ```https://d-nb.info/standards/elementset/gnd#\nhttps://d-nb.info/standards/elementset/gnd_20221010```\n\
+      \nThis metadatum is also recommended as required by:\n\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n\
+      \  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15\n\
+      \  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n\
+      \  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the\
+      \ Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n"
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - schema:schemaVersion
+    rank: 1000
+    is_a: versionInformation
+    slot_uri: owl:versionIRI
+    multivalued: false
+    alias: versionIRI
+    owner: Ontology
+    domain_of:
+    - RequiredMetadata
+    range: string
+  versionNotes:
+    name: versionNotes
+    description: "Version information may also be accompanied by a description about\
+      \ changes between one version of the ontology and its predecessor.\n\nThis metadatum\
+      \ is also recommended as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n\
+      \  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15\n\
+      \  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n"
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - vann:changes
+    rank: 1000
+    is_a: versionInformation
+    slot_uri: adms:versionNotes
+    multivalued: false
+    alias: versionNotes
+    owner: Ontology
+    domain_of:
+    - RequiredMetadata
+    range: string
+    required: true
   created:
     name: created
-    description: when the term came into being
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
-    close_mappings:
+    description: A property to provide the date when the ontology or a term thereof
+      came into being.
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
     - pav:createdOn
+    - schema:dateCreated
+    - dcterms:issued
+    - schema:datePublished
+    - prov:generatedAtTime
+    - schema:dateIssued
+    - dc:date
     rank: 1000
-    is_a: provenance_property
+    is_a: versionInformation
     slot_uri: dcterms:created
     multivalued: false
     alias: created
     owner: Ontology
     domain_of:
-    - HasProvenance
-    - Ontology
+    - RequiredMetadata
     range: string
+    required: true
+  modificationDate:
+    name: modificationDate
+    description: A property to provide the date when a ressource was updated.
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - pav:curatedOn
+    - schema:dateModified
+    rank: 1000
+    is_a: versionInformation
+    slot_uri: dcterms:modified
+    multivalued: true
+    alias: modificationDate
+    owner: Ontology
+    domain_of:
+    - RequiredMetadata
+    range: string
+    required: true
+  description:
+    name: description
+    description: "The ontology should describe its own contents and scope with a few\
+      \ words or sentences in order to inform human users what the ontology tries\
+      \ to accomplish.\nThe description is displayed in the TIB Terminology Service\
+      \ ontology list and on the start page of each ontology - we therefore recommend\
+      \ to keep it short! For an extensive discussion about the ontology you may want\
+      \ to consider the publication of a traditional academic article or a detailed\
+      \ documentation.\n\nThis metadatum is also recommended as required by:\n\n \
+      \ * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n\
+      \  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n\
+      \  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n\
+      \  * http://ceur-ws.org/Vol-3127/#paper-15\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n\
+      \  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the\
+      \ Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n"
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - dc:description
+    - schema:abstract
+    - schema:description
+    - dcterms:abstract
+    - skos:note
+    rank: 1000
+    is_a: versionInformation
+    slot_uri: dcterm:description
+    multivalued: false
+    alias: description
+    owner: Ontology
+    domain_of:
+    - RequiredMetadata
+    range: string
+    required: true
+  issueTracker:
+    name: issueTracker
+    description: "Ontologies should be managed with version control software like\
+      \ git. Ideally, the development process of an ontology is open and takes place\
+      \ on platforms like GitLab.com. The ontology should point to the issue tracker\
+      \ of its own development environment so that others may report bugs or suggestions\
+      \ to the developers.\n\nThis metadatum is also recommended as required by:\n\
+      \n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n\
+      \  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n\
+      \  * https://github.com/owlcs/miro/blob/master/miro.md#c3-communication\n  *\
+      \ https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n"
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - rdfs:seeAlso
+    rank: 1000
+    is_a: versionInformation
+    slot_uri: doap:bug-database
+    multivalued: false
+    alias: issueTracker
+    owner: Ontology
+    domain_of:
+    - RequiredMetadata
+    range: string
+    required: true
+  documentation:
+    name: documentation
+    description: 'To familiarize interested others with the concepts and scope of
+      your ontology, you should consider creating some kind of documentation. A relatively
+      easy way to do this, is to use the tool [Widoco](https://pad.gwdg.de/). It generates
+      the documentation from the ontology and a resulting html-document can be published,
+      for example with GitLab Pages. This auto-generated document can contain customary
+      additions that help users to understand the ontology better.
+
+      '
+    todos:
+    - We need to investigate if the mapped predicates are suited enough pr if we need
+      to mint/request a new predicate for this somewhere.
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - foaf:homepage
+    rank: 1000
+    is_a: versionInformation
+    slot_uri: dcterms:isReferencedBy
+    multivalued: false
+    alias: documentation
+    owner: Ontology
+    domain_of:
+    - RequiredMetadata
+    range: string
+    required: true
   imports:
     name: imports
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
+    description: "Version information may also be accompanied by a description about\
+      \ changes between one version of the ontology and its predecessor.\n\nThis metadatum\
+      \ is also recommended as required by:\n\n  * https://github.com/owlcs/miro/blob/master/miro.md#e4-incorporation-of-other-ontologies\n\
+      \  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n"
+    from_schema: http://terminology.tib.eu/schema
     rank: 1000
+    is_a: versionInformation
     slot_uri: owl:imports
+    multivalued: false
     alias: imports
     owner: Ontology
     domain_of:
-    - Ontology
+    - RequiredMetadata
     range: string
-  id:
-    name: id
-    description: this maps to the URI in RDF
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
-    rank: 1000
-    is_a: core_property
-    identifier: true
-    alias: id
-    owner: Ontology
-    domain_of:
-    - NamedObject
-    range: uriorcurie
     required: true
-  type:
-    name: type
-    from_schema: http://purl.obolibrary.org/obo/omo/schema
+  contributor:
+    name: contributor
+    description: "The ontology should state who was or is contributing to its development.\
+      \ It is recommended to not only provide the contributor's names but also to\
+      \ link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to\
+      \ identify the creator is a must when using the dcterms:contributor predicat.\
+      \ For a literal representations of a creator the predicate dc:contributor is\
+      \ recommended to be in line with DCMI specs.\n\nThis metadatum is also recommended\
+      \ as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n\
+      \  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community\n\
+      \  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * [Best\
+      \ Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n"
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - prov:wasAttributedTo
     rank: 1000
-    is_a: logical_predicate
-    slot_uri: rdf:type
+    is_a: provenanceProperty
+    slot_uri: dcterms:contributor
     multivalued: true
-    designates_type: true
-    alias: type
+    alias: contributor
     owner: Ontology
     domain_of:
-    - Thing
+    - RecommendedMetadata
     range: uriorcurie
+    required: false
+    recommended: true
+  contactInfo:
+    name: contactInfo
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: contactInfo
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  fundingInfo:
+    name: fundingInfo
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: fundingInfo
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  audience:
+    name: audience
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: audience
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  domainCovered:
+    name: domainCovered
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: domainCovered
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  languageCovered:
+    name: languageCovered
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: languageCovered
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  languageExpressedIn:
+    name: languageExpressedIn
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: languageExpressedIn
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  status:
+    name: status
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: status
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  sourceRepository:
+    name: sourceRepository
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: sourceRepository
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  distributions:
+    name: distributions
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: distributions
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  applicationExample:
+    name: applicationExample
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: applicationExample
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  references:
+    name: references
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: references
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  citations:
+    name: citations
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: citations
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  derivedFrom:
+    name: derivedFrom
+    description: A property to provide one or more sources from which a ressource
+      was derived.
+    comments:
+    - For the RDF implementation, we recommend using the URI provided here as a standard,
+      but the URI(s) listed under **See Also** might be used as alternative for this
+      predicate.
+    from_schema: http://terminology.tib.eu/schema
+    see_also:
+    - dc:source
+    - pav:derivedFrom
+    - prov:wasDerivedFrom
+    rank: 1000
+    is_a: provenanceProperty
+    slot_uri: dcterms:source
+    multivalued: true
+    alias: derivedFrom
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  rootTerms:
+    name: rootTerms
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: rootTerms
+    owner: Ontology
+    domain_of:
+    - RecommendedMetadata
+    range: string
+    recommended: true
+  relatedVersions:
+    name: relatedVersions
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: relatedVersions
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  socialMediaAccount:
+    name: socialMediaAccount
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: socialMediaAccount
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  identifierPattern:
+    name: identifierPattern
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: identifierPattern
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  format:
+    name: format
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: format
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  homepage:
+    name: homepage
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: homepage
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  publisher:
+    name: publisher
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: publisher
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  comments:
+    name: comments
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: comments
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  exampleIdentifier:
+    name: exampleIdentifier
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: exampleIdentifier
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  exampleClass:
+    name: exampleClass
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: exampleClass
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  mailingList:
+    name: mailingList
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: mailingList
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  logo:
+    name: logo
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: logo
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  otherIdentifier:
+    name: otherIdentifier
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: otherIdentifier
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  developmentEnvironment:
+    name: developmentEnvironment
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: developmentEnvironment
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  mappingRessources:
+    name: mappingRessources
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: mappingRessources
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  competencyQuestions:
+    name: competencyQuestions
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: competencyQuestions
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  appliedMethodology:
+    name: appliedMethodology
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    alias: appliedMethodology
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+  alternativeTitle:
+    name: alternativeTitle
+    description: An alternative title or name of an ontology or SKOS vocabulary.
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    slot_uri: dcterms:alternative
+    alias: alternativeTitle
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+    required: false
+    recommended: true
+  alternativePrefix:
+    name: alternativePrefix
+    description: A prefix of an ontology or vocabulary namespace according to the
+      [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName)
+      that is not the officially preferren one but an alternative that may be used
+      in different contexts (e.g. **DCTERMS** or **dct** instead of the [preferredPrefix](preferredPrefix)
+      **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/).
+    comments:
+    - This property is recommended to be used when there are multiple prefixes in
+      use for a namespace, to allow resolvability of CURIEs.
+    from_schema: http://terminology.tib.eu/schema
+    rank: 1000
+    slot_uri: idot:alternatePrefix
+    alias: alternativePrefix
+    owner: Ontology
+    domain_of:
+    - OptionalMetadata
+    range: string
+    required: false
+    recommended: true
 class_uri: owl:Ontology
 
 </code></pre>

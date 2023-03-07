@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ontology-metadata-ontology-schema" class="md-skip">
+        <a href="#the-ontology-metadata-schema-of-the-tib-terminology-service" class="md-skip">
           Skip to content
         </a>
       
@@ -255,22 +255,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#types" class="md-nav__link">
     Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
   </a>
   
 </li>
@@ -339,22 +325,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#types" class="md-nav__link">
     Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#subsets" class="md-nav__link">
-    Subsets
   </a>
   
 </li>
@@ -379,10 +351,10 @@
   </a>
 
 
-<h1 id="ontology-metadata-ontology-schema">Ontology Metadata Ontology Schema</h1>
-<p>Schema for ontology metadata</p>
-<p>URI: http://purl.obolibrary.org/obo/omo/schema
-Name: Ontology-Metadata</p>
+<h1 id="the-ontology-metadata-schema-of-the-tib-terminology-service">The Ontology Metadata Schema of the TIB Terminology Service</h1>
+<p>The metadata schema of the TIB Terminology Service that formalizes which metadata annotations are required, recommended and optional for an OWL ontology or SKOS vocabulary that is supposed to be index in the TIB TS.</p>
+<p><em><strong>URI:</strong> http://terminology.tib.eu/schema</em></p>
+<p><em><strong>Name:</strong> TIB-TS-Ontology-Metadata-Schema</em></p>
 <h2 id="classes">Classes</h2>
 <table>
 <thead>
@@ -393,136 +365,24 @@ Name: Ontology-Metadata</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="Agent/">Agent</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="Annotation/">Annotation</a></td>
-<td>A reified property-object pair</td>
-</tr>
-<tr>
-<td><a href="AnnotationProperty/">AnnotationProperty</a></td>
-<td>A property used in non-logical axioms</td>
-</tr>
-<tr>
-<td><a href="AnnotationPropertyMixin/">AnnotationPropertyMixin</a></td>
-<td>Groups all annotation property bundles</td>
-</tr>
-<tr>
-<td><a href="Anonymous/">Anonymous</a></td>
-<td>Abstract root class for all anonymous (non-named; lacking an identifier) expr...</td>
-</tr>
-<tr>
-<td><a href="AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="Any/">Any</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="Axiom/">Axiom</a></td>
-<td>A logical or non-logical statement</td>
-</tr>
-<tr>
-<td><a href="Class/">Class</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="ClassExpression/">ClassExpression</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="Expression/">Expression</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="HasCategory/">HasCategory</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="HasLifeCycle/">HasLifeCycle</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="HasMappings/">HasMappings</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="HasMinimalMetadata/">HasMinimalMetadata</a></td>
-<td>Absolute minimum metadata model</td>
-</tr>
-<tr>
-<td><a href="HasProvenance/">HasProvenance</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="HasSynonyms/">HasSynonyms</a></td>
-<td>a mixin for a class whose members can have synonyms</td>
-</tr>
-<tr>
-<td><a href="HasUserInformation/">HasUserInformation</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="HomoSapiens/">HomoSapiens</a></td>
-<td>An individual human being</td>
-</tr>
-<tr>
-<td><a href="Image/">Image</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="NamedIndividual/">NamedIndividual</a></td>
-<td>An instance that has a IRI</td>
-</tr>
-<tr>
-<td><a href="NamedObject/">NamedObject</a></td>
-<td>Anything with an IRI</td>
-</tr>
-<tr>
-<td><a href="NotObsoleteAspect/">NotObsoleteAspect</a></td>
-<td>Auto-classifies anything that is not obsolete</td>
-</tr>
-<tr>
-<td><a href="ObjectProperty/">ObjectProperty</a></td>
-<td>A property that connects two objects in logical axioms</td>
-</tr>
-<tr>
-<td><a href="ObsoleteAspect/">ObsoleteAspect</a></td>
-<td>Auto-classifies anything that is obsolete</td>
-</tr>
-<tr>
 <td><a href="Ontology/">Ontology</a></td>
 <td>An OWL ontology</td>
 </tr>
 <tr>
-<td><a href="Property/">Property</a></td>
-<td></td>
+<td><a href="OptionalMetadata/">OptionalMetadata</a></td>
+<td>A mixin that provides the optional properties needed to index an ontology or ...</td>
 </tr>
 <tr>
-<td><a href="PropertyExpression/">PropertyExpression</a></td>
-<td></td>
+<td><a href="RecommendedMetadata/">RecommendedMetadata</a></td>
+<td>A mixin that provides the recommended properties needed to index an ontology ...</td>
 </tr>
 <tr>
-<td><a href="Restriction/">Restriction</a></td>
-<td></td>
+<td><a href="RequiredMetadata/">RequiredMetadata</a></td>
+<td>A mixin that provides the required properties needed to index an ontology or ...</td>
 </tr>
 <tr>
-<td><a href="Subset/">Subset</a></td>
-<td>A collection of terms grouped for some purpose</td>
-</tr>
-<tr>
-<td><a href="Term/">Term</a></td>
-<td>A NamedThing that includes classes, properties, but not ontologies</td>
-</tr>
-<tr>
-<td><a href="Thing/">Thing</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="TransitiveProperty/">TransitiveProperty</a></td>
-<td>An ObjectProperty with the property of transitivity</td>
+<td><a href="SkosConceptScheme/">SkosConceptScheme</a></td>
+<td>A SKOS vocabulary serialized in RDF using the skos:ConceptScheme</td>
 </tr>
 </tbody>
 </table>
@@ -536,531 +396,204 @@ Name: Ontology-Metadata</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="allValuesFrom/">allValuesFrom</a></td>
+<td><a href="acronym/">acronym</a></td>
+<td>The ID is used as a short name for the ontology or SKOS vocabulary on the TIB...</td>
+</tr>
+<tr>
+<td><a href="alternativePrefix/">alternativePrefix</a></td>
+<td>A prefix of an ontology or vocabulary namespace according to the [W3C specifi...</td>
+</tr>
+<tr>
+<td><a href="alternativeTitle/">alternativeTitle</a></td>
+<td>An alternative title or name of an ontology or SKOS vocabulary</td>
+</tr>
+<tr>
+<td><a href="applicationExample/">applicationExample</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="alternative_term/">alternative_term</a></td>
+<td><a href="appliedMethodology/">appliedMethodology</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="annotatedProperty/">annotatedProperty</a></td>
+<td><a href="audience/">audience</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="annotatedSource/">annotatedSource</a></td>
+<td><a href="citations/">citations</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="annotatedTarget/">annotatedTarget</a></td>
+<td><a href="comments/">comments</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="annotations/">annotations</a></td>
+<td><a href="competencyQuestions/">competencyQuestions</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="broadMatch/">broadMatch</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="cardinality/">cardinality</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="category/">category</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="changeNote/">changeNote</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="closeMatch/">closeMatch</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="comment/">comment</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="complementOf/">complementOf</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="conformsTo/">conformsTo</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="consider/">consider</a></td>
+<td><a href="contactInfo/">contactInfo</a></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="contributor/">contributor</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="core_property/">core_property</a></td>
-<td>abstract grouping of core properties</td>
+<td>The ontology should state who was or is contributing to its development</td>
 </tr>
 <tr>
 <td><a href="created/">created</a></td>
-<td>when the term came into being</td>
-</tr>
-<tr>
-<td><a href="created_by/">created_by</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="creation_date/">creation_date</a></td>
-<td></td>
+<td>A property to provide the date when the ontology or a term thereof came into ...</td>
 </tr>
 <tr>
 <td><a href="creator/">creator</a></td>
+<td>The ontology should state who was or is responsible for its development</td>
+</tr>
+<tr>
+<td><a href="derivedFrom/">derivedFrom</a></td>
+<td>A property to provide one or more sources from which a ressource was derived</td>
+</tr>
+<tr>
+<td><a href="description/">description</a></td>
+<td>The ontology should describe its own contents and scope with a few words or s...</td>
+</tr>
+<tr>
+<td><a href="developmentEnvironment/">developmentEnvironment</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="curator_note/">curator_note</a></td>
+<td><a href="distributions/">distributions</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="database_cross_reference/">database_cross_reference</a></td>
+<td><a href="documentation/">documentation</a></td>
+<td>To familiarize interested others with the concepts and scope of your ontology...</td>
+</tr>
+<tr>
+<td><a href="domainCovered/">domainCovered</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="date/">date</a></td>
-<td>when the term was updated</td>
-</tr>
-<tr>
-<td><a href="date_retrieved/">date_retrieved</a></td>
+<td><a href="exampleClass/">exampleClass</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="defaultLanguage/">defaultLanguage</a></td>
+<td><a href="exampleIdentifier/">exampleIdentifier</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="definition/">definition</a></td>
+<td><a href="format/">format</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="definition_source/">definition_source</a></td>
+<td><a href="fundingInfo/">fundingInfo</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="depicted_by/">depicted_by</a></td>
+<td><a href="homepage/">homepage</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="deprecated/">deprecated</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="disconnected_from/">disconnected_from</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="disjointWith/">disjointWith</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="distinctMembers/">distinctMembers</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="domain/">domain</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="editor_note/">editor_note</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="editor_preferred_term/">editor_preferred_term</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="equivalentClass/">equivalentClass</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="equivalentProperty/">equivalentProperty</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="evidence/">evidence</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="exactMatch/">exactMatch</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="example_of_usage/">example_of_usage</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="excluded_axiom/">excluded_axiom</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="excluded_from_QC_check/">excluded_from_QC_check</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="excluded_subClassOf/">excluded_subClassOf</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="excluded_synonym/">excluded_synonym</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="external_ontology/">external_ontology</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_alternative_id/">has_alternative_id</a></td>
-<td>Relates a live term to a deprecated ID that was merged in</td>
-</tr>
-<tr>
-<td><a href="has_axiom_label/">has_axiom_label</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_broad_synonym/">has_broad_synonym</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_curation_status/">has_curation_status</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_exact_synonym/">has_exact_synonym</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_narrow_synonym/">has_narrow_synonym</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_obo_namespace/">has_obo_namespace</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_obsolescence_reason/">has_obsolescence_reason</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_ontology_root_term/">has_ontology_root_term</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_rank/">has_rank</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_related_synonym/">has_related_synonym</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_synonym_type/">has_synonym_type</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="hasValue/">hasValue</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="id/">id</a></td>
-<td>this maps to the URI in RDF</td>
-</tr>
-<tr>
-<td><a href="IEDB_alternative_term/">IEDB_alternative_term</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="image/">image</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="imported_from/">imported_from</a></td>
+<td><a href="identifierPattern/">identifierPattern</a></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="imports/">imports</a></td>
+<td>Version information may also be accompanied by a description about changes be...</td>
+</tr>
+<tr>
+<td><a href="issueTracker/">issueTracker</a></td>
+<td>Ontologies should be managed with version control software like git</td>
+</tr>
+<tr>
+<td><a href="languageCovered/">languageCovered</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="in_subset/">in_subset</a></td>
-<td>Maps an ontology element to a subset it belongs to</td>
-</tr>
-<tr>
-<td><a href="informative_property/">informative_property</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="intersectionOf/">intersectionOf</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="inverseOf/">inverseOf</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="is_a_defining_property_chain_axiom/">is_a_defining_property_chain_axiom</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="is_a_defining_property_chain_axiom_where_second_argument_is_reflexive/">is_a_defining_property_chain_axiom_where_second_argument_is_reflexive</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="is_class_level/">is_class_level</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="is_cyclic/">is_cyclic</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="is_inferred/">is_inferred</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="is_metadata_tag/">is_metadata_tag</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="is_transitive/">is_transitive</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="ISA_alternative_term/">ISA_alternative_term</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="isDefinedBy/">isDefinedBy</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="label/">label</a></td>
+<td><a href="languageExpressedIn/">languageExpressedIn</a></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="license/">license</a></td>
+<td>The license of the ontology/vocabulary</td>
+</tr>
+<tr>
+<td><a href="logo/">logo</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="logical_predicate/">logical_predicate</a></td>
+<td><a href="mailingList/">mailingList</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="match/">match</a></td>
+<td><a href="mappingRessources/">mappingRessources</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="match_aspect/">match_aspect</a></td>
+<td><a href="modificationDate/">modificationDate</a></td>
+<td>A property to provide the date when a ressource was updated</td>
+</tr>
+<tr>
+<td><a href="otherIdentifier/">otherIdentifier</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="maxQualifiedCardinality/">maxQualifiedCardinality</a></td>
+<td><a href="preferredPrefix/">preferredPrefix</a></td>
+<td>The official prefix of an ontology or vocabulary namespace according to the [...</td>
+</tr>
+<tr>
+<td><a href="provenanceProperty/">provenanceProperty</a></td>
+<td>An abstract property to group all properties that deal with provenance of a r...</td>
+</tr>
+<tr>
+<td><a href="publisher/">publisher</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="members/">members</a></td>
+<td><a href="purl/">purl</a></td>
+<td>The PURL of an ontology is its persistent identifier</td>
+</tr>
+<tr>
+<td><a href="references/">references</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="minCardinality/">minCardinality</a></td>
+<td><a href="relatedVersions/">relatedVersions</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="minQualifiedCardinality/">minQualifiedCardinality</a></td>
+<td><a href="rootTerms/">rootTerms</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="narrowMatch/">narrowMatch</a></td>
+<td><a href="socialMediaAccount/">socialMediaAccount</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="NCIT_definition_source/">NCIT_definition_source</a></td>
+<td><a href="sourceRepository/">sourceRepository</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="NCIT_term_source/">NCIT_term_source</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="NCIT_term_type/">NCIT_term_type</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="never_in_taxon/">never_in_taxon</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="notes/">notes</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="object/">object</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="OBO_foundry_unique_label/">OBO_foundry_unique_label</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="oboInOwl_id/">oboInOwl_id</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="oboInOwl_ontology/">oboInOwl_ontology</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="obsoletion_related_property/">obsoletion_related_property</a></td>
-<td>Grouping class for all properties related to lifecycle</td>
-</tr>
-<tr>
-<td><a href="onClass/">onClass</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="oneOf/">oneOf</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="onProperty/">onProperty</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="ontology_term_requester/">ontology_term_requester</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="page/">page</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="predicate/">predicate</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="propertyChainAxiom/">propertyChainAxiom</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="provenance_property/">provenance_property</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="qualifiedCardinality/">qualifiedCardinality</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="range/">range</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="reification_predicate/">reification_predicate</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="sameAs/">sameAs</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="seeAlso/">seeAlso</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="shortcut_annotation_property/">shortcut_annotation_property</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="shorthand/">shorthand</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="should_conform_to/">should_conform_to</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="someValuesFrom/">someValuesFrom</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="source/">source</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="subClassOf/">subClassOf</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="synonym/">synonym</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="temporal_interpretation/">temporal_interpretation</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="term_editor/">term_editor</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="term_replaced_by/">term_replaced_by</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="term_tracker_item/">term_tracker_item</a></td>
+<td><a href="status/">status</a></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="title/">title</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="type/">type</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="unionOf/">unionOf</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="url/">url</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="version_property/">version_property</a></td>
-<td></td>
+<td>The title or name of an ontology or SKOS vocabulary</td>
 </tr>
 <tr>
 <td><a href="versionInfo/">versionInfo</a></td>
-<td></td>
+<td>Some ontologies make use of semantic versioning and employ strings like 1</td>
+</tr>
+<tr>
+<td><a href="versionInformation/">versionInformation</a></td>
+<td>An abstract property to group all püroperties that deal with versioning of a ...</td>
 </tr>
 <tr>
 <td><a href="versionIRI/">versionIRI</a></td>
-<td></td>
+<td>A version URI is a persistent identifier for a version of an ontology and is ...</td>
 </tr>
-</tbody>
-</table>
-<h2 id="enumerations">Enumerations</h2>
-<table>
-<thead>
 <tr>
-<th>Enumeration</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="DefinitionConstraintComponent/">DefinitionConstraintComponent</a></td>
-<td>An extension of SHACL constraint component for constraining definitions</td>
+<td><a href="versionNotes/">versionNotes</a></td>
+<td>Version information may also be accompanied by a description about changes be...</td>
 </tr>
 </tbody>
 </table>
@@ -1074,131 +607,68 @@ Name: Ontology-Metadata</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a></td>
+<td><a href="Boolean/">Boolean</a></td>
 <td>A binary (true or false) value</td>
 </tr>
 <tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></td>
+<td><a href="Curie/">Curie</a></td>
 <td>a compact URI</td>
 </tr>
 <tr>
-<td><a href="CURIELiteral/">CURIELiteral</a></td>
-<td>A string representation of a CURIE</td>
-</tr>
-<tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a></td>
+<td><a href="Date/">Date</a></td>
 <td>a date (year, month and day) in an idealized calendar</td>
 </tr>
 <tr>
-<td><a href="https://w3id.org/linkml/DateOrDatetime">linkml:DateOrDatetime</a></td>
+<td><a href="DateOrDatetime/">DateOrDatetime</a></td>
 <td>Either a date or a datetime</td>
 </tr>
 <tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a></td>
+<td><a href="Datetime/">Datetime</a></td>
 <td>The combination of a date and time</td>
 </tr>
 <tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a></td>
+<td><a href="Decimal/">Decimal</a></td>
 <td>A real number with arbitrary precision that conforms to the xsd:decimal speci...</td>
 </tr>
 <tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#double">xsd:double</a></td>
+<td><a href="Double/">Double</a></td>
 <td>A real number that conforms to the xsd:double specification</td>
 </tr>
 <tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a></td>
+<td><a href="Float/">Float</a></td>
 <td>A real number that conforms to the xsd:float specification</td>
 </tr>
 <tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a></td>
+<td><a href="Integer/">Integer</a></td>
 <td>An integer</td>
 </tr>
 <tr>
-<td><a href="IriType/">IriType</a></td>
-<td>An IRI</td>
-</tr>
-<tr>
-<td><a href="LabelType/">LabelType</a></td>
-<td>A string that provides a human-readable name for an entity</td>
-</tr>
-<tr>
-<td><a href="NarrativeText/">NarrativeText</a></td>
-<td>A string that provides a human-readable description of something</td>
-</tr>
-<tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></td>
+<td><a href="Ncname/">Ncname</a></td>
 <td>Prefix part of CURIE</td>
 </tr>
 <tr>
-<td><a href="shex:nonLiteral">shex:nonLiteral</a></td>
+<td><a href="Nodeidentifier/">Nodeidentifier</a></td>
 <td>A URI, CURIE or BNODE that represents a node in a model</td>
 </tr>
 <tr>
-<td><a href="shex:iri">shex:iri</a></td>
+<td><a href="Objectidentifier/">Objectidentifier</a></td>
 <td>A URI or CURIE that represents an object in the model</td>
 </tr>
 <tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></td>
+<td><a href="String/">String</a></td>
 <td>A character string</td>
 </tr>
 <tr>
-<td><a href="TidyString/">TidyString</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a></td>
+<td><a href="Time/">Time</a></td>
 <td>A time object represents a (local) time of day, independent of any particular...</td>
 </tr>
 <tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#anyURI">xsd:anyURI</a></td>
+<td><a href="Uri/">Uri</a></td>
 <td>a complete URI</td>
 </tr>
 <tr>
-<td><a href="http://www.w3.org/2001/XMLSchema#anyURI">xsd:anyURI</a></td>
+<td><a href="Uriorcurie/">Uriorcurie</a></td>
 <td>a URI or a CURIE</td>
-</tr>
-<tr>
-<td><a href="URLLiteral/">URLLiteral</a></td>
-<td>A URL representation of a CURIE</td>
-</tr>
-</tbody>
-</table>
-<h2 id="subsets">Subsets</h2>
-<table>
-<thead>
-<tr>
-<th>Subset</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="AllotropePermittedProfile/">AllotropePermittedProfile</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="AllotropeRequiredProfile/">AllotropeRequiredProfile</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="GoPermittedProfile/">GoPermittedProfile</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="GoRecommendedProfile/">GoRecommendedProfile</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="GoRequiredProfile/">GoRequiredProfile</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="ObiPermittedProfile/">ObiPermittedProfile</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="ObiRequiredProfile/">ObiRequiredProfile</a></td>
-<td></td>
 </tr>
 </tbody>
 </table>

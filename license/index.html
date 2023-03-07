@@ -256,13 +256,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    Inheritance
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     Applicable Classes
   </a>
@@ -277,22 +270,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    Identifier and Mapping Information
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    Schema Source
+  <a href="#comments" class="md-nav__link">
+    Comments
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#todos" class="md-nav__link">
+    TODOs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
   
 </li>
       
@@ -324,14 +318,22 @@
 
 
 <h1 id="slot-license">Slot: license</h1>
-<p>URI: <a href="http://purl.org/dc/terms/license">dcterms:license</a></p>
-<h2 id="inheritance">Inheritance</h2>
+<p>The license of the ontology/vocabulary. Ontologies and SKOS vocabularies should refer to license documents on the web via PIDs. The license text helps others to evaluate how they may reuse the ontology/vocabulary.
+Only ontologies with an open license will be published on the TIB Terminology Service.</p>
+<p>This metadatum is also recommended as required by:</p>
 <ul>
-<li><a href="../informative_property/">informative_property</a><ul>
-<li><strong>license</strong></li>
+<li>https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852</li>
+<li>http://purl.obolibrary.org/meta/context.jsonld</li>
+<li>https://w3id.org/mod/2.0</li>
+<li>https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf</li>
+<li>https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html</li>
+<li>https://doi.org/10.1371/journal.pcbi.1009041</li>
+<li>http://ceur-ws.org/Vol-3127/#paper-15 </li>
+<li><a href="http://dgarijo.com/papers/best_practices2020.pdf">Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web </a></li>
 </ul>
-</li>
-</ul>
+<p><em><strong>URI</strong>: <a href="http://purl.org/dc/terms/license">dcterms:license</a></em></p>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -342,32 +344,72 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+<td>A mixin that provides the required properties needed to index an ontology or ...</td>
+</tr>
+<tr>
 <td><a href="../Ontology/">Ontology</a></td>
 <td>An OWL ontology</td>
+</tr>
+<tr>
+<td><a href="../SkosConceptScheme/">SkosConceptScheme</a></td>
+<td>A SKOS vocabulary serialized in RDF using the skos:ConceptScheme</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Thing/">Thing</a></li>
+<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+<li>Required: True</li>
 </ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
+<h2 id="comments">Comments</h2>
 <ul>
-<li>from schema: http://purl.obolibrary.org/obo/omo/schema</li>
+<li>For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under <strong>See Also</strong> might be used as alternative for this predicate.</li>
+</ul>
+<h2 id="todos">TODOs</h2>
+<ul>
+<li>We should point to types of different licenses and give recommendations on which to choose when.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="http://purl.org/dc/terms/rights">http://purl.org/dc/terms/rights</a></li>
+<li><a href="http://purl.org/dc/elements/1.1/rights">http://purl.org/dc/elements/1.1/rights</a></li>
+<li><a href="http://creativecommons.org/ns#license">http://creativecommons.org/ns#license</a></li>
+<li><a href="http://dbpedia.org/ontology/license">http://dbpedia.org/ontology/license</a></li>
 </ul>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: license
-from_schema: http://purl.obolibrary.org/obo/omo/schema
+description: &quot;The license of the ontology/vocabulary. Ontologies and SKOS vocabularies\
+  \ should refer to license documents on the web via PIDs. The license text helps\
+  \ others to evaluate how they may reuse the ontology/vocabulary.\nOnly ontologies\
+  \ with an open license will be published on the TIB Terminology Service.\n\nThis\
+  \ metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n\
+  \  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n\
+  \  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n\
+  \  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15\
+  \ \n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the\
+  \ Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n&quot;
+todos:
+- We should point to types of different licenses and give recommendations on which
+  to choose when.
+comments:
+- For the RDF implementation, we recommend using the URI provided here as a standard,
+  but the URI(s) listed under **See Also** might be used as alternative for this predicate.
+from_schema: http://terminology.tib.eu/schema
+see_also:
+- http://purl.org/dc/terms/rights
+- http://purl.org/dc/elements/1.1/rights
+- http://creativecommons.org/ns#license
+- http://dbpedia.org/ontology/license
 rank: 1000
-is_a: informative_property
 slot_uri: dcterms:license
 alias: license
 domain_of:
-- Ontology
-range: Thing
+- RequiredMetadata
+range: uriorcurie
+required: true
 
 </code></pre>
 

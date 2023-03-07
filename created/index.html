@@ -277,22 +277,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    Identifier and Mapping Information
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    Schema Source
+  <a href="#comments" class="md-nav__link">
+    Comments
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
   
 </li>
       
@@ -324,12 +318,15 @@
 
 
 <h1 id="slot-created">Slot: created</h1>
-<p><em>when the term came into being</em></p>
-<p>URI: <a href="http://purl.org/dc/terms/created">dcterms:created</a></p>
+<p>A property to provide the date when the ontology or a term thereof came into being.</p>
+<p><em><strong>URI</strong>: <a href="http://purl.org/dc/terms/created">dcterms:created</a></em></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../provenance_property/">provenance_property</a><ul>
+<li><a href="../provenanceProperty/">provenanceProperty</a><ul>
+<li><a href="../versionInformation/">versionInformation</a><ul>
 <li><strong>created</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -343,85 +340,65 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../HasProvenance/">HasProvenance</a></td>
-<td></td>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+<td>A mixin that provides the required properties needed to index an ontology or ...</td>
 </tr>
 <tr>
 <td><a href="../Ontology/">Ontology</a></td>
 <td>An OWL ontology</td>
 </tr>
 <tr>
-<td><a href="../Term/">Term</a></td>
-<td>A NamedThing that includes classes, properties, but not ontologies</td>
-</tr>
-<tr>
-<td><a href="../Class/">Class</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../Property/">Property</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../AnnotationProperty/">AnnotationProperty</a></td>
-<td>A property used in non-logical axioms</td>
-</tr>
-<tr>
-<td><a href="../ObjectProperty/">ObjectProperty</a></td>
-<td>A property that connects two objects in logical axioms</td>
-</tr>
-<tr>
-<td><a href="../TransitiveProperty/">TransitiveProperty</a></td>
-<td>An ObjectProperty with the property of transitivity</td>
-</tr>
-<tr>
-<td><a href="../NamedIndividual/">NamedIndividual</a></td>
-<td>An instance that has a IRI</td>
-</tr>
-<tr>
-<td><a href="../HomoSapiens/">HomoSapiens</a></td>
-<td>An individual human being</td>
-</tr>
-<tr>
-<td><a href="../Agent/">Agent</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../Image/">Image</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../Subset/">Subset</a></td>
-<td>A collection of terms grouped for some purpose</td>
+<td><a href="../SkosConceptScheme/">SkosConceptScheme</a></td>
+<td>A SKOS vocabulary serialized in RDF using the skos:ConceptScheme</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></li>
+<li>Range: <a href="../String/">String</a></li>
+<li>Required: True</li>
 </ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
+<h2 id="comments">Comments</h2>
 <ul>
-<li>from schema: http://purl.obolibrary.org/obo/omo/schema</li>
+<li>For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under <strong>See Also</strong> might be used as alternative for this predicate.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="http://purl.org/pav/createdOn">pav:createdOn</a></li>
+<li><a href="http://schema.org/dateCreated">schema:dateCreated</a></li>
+<li><a href="http://purl.org/dc/terms/issued">dcterms:issued</a></li>
+<li><a href="http://schema.org/datePublished">schema:datePublished</a></li>
+<li><a href="http://www.w3.org/ns/prov-o#generatedAtTime">prov:generatedAtTime</a></li>
+<li><a href="http://schema.org/dateIssued">schema:dateIssued</a></li>
+<li><a href="http://purl.org/dc/terms/date">dc:date</a></li>
 </ul>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: created
-description: when the term came into being
-from_schema: http://purl.obolibrary.org/obo/omo/schema
-close_mappings:
+description: A property to provide the date when the ontology or a term thereof came
+  into being.
+comments:
+- For the RDF implementation, we recommend using the URI provided here as a standard,
+  but the URI(s) listed under **See Also** might be used as alternative for this predicate.
+from_schema: http://terminology.tib.eu/schema
+see_also:
 - pav:createdOn
+- schema:dateCreated
+- dcterms:issued
+- schema:datePublished
+- prov:generatedAtTime
+- schema:dateIssued
+- dc:date
 rank: 1000
-is_a: provenance_property
+is_a: versionInformation
 slot_uri: dcterms:created
 multivalued: false
 alias: created
 domain_of:
-- HasProvenance
-- Ontology
+- RequiredMetadata
 range: string
+required: true
 
 </code></pre>
 

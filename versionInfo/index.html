@@ -277,22 +277,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    Identifier and Mapping Information
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    Schema Source
+  <a href="#comments" class="md-nav__link">
+    Comments
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
   
 </li>
       
@@ -324,11 +318,24 @@
 
 
 <h1 id="slot-versioninfo">Slot: versionInfo</h1>
-<p>URI: <a href="http://www.w3.org/2002/07/owl#versionInfo">owl:versionInfo</a></p>
+<p>Some ontologies make use of semantic versioning and employ strings like 1.0.0 as a tag to distinguish one version of their ontology from a successor. Others employ the modification date, e.g. 2022-12-21.</p>
+<p>This metadatum is also recommended as required by:</p>
+<ul>
+<li>https://w3id.org/mod/2.0</li>
+<li>https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf</li>
+<li>https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html</li>
+<li>https://doi.org/10.1371/journal.pcbi.1009041</li>
+<li>http://ceur-ws.org/Vol-3127/#paper-15</li>
+<li><a href="http://dgarijo.com/papers/best_practices2020.pdf">Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web </a></li>
+</ul>
+<p><em><strong>URI</strong>: <a href="http://www.w3.org/2002/07/owl#versionInfo">owl:versionInfo</a></em></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../version_property/">version_property</a><ul>
+<li><a href="../provenanceProperty/">provenanceProperty</a><ul>
+<li><a href="../versionInformation/">versionInformation</a><ul>
 <li><strong>versionInfo</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -342,34 +349,60 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../RequiredMetadata/">RequiredMetadata</a></td>
+<td>A mixin that provides the required properties needed to index an ontology or ...</td>
+</tr>
+<tr>
 <td><a href="../Ontology/">Ontology</a></td>
 <td>An OWL ontology</td>
+</tr>
+<tr>
+<td><a href="../SkosConceptScheme/">SkosConceptScheme</a></td>
+<td>A SKOS vocabulary serialized in RDF using the skos:ConceptScheme</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></li>
+<li>Range: <a href="../String/">String</a></li>
+<li>Required: True</li>
 </ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
+<h2 id="comments">Comments</h2>
 <ul>
-<li>from schema: http://purl.obolibrary.org/obo/omo/schema</li>
+<li>For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under <strong>See Also</strong> might be used as alternative for this predicate.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="http://purl.org/pav/version">pav:version</a></li>
+<li><a href="http://schema.org/schemaVersion">schema:schemaVersion</a></li>
 </ul>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: versionInfo
-from_schema: http://purl.obolibrary.org/obo/omo/schema
-close_mappings:
+description: &quot;Some ontologies make use of semantic versioning and employ strings like\
+  \ 1.0.0 as a tag to distinguish one version of their ontology from a successor.\
+  \ Others employ the modification date, e.g. 2022-12-21.\n\nThis metadatum is also\
+  \ recommended as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n\
+  \  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://doi.org/10.1371/journal.pcbi.1009041\n\
+  \  * http://ceur-ws.org/Vol-3127/#paper-15\n  * [Best Practices for Implementing\
+  \ FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n&quot;
+comments:
+- For the RDF implementation, we recommend using the URI provided here as a standard,
+  but the URI(s) listed under **See Also** might be used as alternative for this predicate.
+from_schema: http://terminology.tib.eu/schema
+see_also:
 - pav:version
+- schema:schemaVersion
 rank: 1000
-is_a: version_property
+is_a: versionInformation
 slot_uri: owl:versionInfo
+multivalued: false
 alias: versionInfo
 domain_of:
-- Ontology
+- RequiredMetadata
 range: string
+required: true
 
 </code></pre>
 
