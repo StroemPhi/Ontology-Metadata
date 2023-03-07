@@ -1,6 +1,6 @@
 # Auto generated from ontology_metadata.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-07T14:23:36
-# Schema: Ontology-Metadata-TIB
+# Generation date: 2023-03-07T15:40:15
+# Schema: TIB-TS-Ontology-Metadata-Schema
 #
 # id: http://terminology.tib.eu/schema
 # description: The metadata schema of the TIB Terminology Service that formalizes which metadata annotations are
@@ -96,6 +96,7 @@ class RequiredMetadata(YAMLRoot):
     license: Union[str, URIorCURIE] = None
     creator: Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]] = None
     versionInfo: str = None
+    versionIRI: str = None
     versionNotes: str = None
     created: str = None
     modificationDate: Union[str, List[str]] = None
@@ -104,7 +105,6 @@ class RequiredMetadata(YAMLRoot):
     documentation: str = None
     imports: str = None
     acronym: Optional[str] = None
-    versionIRI: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.purl):
@@ -137,6 +137,11 @@ class RequiredMetadata(YAMLRoot):
             self.MissingRequiredField("versionInfo")
         if not isinstance(self.versionInfo, str):
             self.versionInfo = str(self.versionInfo)
+
+        if self._is_empty(self.versionIRI):
+            self.MissingRequiredField("versionIRI")
+        if not isinstance(self.versionIRI, str):
+            self.versionIRI = str(self.versionIRI)
 
         if self._is_empty(self.versionNotes):
             self.MissingRequiredField("versionNotes")
@@ -176,9 +181,6 @@ class RequiredMetadata(YAMLRoot):
 
         if self.acronym is not None and not isinstance(self.acronym, str):
             self.acronym = str(self.acronym)
-
-        if self.versionIRI is not None and not isinstance(self.versionIRI, str):
-            self.versionIRI = str(self.versionIRI)
 
         super().__post_init__(**kwargs)
 
@@ -371,6 +373,7 @@ class Ontology(YAMLRoot):
     license: Union[str, URIorCURIE] = None
     creator: Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]] = None
     versionInfo: str = None
+    versionIRI: str = None
     versionNotes: str = None
     created: str = None
     modificationDate: Union[str, List[str]] = None
@@ -379,7 +382,6 @@ class Ontology(YAMLRoot):
     documentation: str = None
     imports: str = None
     acronym: Optional[str] = None
-    versionIRI: Optional[str] = None
     contributor: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     contactInfo: Optional[str] = None
     fundingInfo: Optional[str] = None
@@ -446,6 +448,11 @@ class Ontology(YAMLRoot):
         if not isinstance(self.versionInfo, str):
             self.versionInfo = str(self.versionInfo)
 
+        if self._is_empty(self.versionIRI):
+            self.MissingRequiredField("versionIRI")
+        if not isinstance(self.versionIRI, str):
+            self.versionIRI = str(self.versionIRI)
+
         if self._is_empty(self.versionNotes):
             self.MissingRequiredField("versionNotes")
         if not isinstance(self.versionNotes, str):
@@ -484,9 +491,6 @@ class Ontology(YAMLRoot):
 
         if self.acronym is not None and not isinstance(self.acronym, str):
             self.acronym = str(self.acronym)
-
-        if self.versionIRI is not None and not isinstance(self.versionIRI, str):
-            self.versionIRI = str(self.versionIRI)
 
         if not isinstance(self.contributor, list):
             self.contributor = [self.contributor] if self.contributor is not None else []
@@ -610,6 +614,7 @@ class SkosConceptScheme(YAMLRoot):
     license: Union[str, URIorCURIE] = None
     creator: Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]] = None
     versionInfo: str = None
+    versionIRI: str = None
     versionNotes: str = None
     created: str = None
     modificationDate: Union[str, List[str]] = None
@@ -618,7 +623,6 @@ class SkosConceptScheme(YAMLRoot):
     documentation: str = None
     imports: str = None
     acronym: Optional[str] = None
-    versionIRI: Optional[str] = None
     contributor: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     contactInfo: Optional[str] = None
     fundingInfo: Optional[str] = None
@@ -685,6 +689,11 @@ class SkosConceptScheme(YAMLRoot):
         if not isinstance(self.versionInfo, str):
             self.versionInfo = str(self.versionInfo)
 
+        if self._is_empty(self.versionIRI):
+            self.MissingRequiredField("versionIRI")
+        if not isinstance(self.versionIRI, str):
+            self.versionIRI = str(self.versionIRI)
+
         if self._is_empty(self.versionNotes):
             self.MissingRequiredField("versionNotes")
         if not isinstance(self.versionNotes, str):
@@ -723,9 +732,6 @@ class SkosConceptScheme(YAMLRoot):
 
         if self.acronym is not None and not isinstance(self.acronym, str):
             self.acronym = str(self.acronym)
-
-        if self.versionIRI is not None and not isinstance(self.versionIRI, str):
-            self.versionIRI = str(self.versionIRI)
 
         if not isinstance(self.contributor, list):
             self.contributor = [self.contributor] if self.contributor is not None else []
@@ -866,7 +872,7 @@ slots.versionInfo = Slot(uri=OWL.versionInfo, name="versionInfo", curie=OWL.curi
                    model_uri=TIBTS.versionInfo, domain=None, range=str)
 
 slots.versionIRI = Slot(uri=OWL.versionIRI, name="versionIRI", curie=OWL.curie('versionIRI'),
-                   model_uri=TIBTS.versionIRI, domain=None, range=Optional[str])
+                   model_uri=TIBTS.versionIRI, domain=None, range=str)
 
 slots.versionNotes = Slot(uri=ADMS.versionNotes, name="versionNotes", curie=ADMS.curie('versionNotes'),
                    model_uri=TIBTS.versionNotes, domain=None, range=str)

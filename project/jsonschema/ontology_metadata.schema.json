@@ -5,7 +5,7 @@
             "description": "An OWL ontology.",
             "properties": {
                 "acronym": {
-                    "description": "The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.\n\nThis metadatum is also recommended as required by:\n\n        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n        * https://w3id.org/mod/2.0\n        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n        * https://bioportal.bioontology.org/ontologies/OMV\n",
+                    "description": "The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * https://w3id.org/mod/2.0\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * https://bioportal.bioontology.org/ontologies/OMV\n",
                     "type": "string"
                 },
                 "alternativePrefix": {
@@ -187,6 +187,7 @@
                 "license",
                 "creator",
                 "versionInfo",
+                "versionIRI",
                 "versionNotes",
                 "created",
                 "modificationDate",
@@ -203,7 +204,7 @@
             "description": "A SKOS vocabulary serialized in RDF using the skos:ConceptScheme",
             "properties": {
                 "acronym": {
-                    "description": "The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.\n\nThis metadatum is also recommended as required by:\n\n        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n        * https://w3id.org/mod/2.0\n        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n        * https://bioportal.bioontology.org/ontologies/OMV\n",
+                    "description": "The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * https://w3id.org/mod/2.0\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * https://bioportal.bioontology.org/ontologies/OMV\n",
                     "type": "string"
                 },
                 "alternativePrefix": {
@@ -385,6 +386,7 @@
                 "license",
                 "creator",
                 "versionInfo",
+                "versionIRI",
                 "versionNotes",
                 "created",
                 "modificationDate",
@@ -401,7 +403,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": true,
     "metamodel_version": "1.7.0",
-    "title": "Ontology-Metadata-TIB",
+    "title": "TIB-TS-Ontology-Metadata-Schema",
     "type": "object",
     "version": "0.0.1"
 }

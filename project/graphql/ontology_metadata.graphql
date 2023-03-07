@@ -7,7 +7,7 @@ type Ontology implements RequiredMetadata, RecommendedMetadata, OptionalMetadata
     license: Uriorcurie!
     creator: [Uriorcurie]!
     versionInfo: String!
-    versionIRI: String
+    versionIRI: String!
     versionNotes: String!
     created: String!
     modificationDate: [String]!
@@ -100,7 +100,7 @@ interface RequiredMetadata
     license: Uriorcurie!
     creator: [Uriorcurie]!
     versionInfo: String!
-    versionIRI: String
+    versionIRI: String!
     versionNotes: String!
     created: String!
     modificationDate: [String]!
@@ -119,7 +119,7 @@ type SkosConceptScheme implements RequiredMetadata, RecommendedMetadata, Optiona
     license: Uriorcurie!
     creator: [Uriorcurie]!
     versionInfo: String!
-    versionIRI: String
+    versionIRI: String!
     versionNotes: String!
     created: String!
     modificationDate: [String]!

@@ -212,17 +212,16 @@ slots:
       
       This metadatum is also recommended as required by:
 
-              * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
-              * https://w3id.org/mod/2.0
-              * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
-              * https://bioportal.bioontology.org/ontologies/OMV
+        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+        * https://w3id.org/mod/2.0
+        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+        * https://bioportal.bioontology.org/ontologies/OMV
     comments:
       - For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.
       - This property is declared only as recommended in this schema although it is technically required within the configuration of the TIB TS, as it can be derived directly from the required [preferredPrefix](preferredPrefix) if not present.
     see_also:
       - http://omv.ontoware.org/2005/05/ontology#acronym
     range: string
-    required: false
     recommended: true
   license:
     slot_uri: dcterms:license
@@ -254,7 +253,7 @@ slots:
 
   # required within the FAIR context
   creator:
-    is_a: contributor
+    is_a: provenanceProperty
     slot_uri: dcterms:creator
     description: |
       The ontology should state who was or is responsible for its development. It is recommended to not only provide the creators’ names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:creator predicat. For a literal representations of a creator the predicate dc:creator is recommended to be in line with DCMI specs.
@@ -328,6 +327,7 @@ slots:
       - For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.
     see_also:
       - schema:schemaVersion
+    required: true
   versionNotes:
     is_a: versionInformation
     slot_uri: adms:versionNotes
