@@ -1,7 +1,7 @@
 {
-  "name": "Ontology-Metadata-TIB",
+  "name": "TIB-TS-Ontology-Metadata-Schema",
   "description": "The metadata schema of the TIB Terminology Service that formalizes which metadata annotations are required, recommended and optional for an OWL ontology or SKOS vocabulary that is supposed to be index in the TIB TS.",
-  "title": "Ontology Metadata Schema of the TIB Terminology Service",
+  "title": "The Ontology Metadata Schema of the TIB Terminology Service",
   "todos": [
     "We should define properties for definition_property, label_property and synonym_property so that the ontologies can self-declare which annotation property should be used in the indexing."
   ],
@@ -413,7 +413,7 @@
     {
       "name": "acronym",
       "definition_uri": "hhttp://terminology.tib.eu/schemaacronym",
-      "description": "The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.\n\nThis metadatum is also recommended as required by:\n\n        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n        * https://w3id.org/mod/2.0\n        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n        * https://bioportal.bioontology.org/ontologies/OMV\n",
+      "description": "The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * https://w3id.org/mod/2.0\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * https://bioportal.bioontology.org/ontologies/OMV\n",
       "comments": [
         "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.",
         "This property is declared only as recommended in this schema although it is technically required within the configuration of the TIB TS, as it can be derived directly from the required [preferredPrefix](preferredPrefix) if not present."
@@ -480,7 +480,7 @@
       "mappings": [
         "http://purl.org/dc/terms/creator"
       ],
-      "is_a": "contributor",
+      "is_a": "provenanceProperty",
       "slot_uri": "http://purl.org/dc/terms/creator",
       "multivalued": true,
       "owner": "RequiredMetadata",
@@ -489,7 +489,6 @@
       ],
       "range": "uriorcurie",
       "required": true,
-      "recommended": true,
       "@type": "SlotDefinition"
     },
     {
@@ -538,6 +537,7 @@
         "RequiredMetadata"
       ],
       "range": "string",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1396,9 +1396,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "ontology_metadata.yaml",
-  "source_file_date": "2023-03-07T14:23:20",
-  "source_file_size": 25171,
-  "generation_date": "2023-03-07T14:23:27",
+  "source_file_date": "2023-03-07T15:30:23",
+  "source_file_size": 25167,
+  "generation_date": "2023-03-07T15:40:07",
   "settings": [
     {
       "setting_key": "orcid_regex",

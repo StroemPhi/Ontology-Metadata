@@ -17,48 +17,7 @@ tibts:Ontology a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:exampleClass ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:allValuesFrom linkml:Uriorcurie ;
-                        owl:onProperty dcterms:creator ] [ a owl:Restriction ;
-                        owl:onProperty dcterms:creator ;
-                        owl:someValuesFrom linkml:Uriorcurie ] ) ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <http://example.org/UNKNOWN/doap/bug-database> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:homepage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty dcterms:contributor ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:logo ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:languageCovered ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:otherIdentifier ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:references ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:identifierPattern ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:domainCovered ],
+            owl:onProperty tibts:publisher ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom linkml:String ;
@@ -66,16 +25,84 @@ tibts:Ontology a owl:Class,
                         owl:onProperty dcterms:modified ;
                         owl:someValuesFrom linkml:String ] ) ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:exampleIdentifier ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:applicationExample ],
-        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty owl:versionInfo ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:competencyQuestions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:appliedMethodology ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:imports ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:distributions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:versionIRI ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:languageExpressedIn ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:languageCovered ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:rootTerms ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:references ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:mailingList ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:fundingInfo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:audience ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:comments ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:relatedVersions ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/doap/bug-database> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:created ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
@@ -84,19 +111,11 @@ tibts:Ontology a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:contactInfo ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <http://identifiers.org/alternatePrefix> ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:created ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty tibts:developmentEnvironment ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/dcterm/description> ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty dcterms:isReferencedBy ;
@@ -108,43 +127,15 @@ tibts:Ontology a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty owl:versionIRI ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:citations ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:appliedMethodology ],
+            owl:onProperty tibts:exampleClass ],
         [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
-            owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
+            owl:onProperty dcterms:license ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:audience ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:imports ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:format ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:mailingList ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:distributions ],
+            owl:onProperty tibts:applicationExample ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -152,46 +143,11 @@ tibts:Ontology a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:publisher ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty dcterms:license ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:competencyQuestions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:relatedVersions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:alternative ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty tibts:mappingRessources ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:languageExpressedIn ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:fundingInfo ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <http://example.org/UNKNOWN/dcterm/description> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcterms:source ],
+            owl:onProperty tibts:otherIdentifier ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -199,15 +155,59 @@ tibts:Ontology a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:comments ],
+            owl:onProperty tibts:domainCovered ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:rootTerms ],
+            owl:onProperty tibts:identifierPattern ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:citations ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcterms:source ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:format ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:homepage ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:contactInfo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:exampleIdentifier ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty dcterms:contributor ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom linkml:Uriorcurie ;
+                        owl:onProperty dcterms:creator ] [ a owl:Restriction ;
+                        owl:onProperty dcterms:creator ;
+                        owl:someValuesFrom linkml:Uriorcurie ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:logo ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty tibts:status ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:alternative ],
         tibts:OptionalMetadata,
         tibts:RecommendedMetadata,
         tibts:RequiredMetadata ;
@@ -221,23 +221,7 @@ tibts:SkosConceptScheme a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:sourceRepository ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:rootTerms ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:applicationExample ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:comments ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:publisher ],
+            owl:onProperty tibts:mailingList ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom linkml:Uriorcurie ;
@@ -247,65 +231,23 @@ tibts:SkosConceptScheme a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:references ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:versionIRI ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:exampleClass ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty tibts:identifierPattern ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:domainCovered ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:exampleIdentifier ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:imports ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty dcterms:contributor ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:relatedVersions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:fundingInfo ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <http://example.org/UNKNOWN/doap/bug-database> ;
+            owl:onProperty dcterms:created ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+            owl:onProperty tibts:audience ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:versionIRI ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:appliedMethodology ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:logo ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcterms:source ],
+            owl:onProperty tibts:citations ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -313,34 +255,10 @@ tibts:SkosConceptScheme a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:audience ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:socialMediaAccount ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:format ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:developmentEnvironment ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:languageCovered ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty tibts:mappingRessources ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:status ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:versionInfo ;
+            owl:onProperty <http://example.org/UNKNOWN/dcterm/description> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -351,59 +269,91 @@ tibts:SkosConceptScheme a owl:Class,
             owl:onClass linkml:String ;
             owl:onProperty dcterms:alternative ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:mailingList ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:created ;
+            owl:onProperty owl:versionInfo ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:competencyQuestions ],
+            owl:onProperty tibts:socialMediaAccount ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty dcterms:license ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:title ;
-            owl:qualifiedCardinality 1 ],
+            owl:onProperty tibts:references ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:distributions ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty adms:versionNotes ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:languageExpressedIn ],
+            owl:onProperty tibts:languageCovered ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <http://example.org/UNKNOWN/dcterm/description> ;
+            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:publisher ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:exampleClass ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:comments ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:title ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty adms:versionNotes ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcterms:source ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:citations ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:allValuesFrom linkml:String ;
-                        owl:onProperty dcterms:modified ] [ a owl:Restriction ;
-                        owl:onProperty dcterms:modified ;
-                        owl:someValuesFrom linkml:String ] ) ],
+            owl:onProperty tibts:otherIdentifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:languageExpressedIn ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:sourceRepository ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:format ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:imports ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:domainCovered ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty dcterms:contributor ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:distributions ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty dcterms:isReferencedBy ;
@@ -411,7 +361,57 @@ tibts:SkosConceptScheme a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:otherIdentifier ],
+            owl:onProperty tibts:exampleIdentifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:fundingInfo ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom linkml:String ;
+                        owl:onProperty dcterms:modified ] [ a owl:Restriction ;
+                        owl:onProperty dcterms:modified ;
+                        owl:someValuesFrom linkml:String ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:relatedVersions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:applicationExample ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/doap/bug-database> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:developmentEnvironment ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty dcterms:license ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:rootTerms ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:appliedMethodology ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:logo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:competencyQuestions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:status ],
         tibts:OptionalMetadata,
         tibts:RecommendedMetadata,
         tibts:RequiredMetadata ;
@@ -419,18 +419,18 @@ tibts:SkosConceptScheme a owl:Class,
     skos:exactMatch skos:ConceptScheme .
 
 <http://terminology.tib.eu/schema> a owl:Ontology ;
-    rdfs:label "Ontology-Metadata-TIB" ;
+    rdfs:label "TIB-TS-Ontology-Metadata-Schema" ;
     IAO:0000700 tibts:OptionalMetadata,
         tibts:RecommendedMetadata,
         tibts:RequiredMetadata ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
-    dcterms:title "Ontology Metadata Schema of the TIB Terminology Service" ;
+    dcterms:title "The Ontology Metadata Schema of the TIB Terminology Service" ;
     pav:version "0.0.1" ;
-    linkml:generation_date "2023-03-07T14:23:32" ;
+    linkml:generation_date "2023-03-07T15:40:12" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "ontology_metadata.yaml" ;
-    linkml:source_file_date "2023-03-07T14:23:20" ;
-    linkml:source_file_size 25171 .
+    linkml:source_file_date "2023-03-07T15:30:23" ;
+    linkml:source_file_size 25167 .
 
 linkml:SubsetDefinition a owl:Class ;
     rdfs:label "subset_definition" .
@@ -447,63 +447,7 @@ tibts:OptionalMetadata a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:developmentEnvironment ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:competencyQuestions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty tibts:relatedVersions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:identifierPattern ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:socialMediaAccount ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:comments ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:format ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:appliedMethodology ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:exampleIdentifier ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:homepage ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:logo ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <http://identifiers.org/alternatePrefix> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:alternative ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:otherIdentifier ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:publisher ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -511,11 +455,67 @@ tibts:OptionalMetadata a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:mappingRessources ],
+            owl:onProperty tibts:appliedMethodology ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:socialMediaAccount ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:competencyQuestions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:comments ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty tibts:exampleClass ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:mappingRessources ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:publisher ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:format ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:alternative ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:identifierPattern ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:otherIdentifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:logo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:developmentEnvironment ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:homepage ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:exampleIdentifier ],
         linkml:mixin ;
     skos:definition "A mixin that provides the optional properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
 
@@ -525,11 +525,7 @@ tibts:RecommendedMetadata a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:citations ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:audience ],
+            owl:onProperty tibts:references ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -537,26 +533,11 @@ tibts:RecommendedMetadata a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:rootTerms ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcterms:source ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:languageExpressedIn ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:contactInfo ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty tibts:status ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
             owl:onProperty tibts:applicationExample ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:citations ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -564,22 +545,41 @@ tibts:RecommendedMetadata a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:sourceRepository ],
+            owl:onProperty tibts:languageCovered ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:audience ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:languageExpressedIn ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty dcterms:contributor ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:references ],
+            owl:onProperty tibts:rootTerms ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:contactInfo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:sourceRepository ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
             owl:onProperty tibts:distributions ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcterms:source ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty tibts:languageCovered ],
+            owl:onProperty tibts:status ],
         linkml:mixin ;
     skos:definition "A mixin that provides the recommended properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
 
@@ -587,17 +587,17 @@ tibts:RequiredMetadata a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "RequiredMetadata" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty dcterms:license ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:isReferencedBy ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty owl:versionInfo ;
+            owl:onProperty <http://example.org/UNKNOWN/dcterm/description> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty owl:versionIRI ],
+            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom linkml:String ;
@@ -605,9 +605,21 @@ tibts:RequiredMetadata a owl:Class,
                         owl:onProperty dcterms:modified ;
                         owl:someValuesFrom linkml:String ] ) ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
+            owl:onProperty owl:imports ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty adms:versionNotes ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:title ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:allValuesFrom linkml:Uriorcurie ;
@@ -616,19 +628,19 @@ tibts:RequiredMetadata a owl:Class,
                         owl:someValuesFrom linkml:Uriorcurie ] ) ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
+            owl:onProperty dcterms:created ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty adms:versionNotes ;
+            owl:onProperty owl:versionIRI ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty dcterms:license ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty <http://example.org/UNKNOWN/dcterm/description> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:isReferencedBy ;
+            owl:onProperty <http://example.org/UNKNOWN/doap/bug-database> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
@@ -636,19 +648,7 @@ tibts:RequiredMetadata a owl:Class,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty dcterms:created ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:title ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <http://example.org/UNKNOWN/doap/bug-database> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:imports ;
+            owl:onProperty owl:versionInfo ;
             owl:qualifiedCardinality 1 ],
         linkml:mixin ;
     skos:definition "A mixin that provides the required properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
@@ -763,12 +763,6 @@ tibts:otherIdentifier a owl:ObjectProperty,
     rdfs:label "otherIdentifier" ;
     rdfs:range linkml:String .
 
-tibts:provenanceProperty a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "provenanceProperty" ;
-    rdfs:range linkml:String ;
-    skos:definition "An abstract property to group all properties that deal with provenance of a ressource." .
-
 tibts:publisher a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "publisher" ;
@@ -803,6 +797,12 @@ tibts:status a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "status" ;
     rdfs:range linkml:String .
+
+tibts:provenanceProperty a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "provenanceProperty" ;
+    rdfs:range linkml:String ;
+    skos:definition "An abstract property to group all properties that deal with provenance of a ressource." .
 
 <http://example.org/UNKNOWN/dcterm/description> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -888,10 +888,10 @@ This metadatum is also recommended as required by:
 
 This metadatum is also recommended as required by:
 
-        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
-        * https://w3id.org/mod/2.0
-        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
-        * https://bioportal.bioontology.org/ontologies/OMV
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * https://w3id.org/mod/2.0
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * https://bioportal.bioontology.org/ontologies/OMV
 """ ;
     skos:exactMatch <http://purl.obolibrary.org/obo/MOD_acronym> ;
     skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.",
@@ -903,6 +903,25 @@ dcterms:alternative a owl:ObjectProperty,
     rdfs:range linkml:String ;
     skos:definition "An alternative title or name of an ontology or SKOS vocabulary." ;
     skos:exactMatch dcterms:alternative .
+
+dcterms:contributor a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "contributor" ;
+    rdfs:range linkml:Uriorcurie ;
+    rdfs:seeAlso "prov:wasAttributedTo" ;
+    rdfs:subPropertyOf tibts:provenanceProperty ;
+    skos:definition """The ontology should state who was or is contributing to its development. It is recommended to not only provide the contributor's names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:contributor predicat. For a literal representations of a creator the predicate dc:contributor is recommended to be in line with DCMI specs.
+
+This metadatum is also recommended as required by:
+
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch dcterms:contributor ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
 dcterms:created a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -1098,25 +1117,6 @@ This metadatum is also recommended by:
     skos:exactMatch <http://www.w3.org/ns/dcat#accessURL> ;
     skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
-dcterms:contributor a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "contributor" ;
-    rdfs:range linkml:Uriorcurie ;
-    rdfs:seeAlso "prov:wasAttributedTo" ;
-    rdfs:subPropertyOf tibts:provenanceProperty ;
-    skos:definition """The ontology should state who was or is contributing to its development. It is recommended to not only provide the contributor's names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:contributor predicat. For a literal representations of a creator the predicate dc:contributor is recommended to be in line with DCMI specs.
-
-This metadatum is also recommended as required by:
-
-  * https://w3id.org/mod/2.0
-  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
-  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community
-  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
-  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
-""" ;
-    skos:exactMatch dcterms:contributor ;
-    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
-
 linkml:ClassDefinition a owl:Class ;
     rdfs:label "class_definition" .
 
@@ -1128,7 +1128,7 @@ dcterms:creator a owl:ObjectProperty,
         "pav:createdBy",
         "prov:wasAttributedTo",
         "schema:creator" ;
-    rdfs:subPropertyOf dcterms:contributor ;
+    rdfs:subPropertyOf tibts:provenanceProperty ;
     skos:definition """The ontology should state who was or is responsible for its development. It is recommended to not only provide the creators’ names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:creator predicat. For a literal representations of a creator the predicate dc:creator is recommended to be in line with DCMI specs.
 
 This metadatum is also recommended as required by:

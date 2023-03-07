@@ -57,7 +57,7 @@ linkml:Nodeidentifier NONLITERAL
           dc:license @linkml:Uriorcurie ;
           dc:creator @linkml:Uriorcurie + ;
           owl:versionInfo @linkml:String ;
-          owl:versionIRI @linkml:String ? ;
+          owl:versionIRI @linkml:String ;
           adms:versionNotes @linkml:String ;
           dc:created @linkml:String ;
           dc:modified @linkml:String + ;
@@ -156,7 +156,7 @@ linkml:Nodeidentifier NONLITERAL
           dc:license @linkml:Uriorcurie ;
           dc:creator @linkml:Uriorcurie + ;
           owl:versionInfo @linkml:String ;
-          owl:versionIRI @linkml:String ? ;
+          owl:versionIRI @linkml:String ;
           adms:versionNotes @linkml:String ;
           dc:created @linkml:String ;
           dc:modified @linkml:String + ;
@@ -182,7 +182,7 @@ linkml:Nodeidentifier NONLITERAL
           dc:license @linkml:Uriorcurie ;
           dc:creator @linkml:Uriorcurie + ;
           owl:versionInfo @linkml:String ;
-          owl:versionIRI @linkml:String ? ;
+          owl:versionIRI @linkml:String ;
           adms:versionNotes @linkml:String ;
           dc:created @linkml:String ;
           dc:modified @linkml:String + ;
