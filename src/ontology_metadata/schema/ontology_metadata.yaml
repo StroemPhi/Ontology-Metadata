@@ -1,6 +1,6 @@
 id: http://terminology.tib.eu/schema
-name: Ontology-Metadata-TIB
-title: Ontology Metadata Schema of the TIB Terminology Service
+name: TIB-TS-Ontology-Metadata-Schema
+title: The Ontology Metadata Schema of the TIB Terminology Service
 description: >-
   The metadata schema of the TIB Terminology Service that formalizes which metadata annotations are required, recommended and optional for an OWL ontology or SKOS vocabulary that is supposed to be index in the TIB TS.
 version: 0.0.1
