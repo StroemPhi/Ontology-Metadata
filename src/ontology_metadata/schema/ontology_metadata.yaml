@@ -328,6 +328,7 @@ slots:
       - For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.
     see_also:
       - schema:schemaVersion
+    required: true
   versionNotes:
     is_a: versionInformation
     slot_uri: adms:versionNotes
