@@ -253,7 +253,7 @@ slots:
 
   # required within the FAIR context
   creator:
-    is_a: contributor
+    is_a: provenanceProperty
     slot_uri: dcterms:creator
     description: |
       The ontology should state who was or is responsible for its development. It is recommended to not only provide the creators’ names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:creator predicat. For a literal representations of a creator the predicate dc:creator is recommended to be in line with DCMI specs.
