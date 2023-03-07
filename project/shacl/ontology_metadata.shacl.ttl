@@ -1,2462 +1,302 @@
-@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
-@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
-@prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
-@prefix RO: <http://purl.obolibrary.org/obo/RO_> .
-@prefix biolink: <https://w3id.org/biolink/vocab/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix linkml: <https://w3id.org/linkml/> .
-@prefix oio: <http://www.geneontology.org/formats/oboInOwl#> .
-@prefix omoschema: <http://purl.obolibrary.org/obo/omo/schema/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix prov: <http://www.w3.org/ns/prov-o#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sdo: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tibts: <hhttp://terminology.tib.eu/schema> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-NCBITaxon:9606 a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "An individual human being" ;
+tibts:OptionalMetadata a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A mixin that provides the optional properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:order 44 ;
-            sh:path IAO:0000232 ],
-        [ sh:order 1 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:order 8 ;
-            sh:path IAO:0000589 ],
-        [ sh:order 30 ;
-            sh:path IAO:0000233 ],
-        [ sh:description "when the term came into being" ;
+    sh:targetClass tibts:OptionalMetadata .
+
+tibts:RecommendedMetadata a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A mixin that provides the recommended properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "A prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) that is not the officially preferren one but an alternative that may be used in different contexts (e.g. **DCTERMS** or **dct** instead of the [preferredPrefix](preferredPrefix) **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/)." ;
             sh:maxCount 1 ;
-            sh:order 22 ;
-            sh:path dcterms:created ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 20 ;
-            sh:path dcterms:contributor ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 29 ;
-            sh:path IAO:0000412 ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 15 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 33 ;
-            sh:path skos:exactMatch ],
-        [ sh:order 27 ;
-            sh:path IAO:0000119 ],
-        [ sh:order 3 ;
-            sh:path oio:hasRelatedSynonym ],
-        [ sh:order 40 ;
-            sh:path rdfs:comment ],
-        [ sh:order 51 ;
-            sh:path rdf:type ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 34 ;
-            sh:path skos:narrowMatch ],
-        [ sh:maxCount 1 ;
-            sh:order 37 ;
-            sh:path biolink:category ],
-        [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path IAO:0000231 ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 38 ;
-            sh:path oio:inSubset ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 39 ;
-            sh:path dcterms:conformsTo ],
-        [ sh:class owl:Thing ;
+            sh:order 1 ;
+            sh:path <http://identifiers.org/alternatePrefix> ],
+        [ sh:description "An alternative title or name of an ontology or SKOS vocabulary." ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 14 ;
-            sh:path omoschema:excluded_from_QC_check ],
-        [ sh:order 2 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:description "this maps to the URI in RDF" ;
+            sh:order 0 ;
+            sh:path dcterms:alternative ] ;
+    sh:targetClass tibts:RecommendedMetadata .
+
+tibts:RequiredMetadata a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A mixin that provides the required properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description """The official prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) (e.g. **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/).
+
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 50 ;
-            sh:path omoschema:id ;
-            sh:pattern "^orcid:.*" ],
-        [ sh:order 7 ;
-            sh:path IAO:0000111 ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 46 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ],
-        [ sh:maxCount 1 ;
-            sh:order 48 ;
-            sh:path rdfs:label ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 41 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:order 47 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 32 ;
-            sh:path skos:closeMatch ],
-        [ sh:maxCount 1 ;
-            sh:order 9 ;
-            sh:path owl:deprecated ],
-        [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 24 ;
-            sh:path rdfs:isDefinedBy ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 21 ;
-            sh:path dcterms:creator ],
-        [ sh:order 4 ;
-            sh:path IAO:0000118 ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 13 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:order 36 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:order 5 ;
-            sh:path OBI:0001847 ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 42 ;
-            sh:path sdo:image ],
-        [ sh:order 43 ;
-            sh:path IAO:0000112 ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 31 ;
-            sh:path skos:broadMatch ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 17 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:order 0 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 11 ;
-            sh:path IAO:0100001 ],
-        [ sh:order 16 ;
-            sh:path omoschema:excluded_synonym ],
-        [ sh:order 19 ;
-            sh:path oio:creation_date ],
-        [ sh:maxCount 1 ;
-            sh:order 18 ;
-            sh:path oio:created_by ],
-        [ sh:order 25 ;
-            sh:path IAO:0000116 ],
-        [ sh:description "when the term was updated" ;
-            sh:order 23 ;
-            sh:path dcterms:date ],
-        [ sh:order 6 ;
-            sh:path OBI:9991118 ],
-        [ sh:order 35 ;
-            sh:path oio:hasDbXref ],
-        [ sh:order 26 ;
-            sh:path IAO:0000117 ],
-        [ sh:maxCount 1 ;
-            sh:order 28 ;
-            sh:path IAO:0000234 ],
-        [ sh:maxCount 1 ;
-            sh:order 45 ;
-            sh:path IAO:0000114 ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 12 ;
-            sh:path oio:consider ],
-        [ sh:order 49 ;
-            sh:path IAO:0000115 ] ;
-    sh:targetClass NCBITaxon:9606 .
-
-omoschema:AnnotationPropertyMixin a sh:NodeShape ;
-    sh:closed false ;
-    sh:description "Groups all annotation property bundles" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:targetClass omoschema:AnnotationPropertyMixin .
-
-omoschema:Anonymous a sh:NodeShape ;
-    sh:closed false ;
-    sh:description "Abstract root class for all anonymous (non-named; lacking an identifier) expressions" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:targetClass omoschema:Anonymous .
-
-omoschema:AnonymousClassExpression a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:targetClass omoschema:AnonymousClassExpression .
-
-omoschema:Expression a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:targetClass omoschema:Expression .
-
-omoschema:HasCategory a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path biolink:category ],
-        [ sh:order 0 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
             sh:order 2 ;
-            sh:path oio:inSubset ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 3 ;
-            sh:path dcterms:conformsTo ] ;
-    sh:targetClass omoschema:HasCategory .
+            sh:path <vann:preferredNamespacePrefix> ],
+        [ sh:description """The PURL of an ontology is its persistent identifier. It is usually used by within the ontology to state:
+`<https://www.domain.de/myOntology> rdf:type owl:Ontology.` 
+It is usually able to locate and retrieve the ontology on the world wide web, so pasting it into your web browser should retrieve a digital document. Furthermore, it is often configured to do content negotiation so that different related resources can be retrieved with the same identifier - e.g. the human-readable ontology documentation or different serializations of an ontology.        
+Ontologies usually also use the PURL to identify their classes and properties, e.g. in statements like:          
+    `<https://www.domain.de/myOntology#someProperty> rdf:type owl:AnnotationProperty.`
+A working PURL is required to retrieve the ontology for indexing by the TIB Terminology Service.
+This metadatum is also recommended by:
 
-omoschema:HasLifeCycle a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 5 ;
-            sh:path omoschema:excluded_from_QC_check ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 4 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path IAO:0000231 ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 3 ;
-            sh:path oio:consider ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 6 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:order 7 ;
-            sh:path omoschema:excluded_synonym ],
-        [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path owl:deprecated ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 8 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path IAO:0100001 ] ;
-    sh:targetClass omoschema:HasLifeCycle .
-
-omoschema:HasMappings a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path skos:exactMatch ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 3 ;
-            sh:path skos:narrowMatch ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 1 ;
-            sh:path skos:closeMatch ],
-        [ sh:order 4 ;
-            sh:path oio:hasDbXref ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 0 ;
-            sh:path skos:broadMatch ] ;
-    sh:targetClass omoschema:HasMappings .
-
-omoschema:HasMinimalMetadata a sh:NodeShape ;
-    sh:closed false ;
-    sh:description "Absolute minimum metadata model" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path rdfs:label ],
-        [ sh:order 1 ;
-            sh:path IAO:0000115 ] ;
-    sh:targetClass omoschema:HasMinimalMetadata .
-
-omoschema:HasProvenance a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:order 9 ;
-            sh:path IAO:0000119 ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path dcterms:creator ],
-        [ sh:order 8 ;
-            sh:path IAO:0000117 ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 11 ;
-            sh:path IAO:0000412 ],
-        [ sh:order 1 ;
-            sh:path oio:creation_date ],
-        [ sh:description "when the term was updated" ;
-            sh:order 5 ;
-            sh:path dcterms:date ],
-        [ sh:order 7 ;
-            sh:path IAO:0000116 ],
-        [ sh:description "when the term came into being" ;
-            sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path dcterms:created ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path dcterms:contributor ],
-        [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path oio:created_by ],
-        [ sh:order 12 ;
-            sh:path IAO:0000233 ],
-        [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path IAO:0000234 ],
-        [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 6 ;
-            sh:path rdfs:isDefinedBy ] ;
-    sh:targetClass omoschema:HasProvenance .
-
-omoschema:HasSynonyms a sh:NodeShape ;
-    sh:closed false ;
-    sh:description "a mixin for a class whose members can have synonyms" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:order 7 ;
-            sh:path IAO:0000111 ],
-        [ sh:order 5 ;
-            sh:path OBI:0001847 ],
-        [ sh:order 6 ;
-            sh:path OBI:9991118 ],
-        [ sh:order 4 ;
-            sh:path IAO:0000118 ],
-        [ sh:order 8 ;
-            sh:path IAO:0000589 ],
-        [ sh:order 2 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:order 1 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:order 0 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:order 3 ;
-            sh:path oio:hasRelatedSynonym ] ;
-    sh:targetClass omoschema:HasSynonyms .
-
-omoschema:HasUserInformation a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path sdo:image ],
-        [ sh:order 7 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:order 3 ;
-            sh:path IAO:0000112 ],
-        [ sh:order 0 ;
-            sh:path rdfs:comment ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 6 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 1 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:order 4 ;
-            sh:path IAO:0000232 ],
-        [ sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path IAO:0000114 ] ;
-    sh:targetClass omoschema:HasUserInformation .
-
-omoschema:NotObsoleteAspect a sh:NodeShape ;
-    sh:closed false ;
-    sh:description "Auto-classifies anything that is not obsolete" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:targetClass omoschema:NotObsoleteAspect .
-
-omoschema:ObsoleteAspect a sh:NodeShape ;
-    sh:closed false ;
-    sh:description "Auto-classifies anything that is obsolete" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:targetClass omoschema:ObsoleteAspect .
-
-omoschema:Term a sh:NodeShape ;
-    sh:closed false ;
-    sh:description "A NamedThing that includes classes, properties, but not ontologies" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:order 2 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:description "this maps to the URI in RDF" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 50 ;
-            sh:path omoschema:id ],
-        [ sh:description "when the term was updated" ;
-            sh:order 23 ;
-            sh:path dcterms:date ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 41 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path IAO:0000231 ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 17 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:order 19 ;
-            sh:path oio:creation_date ],
-        [ sh:order 51 ;
-            sh:path rdf:type ],
-        [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 24 ;
-            sh:path rdfs:isDefinedBy ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 34 ;
-            sh:path skos:narrowMatch ],
-        [ sh:maxCount 1 ;
-            sh:order 28 ;
-            sh:path IAO:0000234 ],
-        [ sh:order 4 ;
-            sh:path IAO:0000118 ],
-        [ sh:order 25 ;
-            sh:path IAO:0000116 ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 29 ;
-            sh:path IAO:0000412 ],
-        [ sh:description "when the term came into being" ;
-            sh:maxCount 1 ;
-            sh:order 22 ;
-            sh:path dcterms:created ],
-        [ sh:order 16 ;
-            sh:path omoschema:excluded_synonym ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 38 ;
-            sh:path oio:inSubset ],
-        [ sh:order 27 ;
-            sh:path IAO:0000119 ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 42 ;
-            sh:path sdo:image ],
-        [ sh:order 5 ;
-            sh:path OBI:0001847 ],
-        [ sh:maxCount 1 ;
-            sh:order 37 ;
-            sh:path biolink:category ],
-        [ sh:order 6 ;
-            sh:path OBI:9991118 ],
-        [ sh:maxCount 1 ;
-            sh:order 45 ;
-            sh:path IAO:0000114 ],
-        [ sh:order 36 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 11 ;
-            sh:path IAO:0100001 ],
-        [ sh:order 30 ;
-            sh:path IAO:0000233 ],
-        [ sh:order 43 ;
-            sh:path IAO:0000112 ],
-        [ sh:order 44 ;
-            sh:path IAO:0000232 ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 21 ;
-            sh:path dcterms:creator ],
-        [ sh:order 26 ;
-            sh:path IAO:0000117 ],
-        [ sh:order 49 ;
-            sh:path IAO:0000115 ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 20 ;
-            sh:path dcterms:contributor ],
-        [ sh:maxCount 1 ;
-            sh:order 9 ;
-            sh:path owl:deprecated ],
-        [ sh:order 8 ;
-            sh:path IAO:0000589 ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 12 ;
-            sh:path oio:consider ],
-        [ sh:order 47 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 32 ;
-            sh:path skos:closeMatch ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 33 ;
-            sh:path skos:exactMatch ],
-        [ sh:maxCount 1 ;
-            sh:order 18 ;
-            sh:path oio:created_by ],
-        [ sh:order 0 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:order 40 ;
-            sh:path rdfs:comment ],
-        [ sh:maxCount 1 ;
-            sh:order 48 ;
-            sh:path rdfs:label ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 14 ;
-            sh:path omoschema:excluded_from_QC_check ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 39 ;
-            sh:path dcterms:conformsTo ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 13 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 31 ;
-            sh:path skos:broadMatch ],
-        [ sh:order 1 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 15 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:order 7 ;
-            sh:path IAO:0000111 ],
-        [ sh:order 3 ;
-            sh:path oio:hasRelatedSynonym ],
-        [ sh:order 35 ;
-            sh:path oio:hasDbXref ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 46 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ] ;
-    sh:targetClass omoschema:Term .
-
-omoschema:TransitiveProperty a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "An ObjectProperty with the property of transitivity" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:order 7 ;
-            sh:path owl:disjointWith ],
-        [ sh:order 63 ;
-            sh:path rdf:type ],
-        [ sh:description "this maps to the URI in RDF" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 62 ;
-            sh:path omoschema:id ],
-        [ sh:order 39 ;
-            sh:path IAO:0000119 ],
-        [ sh:order 3 ;
-            sh:path oio:shorthand ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 45 ;
-            sh:path skos:exactMatch ],
-        [ sh:order 52 ;
-            sh:path rdfs:comment ],
-        [ sh:order 20 ;
-            sh:path IAO:0000589 ],
-        [ sh:order 12 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 44 ;
-            sh:path skos:closeMatch ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 27 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 46 ;
-            sh:path skos:narrowMatch ],
-        [ sh:order 16 ;
-            sh:path IAO:0000118 ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 32 ;
-            sh:path dcterms:contributor ],
-        [ sh:maxCount 1 ;
-            sh:order 22 ;
-            sh:path IAO:0000231 ],
-        [ sh:order 9 ;
-            sh:path rdfs:range ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path oio:is_cyclic ],
-        [ sh:description "when the term came into being" ;
-            sh:maxCount 1 ;
-            sh:order 34 ;
-            sh:path dcterms:created ],
-        [ sh:order 15 ;
-            sh:path oio:hasRelatedSynonym ],
-        [ sh:order 6 ;
-            sh:path owl:propertyChainAxiom ],
-        [ sh:order 18 ;
-            sh:path OBI:9991118 ],
-        [ sh:description "when the term was updated" ;
-            sh:order 35 ;
-            sh:path dcterms:date ],
-        [ sh:maxCount 1 ;
-            sh:order 40 ;
-            sh:path IAO:0000234 ],
-        [ sh:maxCount 1 ;
-            sh:order 30 ;
-            sh:path oio:created_by ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 24 ;
-            sh:path oio:consider ],
-        [ sh:maxCount 1 ;
-            sh:order 49 ;
-            sh:path biolink:category ],
-        [ sh:order 55 ;
-            sh:path IAO:0000112 ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 43 ;
-            sh:path skos:broadMatch ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 41 ;
-            sh:path IAO:0000412 ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 23 ;
-            sh:path IAO:0100001 ],
-        [ sh:maxCount 1 ;
-            sh:order 11 ;
-            sh:path oio:is_metadata_tag ],
-        [ sh:class owl:NamedIndividual ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path RO:0001900 ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 25 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 29 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:maxCount 1 ;
-            sh:order 60 ;
-            sh:path rdfs:label ],
-        [ sh:order 19 ;
-            sh:path IAO:0000111 ],
-        [ sh:order 56 ;
-            sh:path IAO:0000232 ],
-        [ sh:order 47 ;
-            sh:path oio:hasDbXref ],
-        [ sh:order 38 ;
-            sh:path IAO:0000117 ],
-        [ sh:order 48 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:order 28 ;
-            sh:path omoschema:excluded_synonym ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 54 ;
-            sh:path sdo:image ],
-        [ sh:order 8 ;
-            sh:path rdfs:domain ],
-        [ sh:class rdf:Property ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path owl:inverseOf ],
-        [ sh:order 61 ;
-            sh:path IAO:0000115 ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path oio:is_transitive ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 33 ;
-            sh:path dcterms:creator ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 50 ;
-            sh:path oio:inSubset ],
-        [ sh:order 42 ;
-            sh:path IAO:0000233 ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path owl:equivalentProperty ],
-        [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 36 ;
-            sh:path rdfs:isDefinedBy ],
-        [ sh:order 14 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:order 31 ;
-            sh:path oio:creation_date ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 53 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:maxCount 1 ;
-            sh:order 21 ;
-            sh:path owl:deprecated ],
-        [ sh:order 59 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path oio:is_class_level ],
-        [ sh:order 37 ;
-            sh:path IAO:0000116 ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 58 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 26 ;
-            sh:path omoschema:excluded_from_QC_check ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 51 ;
-            sh:path dcterms:conformsTo ],
-        [ sh:maxCount 1 ;
-            sh:order 57 ;
-            sh:path IAO:0000114 ],
-        [ sh:order 13 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:order 17 ;
-            sh:path OBI:0001847 ] ;
-    sh:targetClass omoschema:TransitiveProperty .
-
-owl:Axiom a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A logical or non-logical statement" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:order 14 ;
-            sh:path oio:external_ontology ],
-        [ sh:maxCount 1 ;
-            sh:order 9 ;
-            sh:path RO:0002581 ],
-        [ sh:class omoschema:NamedObject ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path owl:annotatedSource ],
-        [ sh:maxCount 1 ;
-            sh:order 13 ;
-            sh:path oio:evidence ],
-        [ sh:class omoschema:Annotation ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 3 ;
-            sh:path omoschema:annotations ],
-        [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path RO:0002582 ],
-        [ sh:maxCount 1 ;
-            sh:order 11 ;
-            sh:path oio:created_by ],
-        [ sh:maxCount 1 ;
-            sh:order 12 ;
-            sh:path oio:date_retrieved ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 8 ;
-            sh:path IAO:0010000 ],
-        [ sh:class owl:AnnotationProperty ;
-            sh:nodeKind sh:IRI ;
-            sh:order 17 ;
-            sh:path oio:hasSynonymType ],
-        [ sh:order 16 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:description "Uses to indicate the source of an axiom" ;
-            sh:order 15 ;
-            sh:path oio:hasDbXref ],
-        [ sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path oio:is_inferred ],
-        [ sh:order 6 ;
-            sh:path oio:notes ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path owl:annotatedTarget ],
-        [ sh:class owl:AnnotationProperty ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path owl:annotatedProperty ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 20 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:maxCount 1 ;
-            sh:order 7 ;
-            sh:path oio:url ],
-        [ sh:order 18 ;
-            sh:path rdfs:comment ],
-        [ sh:maxCount 1 ;
-            sh:order 19 ;
-            sh:path rdfs:label ],
-        [ sh:order 4 ;
-            sh:path dcterms:source ] ;
-    sh:targetClass owl:Axiom .
-
-owl:ObjectProperty a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A property that connects two objects in logical axioms" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path oio:is_class_level ],
-        [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 36 ;
-            sh:path rdfs:isDefinedBy ],
-        [ sh:order 48 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:order 61 ;
-            sh:path IAO:0000115 ],
-        [ sh:order 15 ;
-            sh:path oio:hasRelatedSynonym ],
-        [ sh:order 59 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 50 ;
-            sh:path oio:inSubset ],
-        [ sh:order 56 ;
-            sh:path IAO:0000232 ],
-        [ sh:order 42 ;
-            sh:path IAO:0000233 ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 27 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:order 39 ;
-            sh:path IAO:0000119 ],
-        [ sh:order 37 ;
-            sh:path IAO:0000116 ],
-        [ sh:maxCount 1 ;
-            sh:order 22 ;
-            sh:path IAO:0000231 ],
-        [ sh:order 20 ;
-            sh:path IAO:0000589 ],
-        [ sh:maxCount 1 ;
-            sh:order 40 ;
-            sh:path IAO:0000234 ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 44 ;
-            sh:path skos:closeMatch ],
-        [ sh:description "this maps to the URI in RDF" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 62 ;
-            sh:path omoschema:id ],
-        [ sh:class rdf:Property ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path owl:inverseOf ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 54 ;
-            sh:path sdo:image ],
-        [ sh:order 14 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:order 3 ;
-            sh:path oio:shorthand ],
-        [ sh:class owl:NamedIndividual ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path RO:0001900 ],
-        [ sh:order 55 ;
-            sh:path IAO:0000112 ],
-        [ sh:order 19 ;
-            sh:path IAO:0000111 ],
-        [ sh:order 38 ;
-            sh:path IAO:0000117 ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 43 ;
-            sh:path skos:broadMatch ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 26 ;
-            sh:path omoschema:excluded_from_QC_check ],
-        [ sh:order 18 ;
-            sh:path OBI:9991118 ],
-        [ sh:order 12 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:maxCount 1 ;
-            sh:order 60 ;
-            sh:path rdfs:label ],
-        [ sh:maxCount 1 ;
-            sh:order 21 ;
-            sh:path owl:deprecated ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 32 ;
-            sh:path dcterms:contributor ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 29 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path oio:is_transitive ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 24 ;
-            sh:path oio:consider ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 46 ;
-            sh:path skos:narrowMatch ],
-        [ sh:order 16 ;
-            sh:path IAO:0000118 ],
-        [ sh:order 28 ;
-            sh:path omoschema:excluded_synonym ],
-        [ sh:order 9 ;
-            sh:path rdfs:range ],
-        [ sh:order 47 ;
-            sh:path oio:hasDbXref ],
-        [ sh:description "when the term came into being" ;
-            sh:maxCount 1 ;
-            sh:order 34 ;
-            sh:path dcterms:created ],
-        [ sh:order 13 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:maxCount 1 ;
-            sh:order 11 ;
-            sh:path oio:is_metadata_tag ],
-        [ sh:order 6 ;
-            sh:path owl:propertyChainAxiom ],
-        [ sh:order 8 ;
-            sh:path rdfs:domain ],
-        [ sh:description "when the term was updated" ;
-            sh:order 35 ;
-            sh:path dcterms:date ],
-        [ sh:order 7 ;
-            sh:path owl:disjointWith ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 41 ;
-            sh:path IAO:0000412 ],
-        [ sh:maxCount 1 ;
-            sh:order 30 ;
-            sh:path oio:created_by ],
-        [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path oio:is_cyclic ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path owl:equivalentProperty ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 25 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:order 31 ;
-            sh:path oio:creation_date ],
-        [ sh:order 52 ;
-            sh:path rdfs:comment ],
-        [ sh:order 63 ;
-            sh:path rdf:type ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 23 ;
-            sh:path IAO:0100001 ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 45 ;
-            sh:path skos:exactMatch ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 58 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 33 ;
-            sh:path dcterms:creator ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 53 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:maxCount 1 ;
-            sh:order 57 ;
-            sh:path IAO:0000114 ],
-        [ sh:order 17 ;
-            sh:path OBI:0001847 ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 51 ;
-            sh:path dcterms:conformsTo ],
-        [ sh:maxCount 1 ;
-            sh:order 49 ;
-            sh:path biolink:category ] ;
-    sh:targetClass owl:ObjectProperty .
-
-owl:Restriction a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path owl:unionOf ],
-        [ sh:class omoschema:ClassExpression ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 5 ;
-            sh:path owl:intersectionOf ],
-        [ sh:order 3 ;
-            sh:path owl:disjointWith ],
-        [ sh:class omoschema:ClassExpression ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 6 ;
-            sh:path rdfs:subClassOf ],
-        [ sh:class omoschema:ClassExpression ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 4 ;
-            sh:path owl:equivalentClass ],
-        [ sh:maxCount 1 ;
-            sh:order 8 ;
-            sh:path owl:complementOf ],
-        [ sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path owl:allValuesFrom ],
-        [ sh:class omoschema:PropertyExpression ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 0 ;
-            sh:path owl:onProperty ],
-        [ sh:class omoschema:ClassExpression ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 9 ;
-            sh:path owl:oneOf ],
-        [ sh:maxCount 1 ;
-            sh:order 7 ;
-            sh:path owl:cardinality ],
-        [ sh:order 1 ;
-            sh:path owl:someValuesFrom ] ;
-    sh:targetClass owl:Restriction .
-
-omoschema:Annotation a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A reified property-object pair" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path omoschema:object ],
-        [ sh:maxCount 1 ;
-            sh:order 0 ;
-            sh:path omoschema:predicate ] ;
-    sh:targetClass omoschema:Annotation .
-
-omoschema:NamedObject a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "Anything with an IRI" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:order 1 ;
-            sh:path rdf:type ],
-        [ sh:description "this maps to the URI in RDF" ;
+  * http://purl.obolibrary.org/meta/context.jsonld    
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * [ Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path omoschema:id ] ;
-    sh:targetClass omoschema:NamedObject .
+            sh:path <http://www.w3.org/ns/dcat#accessURL> ],
+        [ sh:description """The title or name of an ontology or SKOS vocabulary.
 
-omoschema:PropertyExpression a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:order 0 ;
-            sh:path owl:disjointWith ] ;
-    sh:targetClass omoschema:PropertyExpression .
+This metadatum is also recommended as required by:
 
-owl:AnnotationProperty a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A property used in non-logical axioms" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 14 ;
-            sh:path owl:deprecated ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 44 ;
-            sh:path dcterms:conformsTo ],
-        [ sh:order 5 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:order 0 ;
-            sh:path oio:shorthand ],
-        [ sh:order 56 ;
-            sh:path rdf:type ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 18 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:order 45 ;
-            sh:path rdfs:comment ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 37 ;
-            sh:path skos:closeMatch ],
-        [ sh:order 52 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:order 54 ;
-            sh:path IAO:0000115 ],
-        [ sh:maxCount 1 ;
-            sh:order 15 ;
-            sh:path IAO:0000231 ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 25 ;
-            sh:path dcterms:contributor ],
-        [ sh:maxCount 1 ;
-            sh:order 42 ;
-            sh:path biolink:category ],
-        [ sh:order 32 ;
-            sh:path IAO:0000119 ],
-        [ sh:description "this maps to the URI in RDF" ;
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://github.com/owlcs/miro/blob/master/miro.md#a1-ontology-name
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 55 ;
-            sh:path omoschema:id ],
-        [ sh:order 41 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:order 31 ;
-            sh:path IAO:0000117 ],
-        [ sh:order 11 ;
-            sh:path OBI:9991118 ],
-        [ sh:maxCount 1 ;
-            sh:order 33 ;
-            sh:path IAO:0000234 ],
-        [ sh:maxCount 1 ;
-            sh:order 50 ;
-            sh:path IAO:0000114 ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 38 ;
-            sh:path skos:exactMatch ],
-        [ sh:order 7 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:description "when the term came into being" ;
-            sh:maxCount 1 ;
-            sh:order 27 ;
-            sh:path dcterms:created ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 46 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 47 ;
-            sh:path sdo:image ],
-        [ sh:order 24 ;
-            sh:path oio:creation_date ],
-        [ sh:order 2 ;
-            sh:path rdfs:range ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 36 ;
-            sh:path skos:broadMatch ],
-        [ sh:order 35 ;
-            sh:path IAO:0000233 ],
-        [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 29 ;
-            sh:path rdfs:isDefinedBy ],
-        [ sh:order 13 ;
-            sh:path IAO:0000589 ],
-        [ sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path oio:is_metadata_tag ],
-        [ sh:order 1 ;
-            sh:path rdfs:domain ],
-        [ sh:order 49 ;
-            sh:path IAO:0000232 ],
-        [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path oio:is_class_level ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 34 ;
-            sh:path IAO:0000412 ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 51 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ],
-        [ sh:order 6 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:order 9 ;
-            sh:path IAO:0000118 ],
-        [ sh:description "when the term was updated" ;
-            sh:order 28 ;
-            sh:path dcterms:date ],
-        [ sh:order 8 ;
-            sh:path oio:hasRelatedSynonym ],
-        [ sh:order 10 ;
-            sh:path OBI:0001847 ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 22 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:maxCount 1 ;
-            sh:order 23 ;
-            sh:path oio:created_by ],
-        [ sh:order 48 ;
-            sh:path IAO:0000112 ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 39 ;
-            sh:path skos:narrowMatch ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 26 ;
-            sh:path dcterms:creator ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 17 ;
-            sh:path oio:consider ],
-        [ sh:order 21 ;
-            sh:path omoschema:excluded_synonym ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 16 ;
-            sh:path IAO:0100001 ],
-        [ sh:maxCount 1 ;
-            sh:order 53 ;
-            sh:path rdfs:label ],
-        [ sh:order 40 ;
-            sh:path oio:hasDbXref ],
-        [ sh:order 30 ;
-            sh:path IAO:0000116 ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 20 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:order 12 ;
-            sh:path IAO:0000111 ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 43 ;
-            sh:path oio:inSubset ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 19 ;
-            sh:path omoschema:excluded_from_QC_check ] ;
-    sh:targetClass owl:AnnotationProperty .
-
-omoschema:ClassExpression a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class omoschema:ClassExpression ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path owl:intersectionOf ],
-        [ sh:class omoschema:ClassExpression ;
-            sh:nodeKind sh:BlankNode ;
             sh:order 1 ;
-            sh:path owl:equivalentClass ],
-        [ sh:class omoschema:ClassExpression ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 6 ;
-            sh:path owl:oneOf ],
-        [ sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path owl:complementOf ],
-        [ sh:class omoschema:ClassExpression ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 3 ;
-            sh:path rdfs:subClassOf ],
-        [ sh:maxCount 1 ;
-            sh:order 7 ;
-            sh:path owl:unionOf ],
-        [ sh:maxCount 1 ;
-            sh:order 4 ;
-            sh:path owl:cardinality ],
-        [ sh:order 0 ;
-            sh:path owl:disjointWith ] ;
-    sh:targetClass omoschema:ClassExpression .
+            sh:path dcterms:title ],
+        [ sh:description """The license of the ontology/vocabulary. Ontologies and SKOS vocabularies should refer to license documents on the web via PIDs. The license text helps others to evaluate how they may reuse the ontology/vocabulary.
+Only ontologies with an open license will be published on the TIB Terminology Service.
 
-IAO:0000101 a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:order 28 ;
-            sh:path IAO:0000234 ],
-        [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 24 ;
-            sh:path rdfs:isDefinedBy ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 32 ;
-            sh:path skos:closeMatch ],
-        [ sh:order 8 ;
-            sh:path IAO:0000589 ],
-        [ sh:description "when the term came into being" ;
-            sh:maxCount 1 ;
-            sh:order 22 ;
-            sh:path dcterms:created ],
-        [ sh:order 40 ;
-            sh:path rdfs:comment ],
-        [ sh:order 16 ;
-            sh:path omoschema:excluded_synonym ],
-        [ sh:description "this maps to the URI in RDF" ;
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://doi.org/10.1371/journal.pcbi.1009041
+  * http://ceur-ws.org/Vol-3127/#paper-15 
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 50 ;
-            sh:path omoschema:id ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 41 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:maxCount 1 ;
-            sh:order 9 ;
-            sh:path owl:deprecated ],
-        [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path IAO:0000231 ],
-        [ sh:order 36 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:order 44 ;
-            sh:path IAO:0000232 ],
-        [ sh:order 0 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 20 ;
-            sh:path dcterms:contributor ],
-        [ sh:maxCount 1 ;
-            sh:order 48 ;
-            sh:path rdfs:label ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 13 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 33 ;
-            sh:path skos:exactMatch ],
-        [ sh:order 2 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:order 30 ;
-            sh:path IAO:0000233 ],
-        [ sh:order 19 ;
-            sh:path oio:creation_date ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 11 ;
-            sh:path IAO:0100001 ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 14 ;
-            sh:path omoschema:excluded_from_QC_check ],
-        [ sh:order 25 ;
-            sh:path IAO:0000116 ],
-        [ sh:maxCount 1 ;
-            sh:order 18 ;
-            sh:path oio:created_by ],
-        [ sh:description "when the term was updated" ;
-            sh:order 23 ;
-            sh:path dcterms:date ],
-        [ sh:order 7 ;
-            sh:path IAO:0000111 ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 31 ;
-            sh:path skos:broadMatch ],
-        [ sh:order 47 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 42 ;
-            sh:path sdo:image ],
-        [ sh:order 35 ;
-            sh:path oio:hasDbXref ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 38 ;
-            sh:path oio:inSubset ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 39 ;
-            sh:path dcterms:conformsTo ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 12 ;
-            sh:path oio:consider ],
-        [ sh:order 1 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:order 5 ;
-            sh:path OBI:0001847 ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 29 ;
-            sh:path IAO:0000412 ],
-        [ sh:order 49 ;
-            sh:path IAO:0000115 ],
-        [ sh:order 3 ;
-            sh:path oio:hasRelatedSynonym ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 15 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:order 43 ;
-            sh:path IAO:0000112 ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 17 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:order 27 ;
-            sh:path IAO:0000119 ],
-        [ sh:maxCount 1 ;
-            sh:order 45 ;
-            sh:path IAO:0000114 ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 21 ;
-            sh:path dcterms:creator ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 34 ;
-            sh:path skos:narrowMatch ],
-        [ sh:order 6 ;
-            sh:path OBI:9991118 ],
-        [ sh:order 26 ;
-            sh:path IAO:0000117 ],
-        [ sh:order 4 ;
-            sh:path IAO:0000118 ],
-        [ sh:order 51 ;
-            sh:path rdf:type ],
-        [ sh:maxCount 1 ;
-            sh:order 37 ;
-            sh:path biolink:category ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 46 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ] ;
-    sh:targetClass IAO:0000101 .
-
-oio:Subset a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A collection of terms grouped for some purpose" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 29 ;
-            sh:path rdfs:isDefinedBy ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 46 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:maxCount 1 ;
-            sh:order 15 ;
-            sh:path IAO:0000231 ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 25 ;
-            sh:path dcterms:contributor ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 37 ;
-            sh:path skos:closeMatch ],
-        [ sh:order 8 ;
-            sh:path oio:hasRelatedSynonym ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 39 ;
-            sh:path skos:narrowMatch ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 20 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:order 48 ;
-            sh:path IAO:0000112 ],
-        [ sh:maxCount 1 ;
-            sh:order 42 ;
-            sh:path biolink:category ],
-        [ sh:description "when the term came into being" ;
-            sh:maxCount 1 ;
-            sh:order 27 ;
-            sh:path dcterms:created ],
-        [ sh:description "this maps to the URI in RDF" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 55 ;
-            sh:path omoschema:id ],
-        [ sh:order 52 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:maxCount 1 ;
             sh:order 4 ;
-            sh:path oio:is_metadata_tag ],
-        [ sh:order 10 ;
-            sh:path OBI:0001847 ],
-        [ sh:maxCount 1 ;
+            sh:path dcterms:license ],
+        [ sh:description """The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.
+
+This metadatum is also recommended as required by:
+
+        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+        * https://w3id.org/mod/2.0
+        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+        * https://bioportal.bioontology.org/ontologies/OMV
+""" ;
+            sh:maxCount 1 ;
             sh:order 3 ;
-            sh:path oio:is_class_level ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 38 ;
-            sh:path skos:exactMatch ],
-        [ sh:order 41 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 16 ;
-            sh:path IAO:0100001 ],
-        [ sh:order 2 ;
-            sh:path rdfs:range ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 43 ;
-            sh:path oio:inSubset ],
-        [ sh:order 32 ;
-            sh:path IAO:0000119 ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 19 ;
-            sh:path omoschema:excluded_from_QC_check ],
-        [ sh:order 11 ;
-            sh:path OBI:9991118 ],
-        [ sh:maxCount 1 ;
-            sh:order 23 ;
-            sh:path oio:created_by ],
-        [ sh:order 45 ;
-            sh:path rdfs:comment ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 44 ;
-            sh:path dcterms:conformsTo ],
-        [ sh:order 0 ;
-            sh:path oio:shorthand ],
-        [ sh:order 13 ;
-            sh:path IAO:0000589 ],
-        [ sh:order 5 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 34 ;
-            sh:path IAO:0000412 ],
-        [ sh:order 12 ;
-            sh:path IAO:0000111 ],
-        [ sh:maxCount 1 ;
-            sh:order 14 ;
-            sh:path owl:deprecated ],
-        [ sh:order 56 ;
-            sh:path rdf:type ],
-        [ sh:maxCount 1 ;
-            sh:order 53 ;
-            sh:path rdfs:label ],
-        [ sh:order 1 ;
-            sh:path rdfs:domain ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 26 ;
-            sh:path dcterms:creator ],
-        [ sh:order 30 ;
-            sh:path IAO:0000116 ],
-        [ sh:order 7 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:order 54 ;
-            sh:path IAO:0000115 ],
-        [ sh:description "when the term was updated" ;
-            sh:order 28 ;
-            sh:path dcterms:date ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 47 ;
-            sh:path sdo:image ],
-        [ sh:order 9 ;
-            sh:path IAO:0000118 ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 17 ;
-            sh:path oio:consider ],
-        [ sh:order 49 ;
-            sh:path IAO:0000232 ],
-        [ sh:order 31 ;
-            sh:path IAO:0000117 ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 51 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ],
-        [ sh:maxCount 1 ;
-            sh:order 33 ;
-            sh:path IAO:0000234 ],
-        [ sh:order 6 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 18 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:order 35 ;
-            sh:path IAO:0000233 ],
-        [ sh:order 24 ;
-            sh:path oio:creation_date ],
-        [ sh:order 40 ;
-            sh:path oio:hasDbXref ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 36 ;
-            sh:path skos:broadMatch ],
-        [ sh:maxCount 1 ;
-            sh:order 50 ;
-            sh:path IAO:0000114 ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 22 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:order 21 ;
-            sh:path omoschema:excluded_synonym ] ;
-    sh:targetClass oio:Subset .
+            sh:path <http://purl.obolibrary.org/obo/MOD_acronym> ] ;
+    sh:targetClass tibts:RequiredMetadata .
 
 owl:Ontology a sh:NodeShape ;
     sh:closed true ;
-    sh:description "An OWL ontology" ;
+    sh:description "An OWL ontology." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:maxCount 1 ;
-            sh:minCount 1 ;
+    sh:property [ sh:description "An alternative title or name of an ontology or SKOS vocabulary." ;
+            sh:maxCount 1 ;
             sh:order 5 ;
-            sh:path owl:versionInfo ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 4 ;
-            sh:path owl:versionIRI ],
-        [ sh:class owl:Thing ;
+            sh:path dcterms:alternative ],
+        [ sh:description """The PURL of an ontology is its persistent identifier. It is usually used by within the ontology to state:
+`<https://www.domain.de/myOntology> rdf:type owl:Ontology.` 
+It is usually able to locate and retrieve the ontology on the world wide web, so pasting it into your web browser should retrieve a digital document. Furthermore, it is often configured to do content negotiation so that different related resources can be retrieved with the same identifier - e.g. the human-readable ontology documentation or different serializations of an ontology.        
+Ontologies usually also use the PURL to identify their classes and properties, e.g. in statements like:          
+    `<https://www.domain.de/myOntology#someProperty> rdf:type owl:AnnotationProperty.`
+A working PURL is required to retrieve the ontology for indexing by the TIB Terminology Service.
+This metadatum is also recommended by:
+
+  * http://purl.obolibrary.org/meta/context.jsonld    
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * [ Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path dcterms:license ],
-        [ sh:description "when the term came into being" ;
-            sh:maxCount 1 ;
-            sh:order 8 ;
-            sh:path dcterms:created ],
-        [ sh:maxCount 1 ;
-            sh:order 9 ;
-            sh:path owl:imports ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 7 ;
-            sh:path dcterms:creator ],
-        [ sh:description "this maps to the URI in RDF" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 10 ;
-            sh:path omoschema:id ],
-        [ sh:order 6 ;
-            sh:path rdfs:comment ],
-        [ sh:order 3 ;
-            sh:path dcterms:source ],
-        [ sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:order 0 ;
-            sh:path dcterms:title ],
-        [ sh:order 11 ;
-            sh:path rdf:type ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/dcat#accessURL> ],
+        [ sh:description """The official prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) (e.g. **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/).
+
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path <vann:preferredNamespacePrefix> ],
+        [ sh:description "A prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) that is not the officially preferren one but an alternative that may be used in different contexts (e.g. **DCTERMS** or **dct** instead of the [preferredPrefix](preferredPrefix) **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/)." ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <http://identifiers.org/alternatePrefix> ],
+        [ sh:description """The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.
+
+This metadatum is also recommended as required by:
+
+        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+        * https://w3id.org/mod/2.0
+        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+        * https://bioportal.bioontology.org/ontologies/OMV
+""" ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <http://purl.obolibrary.org/obo/MOD_acronym> ],
+        [ sh:description """The license of the ontology/vocabulary. Ontologies and SKOS vocabularies should refer to license documents on the web via PIDs. The license text helps others to evaluate how they may reuse the ontology/vocabulary.
+Only ontologies with an open license will be published on the TIB Terminology Service.
+
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://doi.org/10.1371/journal.pcbi.1009041
+  * http://ceur-ws.org/Vol-3127/#paper-15 
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 4 ;
+            sh:path dcterms:license ],
+        [ sh:description """The title or name of an ontology or SKOS vocabulary.
+
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://github.com/owlcs/miro/blob/master/miro.md#a1-ontology-name
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:order 1 ;
-            sh:path IAO:0000700 ] ;
+            sh:path dcterms:title ] ;
     sh:targetClass owl:Ontology .
 
-owl:NamedIndividual a sh:NodeShape ;
+skos:ConceptScheme a sh:NodeShape ;
     sh:closed true ;
-    sh:description "An instance that has a IRI" ;
+    sh:description "A SKOS vocabulary serialized in RDF using the skos:ConceptScheme" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 15 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 33 ;
-            sh:path skos:exactMatch ],
-        [ sh:order 40 ;
-            sh:path rdfs:comment ],
-        [ sh:order 2 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:order 3 ;
-            sh:path oio:hasRelatedSynonym ],
-        [ sh:order 5 ;
-            sh:path OBI:0001847 ],
-        [ sh:order 8 ;
-            sh:path IAO:0000589 ],
-        [ sh:order 30 ;
-            sh:path IAO:0000233 ],
-        [ sh:order 1 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:description "when the term came into being" ;
-            sh:maxCount 1 ;
-            sh:order 22 ;
-            sh:path dcterms:created ],
-        [ sh:order 49 ;
-            sh:path IAO:0000115 ],
-        [ sh:order 36 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:order 43 ;
-            sh:path IAO:0000112 ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 29 ;
-            sh:path IAO:0000412 ],
-        [ sh:order 6 ;
-            sh:path OBI:9991118 ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 41 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 42 ;
-            sh:path sdo:image ],
-        [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path IAO:0000231 ],
-        [ sh:order 44 ;
-            sh:path IAO:0000232 ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 13 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 20 ;
-            sh:path dcterms:contributor ],
-        [ sh:order 26 ;
-            sh:path IAO:0000117 ],
-        [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 24 ;
-            sh:path rdfs:isDefinedBy ],
-        [ sh:order 19 ;
-            sh:path oio:creation_date ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 11 ;
-            sh:path IAO:0100001 ],
-        [ sh:order 35 ;
-            sh:path oio:hasDbXref ],
-        [ sh:order 47 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 12 ;
-            sh:path oio:consider ],
-        [ sh:order 4 ;
-            sh:path IAO:0000118 ],
-        [ sh:order 51 ;
-            sh:path rdf:type ],
-        [ sh:description "when the term was updated" ;
-            sh:order 23 ;
-            sh:path dcterms:date ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 38 ;
-            sh:path oio:inSubset ],
-        [ sh:maxCount 1 ;
-            sh:order 9 ;
-            sh:path owl:deprecated ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 21 ;
-            sh:path dcterms:creator ],
-        [ sh:order 7 ;
-            sh:path IAO:0000111 ],
-        [ sh:maxCount 1 ;
-            sh:order 37 ;
-            sh:path biolink:category ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 39 ;
-            sh:path dcterms:conformsTo ],
-        [ sh:maxCount 1 ;
-            sh:order 45 ;
-            sh:path IAO:0000114 ],
-        [ sh:order 25 ;
-            sh:path IAO:0000116 ],
-        [ sh:maxCount 1 ;
-            sh:order 28 ;
-            sh:path IAO:0000234 ],
-        [ sh:order 27 ;
-            sh:path IAO:0000119 ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 34 ;
-            sh:path skos:narrowMatch ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 17 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:order 16 ;
-            sh:path omoschema:excluded_synonym ],
-        [ sh:maxCount 1 ;
-            sh:order 18 ;
-            sh:path oio:created_by ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 32 ;
-            sh:path skos:closeMatch ],
-        [ sh:order 0 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 14 ;
-            sh:path omoschema:excluded_from_QC_check ],
-        [ sh:description "this maps to the URI in RDF" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 50 ;
-            sh:path omoschema:id ],
-        [ sh:maxCount 1 ;
-            sh:order 48 ;
-            sh:path rdfs:label ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 31 ;
-            sh:path skos:broadMatch ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 46 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ] ;
-    sh:targetClass owl:NamedIndividual .
+    sh:property [ sh:description """The license of the ontology/vocabulary. Ontologies and SKOS vocabularies should refer to license documents on the web via PIDs. The license text helps others to evaluate how they may reuse the ontology/vocabulary.
+Only ontologies with an open license will be published on the TIB Terminology Service.
 
-owl:Class a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:order 14 ;
-            sh:path oio:hasRelatedSynonym ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 23 ;
-            sh:path oio:consider ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 57 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 2 ;
-            sh:path omoschema:has_rank ],
-        [ sh:order 11 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 26 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:maxCount 1 ;
-            sh:order 21 ;
-            sh:path IAO:0000231 ],
-        [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path owl:unionOf ],
-        [ sh:order 30 ;
-            sh:path oio:creation_date ],
-        [ sh:order 19 ;
-            sh:path IAO:0000589 ],
-        [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 35 ;
-            sh:path rdfs:isDefinedBy ],
-        [ sh:order 15 ;
-            sh:path IAO:0000118 ],
-        [ sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:order 59 ;
-            sh:path rdfs:label ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 32 ;
-            sh:path dcterms:creator ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 43 ;
-            sh:path skos:closeMatch ],
-        [ sh:maxCount 1 ;
-            sh:order 56 ;
-            sh:path IAO:0000114 ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 31 ;
-            sh:path dcterms:contributor ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 50 ;
-            sh:path dcterms:conformsTo ],
-        [ sh:description "when the term was updated" ;
-            sh:order 34 ;
-            sh:path dcterms:date ],
-        [ sh:order 27 ;
-            sh:path omoschema:excluded_synonym ],
-        [ sh:maxCount 1 ;
-            sh:order 8 ;
-            sh:path owl:complementOf ],
-        [ sh:order 3 ;
-            sh:path owl:disjointWith ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 22 ;
-            sh:path IAO:0100001 ],
-        [ sh:description "this maps to the URI in RDF" ;
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://doi.org/10.1371/journal.pcbi.1009041
+  * http://ceur-ws.org/Vol-3127/#paper-15 
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 61 ;
-            sh:path omoschema:id ],
-        [ sh:maxCount 1 ;
-            sh:order 48 ;
-            sh:path biolink:category ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 45 ;
-            sh:path skos:narrowMatch ],
-        [ sh:class omoschema:ClassExpression ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 5 ;
-            sh:path owl:intersectionOf ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 52 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:class omoschema:ClassExpression ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 9 ;
-            sh:path owl:oneOf ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path RO:0002161 ],
-        [ sh:order 54 ;
-            sh:path IAO:0000112 ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 24 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:order 55 ;
-            sh:path IAO:0000232 ],
-        [ sh:order 38 ;
-            sh:path IAO:0000119 ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 53 ;
-            sh:path sdo:image ],
-        [ sh:order 17 ;
-            sh:path OBI:9991118 ],
-        [ sh:order 37 ;
-            sh:path IAO:0000117 ],
-        [ sh:order 18 ;
-            sh:path IAO:0000111 ],
-        [ sh:class omoschema:ClassExpression ;
-            sh:nodeKind sh:BlankNode ;
             sh:order 4 ;
-            sh:path owl:equivalentClass ],
-        [ sh:order 16 ;
-            sh:path OBI:0001847 ],
-        [ sh:class owl:Class ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path omoschema:disconnected_from ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 44 ;
-            sh:path skos:exactMatch ],
-        [ sh:order 62 ;
-            sh:path rdf:type ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 25 ;
-            sh:path omoschema:excluded_from_QC_check ],
-        [ sh:order 60 ;
-            sh:path IAO:0000115 ],
-        [ sh:maxCount 1 ;
-            sh:order 39 ;
-            sh:path IAO:0000234 ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 6 ;
-            sh:path rdfs:subClassOf ],
-        [ sh:maxCount 1 ;
-            sh:order 7 ;
-            sh:path owl:cardinality ],
-        [ sh:maxCount 1 ;
-            sh:order 20 ;
-            sh:path owl:deprecated ],
-        [ sh:order 41 ;
-            sh:path IAO:0000233 ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 42 ;
-            sh:path skos:broadMatch ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 28 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:order 51 ;
-            sh:path rdfs:comment ],
-        [ sh:order 58 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:description "when the term came into being" ;
-            sh:maxCount 1 ;
-            sh:order 33 ;
-            sh:path dcterms:created ],
-        [ sh:maxCount 1 ;
-            sh:order 29 ;
-            sh:path oio:created_by ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 49 ;
-            sh:path oio:inSubset ],
-        [ sh:order 47 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 40 ;
-            sh:path IAO:0000412 ],
-        [ sh:order 13 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:order 12 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:order 36 ;
-            sh:path IAO:0000116 ],
-        [ sh:order 46 ;
-            sh:path oio:hasDbXref ] ;
-    sh:targetClass owl:Class .
+            sh:path dcterms:license ],
+        [ sh:description """The official prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) (e.g. **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/).
 
-rdf:Property a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:order 8 ;
-            sh:path IAO:0000118 ],
-        [ sh:maxCount 1 ;
-            sh:order 13 ;
-            sh:path owl:deprecated ],
-        [ sh:order 39 ;
-            sh:path oio:hasDbXref ],
-        [ sh:order 40 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:order 47 ;
-            sh:path IAO:0000112 ],
-        [ sh:order 23 ;
-            sh:path oio:creation_date ],
-        [ sh:maxCount 1 ;
-            sh:order 49 ;
-            sh:path IAO:0000114 ],
-        [ sh:order 53 ;
-            sh:path IAO:0000115 ],
-        [ sh:order 4 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 21 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:description "this maps to the URI in RDF" ;
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 54 ;
-            sh:path omoschema:id ],
-        [ sh:maxCount 1 ;
-            sh:order 32 ;
-            sh:path IAO:0000234 ],
-        [ sh:order 51 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 25 ;
-            sh:path dcterms:creator ],
-        [ sh:order 9 ;
-            sh:path OBI:0001847 ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 18 ;
-            sh:path omoschema:excluded_from_QC_check ],
-        [ sh:order 11 ;
-            sh:path IAO:0000111 ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 24 ;
-            sh:path dcterms:contributor ],
-        [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 28 ;
-            sh:path rdfs:isDefinedBy ],
-        [ sh:maxCount 1 ;
-            sh:order 22 ;
-            sh:path oio:created_by ],
-        [ sh:description "when the term came into being" ;
-            sh:maxCount 1 ;
-            sh:order 26 ;
-            sh:path dcterms:created ],
-        [ sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path oio:is_metadata_tag ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 50 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ],
-        [ sh:order 7 ;
-            sh:path oio:hasRelatedSynonym ],
-        [ sh:order 55 ;
-            sh:path rdf:type ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 16 ;
-            sh:path oio:consider ],
-        [ sh:order 1 ;
-            sh:path rdfs:range ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 45 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 37 ;
-            sh:path skos:exactMatch ],
-        [ sh:order 10 ;
-            sh:path OBI:9991118 ],
-        [ sh:maxCount 1 ;
-            sh:order 14 ;
-            sh:path IAO:0000231 ],
-        [ sh:order 34 ;
-            sh:path IAO:0000233 ],
-        [ sh:order 5 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:order 20 ;
-            sh:path omoschema:excluded_synonym ],
-        [ sh:description "when the term was updated" ;
-            sh:order 27 ;
-            sh:path dcterms:date ],
-        [ sh:order 30 ;
-            sh:path IAO:0000117 ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 36 ;
-            sh:path skos:closeMatch ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 46 ;
-            sh:path sdo:image ],
-        [ sh:order 0 ;
-            sh:path rdfs:domain ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 15 ;
-            sh:path IAO:0100001 ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 17 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 19 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:order 44 ;
-            sh:path rdfs:comment ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 38 ;
-            sh:path skos:narrowMatch ],
-        [ sh:class rdf:Property ;
-            sh:nodeKind sh:IRI ;
-            sh:order 35 ;
-            sh:path skos:broadMatch ],
-        [ sh:order 29 ;
-            sh:path IAO:0000116 ],
-        [ sh:maxCount 1 ;
-            sh:order 41 ;
-            sh:path biolink:category ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 33 ;
-            sh:path IAO:0000412 ],
-        [ sh:order 6 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:order 31 ;
-            sh:path IAO:0000119 ],
-        [ sh:maxCount 1 ;
-            sh:order 52 ;
-            sh:path rdfs:label ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 42 ;
-            sh:path oio:inSubset ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 43 ;
-            sh:path dcterms:conformsTo ],
-        [ sh:order 48 ;
-            sh:path IAO:0000232 ],
-        [ sh:maxCount 1 ;
             sh:order 2 ;
-            sh:path oio:is_class_level ],
-        [ sh:order 12 ;
-            sh:path IAO:0000589 ] ;
-    sh:targetClass rdf:Property .
-
-prov:Agent a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "when the term came into being" ;
+            sh:path <vann:preferredNamespacePrefix> ],
+        [ sh:description "An alternative title or name of an ontology or SKOS vocabulary." ;
             sh:maxCount 1 ;
-            sh:order 22 ;
-            sh:path dcterms:created ],
-        [ sh:order 47 ;
-            sh:path <http://xmlns.com/foaf/0.1/page> ],
-        [ sh:order 30 ;
-            sh:path IAO:0000233 ],
-        [ sh:order 51 ;
-            sh:path rdf:type ],
-        [ sh:order 7 ;
-            sh:path IAO:0000111 ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 32 ;
-            sh:path skos:closeMatch ],
-        [ sh:order 2 ;
-            sh:path oio:hasBroadSynonym ],
-        [ sh:order 3 ;
-            sh:path oio:hasRelatedSynonym ],
-        [ sh:order 49 ;
-            sh:path IAO:0000115 ],
-        [ sh:order 43 ;
-            sh:path IAO:0000112 ],
-        [ sh:class oio:Subset ;
-            sh:description "Maps an ontology element to a subset it belongs to" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 38 ;
-            sh:path oio:inSubset ],
-        [ sh:maxCount 1 ;
-            sh:order 48 ;
-            sh:path rdfs:label ],
-        [ sh:order 25 ;
-            sh:path IAO:0000116 ],
-        [ sh:maxCount 1 ;
-            sh:order 9 ;
-            sh:path owl:deprecated ],
-        [ sh:description "when the term was updated" ;
-            sh:order 23 ;
-            sh:path dcterms:date ],
-        [ sh:order 16 ;
-            sh:path omoschema:excluded_synonym ],
-        [ sh:maxCount 1 ;
-            sh:order 18 ;
-            sh:path oio:created_by ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 21 ;
-            sh:path dcterms:creator ],
-        [ sh:order 4 ;
-            sh:path IAO:0000118 ],
-        [ sh:order 40 ;
-            sh:path rdfs:comment ],
-        [ sh:order 6 ;
-            sh:path OBI:9991118 ],
-        [ sh:description "Relates a live term to a deprecated ID that was merged in" ;
-            sh:order 13 ;
-            sh:path oio:hasAlternativeId ],
-        [ sh:class IAO:0000101 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 46 ;
-            sh:path <http://xmlns.com/foaf/0.1/depicted_by> ],
-        [ sh:description "this maps to the URI in RDF" ;
+            sh:order 5 ;
+            sh:path dcterms:alternative ],
+        [ sh:description """The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.
+
+This metadatum is also recommended as required by:
+
+        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+        * https://w3id.org/mod/2.0
+        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+        * https://bioportal.bioontology.org/ontologies/OMV
+""" ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <http://purl.obolibrary.org/obo/MOD_acronym> ],
+        [ sh:description """The PURL of an ontology is its persistent identifier. It is usually used by within the ontology to state:
+`<https://www.domain.de/myOntology> rdf:type owl:Ontology.` 
+It is usually able to locate and retrieve the ontology on the world wide web, so pasting it into your web browser should retrieve a digital document. Furthermore, it is often configured to do content negotiation so that different related resources can be retrieved with the same identifier - e.g. the human-readable ontology documentation or different serializations of an ontology.        
+Ontologies usually also use the PURL to identify their classes and properties, e.g. in statements like:          
+    `<https://www.domain.de/myOntology#someProperty> rdf:type owl:AnnotationProperty.`
+A working PURL is required to retrieve the ontology for indexing by the TIB Terminology Service.
+This metadatum is also recommended by:
+
+  * http://purl.obolibrary.org/meta/context.jsonld    
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * [ Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 50 ;
-            sh:path omoschema:id ;
-            sh:pattern "^orcid:.*" ],
-        [ sh:order 44 ;
-            sh:path IAO:0000232 ],
-        [ sh:order 5 ;
-            sh:path OBI:0001847 ],
-        [ sh:order 19 ;
-            sh:path oio:creation_date ],
-        [ sh:maxCount 1 ;
-            sh:order 37 ;
-            sh:path biolink:category ],
-        [ sh:order 36 ;
-            sh:path oio:hasOBONamespace ],
-        [ sh:class linkml:Any ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 12 ;
-            sh:path oio:consider ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 33 ;
-            sh:path skos:exactMatch ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 34 ;
-            sh:path skos:narrowMatch ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 14 ;
-            sh:path omoschema:excluded_from_QC_check ],
-        [ sh:maxCount 1 ;
-            sh:order 28 ;
-            sh:path IAO:0000234 ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 39 ;
-            sh:path dcterms:conformsTo ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 17 ;
-            sh:path omoschema:should_conform_to ],
-        [ sh:class prov:Agent ;
-            sh:nodeKind sh:IRI ;
-            sh:order 20 ;
-            sh:path dcterms:contributor ],
-        [ sh:class linkml:Any ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 11 ;
-            sh:path IAO:0100001 ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 41 ;
-            sh:path rdfs:seeAlso ],
-        [ sh:class owl:NamedIndividual ;
-            sh:nodeKind sh:IRI ;
-            sh:order 29 ;
-            sh:path IAO:0000412 ],
-        [ sh:order 0 ;
-            sh:path oio:hasExactSynonym ],
-        [ sh:class owl:Ontology ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 24 ;
-            sh:path rdfs:isDefinedBy ],
-        [ sh:class owl:Thing ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 31 ;
-            sh:path skos:broadMatch ],
-        [ sh:order 27 ;
-            sh:path IAO:0000119 ],
-        [ sh:maxCount 1 ;
-            sh:order 10 ;
-            sh:path IAO:0000231 ],
-        [ sh:order 1 ;
-            sh:path oio:hasNarrowSynonym ],
-        [ sh:order 35 ;
-            sh:path oio:hasDbXref ],
-        [ sh:maxCount 1 ;
-            sh:order 45 ;
-            sh:path IAO:0000114 ],
-        [ sh:class owl:Class ;
-            sh:nodeKind sh:IRI ;
-            sh:order 15 ;
-            sh:path omoschema:excluded_subClassOf ],
-        [ sh:order 26 ;
-            sh:path IAO:0000117 ],
-        [ sh:class owl:Thing ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNode ;
-            sh:order 42 ;
-            sh:path sdo:image ],
-        [ sh:order 8 ;
-            sh:path IAO:0000589 ] ;
-    sh:targetClass prov:Agent .
+            sh:order 0 ;
+            sh:path <http://www.w3.org/ns/dcat#accessURL> ],
+        [ sh:description """The title or name of an ontology or SKOS vocabulary.
 
-linkml:Any a sh:NodeShape ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:targetClass linkml:Any .
+This metadatum is also recommended as required by:
 
-owl:Thing a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:order 0 ;
-            sh:path rdf:type ] ;
-    sh:targetClass owl:Thing .
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://github.com/owlcs/miro/blob/master/miro.md#a1-ontology-name
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path dcterms:title ],
+        [ sh:description "A prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) that is not the officially preferren one but an alternative that may be used in different contexts (e.g. **DCTERMS** or **dct** instead of the [preferredPrefix](preferredPrefix) **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/)." ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <http://identifiers.org/alternatePrefix> ] ;
+    sh:targetClass skos:ConceptScheme .
 

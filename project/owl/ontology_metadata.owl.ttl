@@ -1,1884 +1,520 @@
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
-@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
-@prefix NCIT: <http://purl.obolibrary.org/obo/NCIT_> .
-@prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
-@prefix RO: <http://purl.obolibrary.org/obo/RO_> .
-@prefix biolink: <https://w3id.org/biolink/vocab/> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix linkml: <https://w3id.org/linkml/> .
-@prefix oio: <http://www.geneontology.org/formats/oboInOwl#> .
-@prefix omoschema: <http://purl.obolibrary.org/obo/omo/schema/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pav: <http://purl.org/pav/> .
-@prefix prov: <http://www.w3.org/ns/prov-o#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sdo: <http://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tibts: <hhttp://terminology.tib.eu/schema> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://purl.obolibrary.org/obo/omo/schema> a owl:Ontology ;
-    rdfs:label "Ontology-Metadata" ;
-    IAO:0000700 omoschema:Annotation,
-        omoschema:AnnotationPropertyMixin,
-        omoschema:Anonymous,
-        omoschema:Any,
-        omoschema:Axiom,
-        omoschema:Expression,
-        omoschema:NotObsoleteAspect,
-        omoschema:ObsoleteAspect,
-        omoschema:Thing ;
+tibts:Ontology a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Ontology" ;
+    rdfs:seeAlso "schema:Ontology" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:title ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:alternative ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty dcterms:license ;
+            owl:qualifiedCardinality 1 ],
+        tibts:OptionalMetadata,
+        tibts:RecommendedMetadata,
+        tibts:RequiredMetadata ;
+    skos:definition "An OWL ontology." ;
+    skos:exactMatch owl:Ontology ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI listed under **See Also** might be used as an alternative for this class." .
+
+tibts:SkosConceptScheme a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SkosConceptScheme" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty dcterms:license ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:title ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:alternative ],
+        tibts:OptionalMetadata,
+        tibts:RecommendedMetadata,
+        tibts:RequiredMetadata ;
+    skos:definition "A SKOS vocabulary serialized in RDF using the skos:ConceptScheme" ;
+    skos:exactMatch skos:ConceptScheme .
+
+<http://terminology.tib.eu/schema> a owl:Ontology ;
+    rdfs:label "Ontology-Metadata-TIB" ;
+    IAO:0000700 tibts:OptionalMetadata,
+        tibts:RecommendedMetadata,
+        tibts:RequiredMetadata ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
-    dcterms:title "Ontology Metadata Ontology Schema" ;
+    dcterms:title "Ontology Metadata Schema of the TIB Terminology Service" ;
     pav:version "0.0.1" ;
-    linkml:generation_date "2023-02-24T14:33:26" ;
+    linkml:generation_date "2023-03-07T13:57:00" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "ontology_metadata.yaml" ;
-    linkml:source_file_date "2023-02-24T13:51:58" ;
-    linkml:source_file_size 30144 .
-
-omoschema:HomoSapiens a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "HomoSapiens" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty omoschema:id ;
-            owl:qualifiedCardinality 1 ],
-        omoschema:NamedIndividual ;
-    skos:definition "An individual human being" ;
-    skos:exactMatch NCBITaxon:9606 .
-
-omoschema:IriType a owl:Class,
-        linkml:TypeDefinition ;
-    rdfs:label "iri type" ;
-    rdfs:subClassOf linkml:Uriorcurie .
-
-omoschema:Restriction a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Restriction" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:ClassExpression ;
-            owl:onProperty owl:intersectionOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty owl:disjointWith ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:cardinality ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:unionOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:ClassExpression ;
-            owl:onProperty rdfs:subClassOf ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:ClassExpression ;
-            owl:onProperty owl:oneOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty owl:someValuesFrom ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:PropertyExpression ;
-            owl:onProperty owl:onProperty ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:ClassExpression ;
-            owl:onProperty owl:equivalentClass ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:complementOf ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:allValuesFrom ],
-        omoschema:AnonymousClassExpression,
-        omoschema:ClassExpression,
-        linkml:mixin ;
-    skos:exactMatch owl:Restriction .
-
-omoschema:TransitiveProperty a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "TransitiveProperty" ;
-    rdfs:subClassOf omoschema:ObjectProperty ;
-    skos:definition "An ObjectProperty with the property of transitivity" .
-
-omoschema:URLLiteral a owl:Class,
-        linkml:TypeDefinition ;
-    rdfs:label "URLLiteral" ;
-    rdfs:subClassOf linkml:String .
+    linkml:source_file_date "2023-03-07T13:56:48" ;
+    linkml:source_file_size 23450 .
 
 linkml:SubsetDefinition a owl:Class ;
     rdfs:label "subset_definition" .
 
+linkml:TypeDefinition a owl:Class ;
+    rdfs:label "type_definition" .
+
 linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "value" .
 
-<http://example.org/UNKNOWN/protege/defaultLanguage> a owl:ObjectProperty,
+<http://example.org/UNKNOWN/dcterm/description> a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "defaultLanguage" ;
+    rdfs:label "description" ;
     rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch <http://example.org/UNKNOWN/protege/defaultLanguage> .
+    rdfs:seeAlso "dc:description",
+        "dcterms:abstract",
+        "schema:abstract",
+        "schema:description",
+        "skos:note" ;
+    rdfs:subPropertyOf tibts:versionInformation ;
+    skos:definition """The ontology should describe its own contents and scope with a few words or sentences in order to inform human users what the ontology tries to accomplish.
+The description is displayed in the TIB Terminology Service ontology list and on the start page of each ontology - we therefore recommend to keep it short! For an extensive discussion about the ontology you may want to consider the publication of a traditional academic article or a detailed documentation.
 
-NCIT:P378 a owl:ObjectProperty,
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * http://ceur-ws.org/Vol-3127/#paper-15
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch <http://example.org/UNKNOWN/dcterm/description> ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
+
+<http://example.org/UNKNOWN/doap/bug-database> a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "NCIT_definition_source" ;
+    rdfs:label "issueTracker" ;
     rdfs:range linkml:String ;
-    skos:exactMatch NCIT:P378 .
-
-NCIT:P383 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "NCIT_term_type" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch NCIT:P383 .
-
-NCIT:P384 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "NCIT_term_source" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch NCIT:P384 .
-
-omoschema:AnonymousClassExpression a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "AnonymousClassExpression" ;
-    rdfs:subClassOf omoschema:Anonymous .
-
-omoschema:Axiom a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Axiom" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:NamedObject ;
-            owl:onProperty owl:annotatedSource ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:AnnotationProperty ;
-            owl:onProperty oio:hasSynonymType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:CURIELiteral ;
-            owl:onProperty oio:hasDbXref ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcterms:source ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty RO:0002581 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Any ;
-            owl:onProperty owl:annotatedTarget ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty oio:created_by ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rdfs:comment ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty oio:external_ontology ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty oio:date_retrieved ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Thing ;
-            owl:onProperty IAO:0010000 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:LabelType ;
-            owl:onProperty rdfs:label ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty oio:is_inferred ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:AnnotationProperty ;
-            owl:onProperty owl:annotatedProperty ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty oio:notes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Annotation ;
-            owl:onProperty omoschema:annotations ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty oio:url ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty oio:evidence ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:LabelType ;
-            owl:onProperty oio:hasExactSynonym ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty RO:0002582 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty rdfs:seeAlso ] ;
-    skos:definition "A logical or non-logical statement" ;
-    skos:exactMatch rdf:Statement,
-        owl:Axiom .
-
-omoschema:HasCategory a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "HasCategory" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty biolink:category ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty oio:hasOBONamespace ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty dcterms:conformsTo ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Subset ;
-            owl:onProperty oio:inSubset ],
-        omoschema:AnnotationPropertyMixin,
-        linkml:mixin .
-
-omoschema:HasLifeCycle a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "HasLifeCycle" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty omoschema:excluded_synonym ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Thing ;
-            owl:onProperty omoschema:should_conform_to ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty oio:hasAlternativeId ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Any ;
-            owl:onProperty oio:consider ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty IAO:0000231 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty owl:deprecated ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Any ;
-            owl:onProperty IAO:0100001 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Class ;
-            owl:onProperty omoschema:excluded_subClassOf ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Thing ;
-            owl:onProperty omoschema:excluded_from_QC_check ],
-        omoschema:AnnotationPropertyMixin,
-        linkml:mixin .
-
-omoschema:HasMappings a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "HasMappings" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty skos:closeMatch ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty skos:exactMatch ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:CURIELiteral ;
-            owl:onProperty oio:hasDbXref ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty skos:broadMatch ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty skos:narrowMatch ],
-        omoschema:AnnotationPropertyMixin,
-        linkml:mixin .
-
-omoschema:HasMinimalMetadata a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "HasMinimalMetadata" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:LabelType ;
-            owl:onProperty rdfs:label ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:NarrativeText ;
-            owl:onProperty IAO:0000115 ],
-        omoschema:AnnotationPropertyMixin,
-        linkml:mixin ;
-    skos:definition "Absolute minimum metadata model" .
-
-omoschema:HasProvenance a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "HasProvenance" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:created ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcterms:date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Agent ;
-            owl:onProperty dcterms:contributor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Agent ;
-            owl:onProperty dcterms:creator ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:NamedIndividual ;
-            owl:onProperty IAO:0000412 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty oio:creation_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000233 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000117 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Ontology ;
-            owl:onProperty rdfs:isDefinedBy ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty IAO:0000234 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty oio:created_by ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000119 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:NarrativeText ;
-            owl:onProperty IAO:0000116 ],
-        omoschema:AnnotationPropertyMixin,
-        linkml:mixin .
-
-omoschema:HasSynonyms a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "HasSynonyms" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:LabelType ;
-            owl:onProperty oio:hasExactSynonym ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000589 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:LabelType ;
-            owl:onProperty oio:hasRelatedSynonym ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty OBI:0001847 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:LabelType ;
-            owl:onProperty oio:hasNarrowSynonym ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000118 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000111 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty OBI:9991118 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:LabelType ;
-            owl:onProperty oio:hasBroadSynonym ],
-        omoschema:AnnotationPropertyMixin,
-        linkml:mixin ;
-    skos:definition "a mixin for a class whose members can have synonyms" ;
-    skos:note "the GO-style synonym model has four distinct scopes, with additional types as annotation axioms",
-        "the OBI synonym model is to use alternative_term, or potentially a subproperty" .
-
-omoschema:HasUserInformation a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "HasUserInformation" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <http://xmlns.com/foaf/0.1/page> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Thing ;
-            owl:onProperty sdo:image ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000232 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000112 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty IAO:0000114 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rdfs:comment ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty rdfs:seeAlso ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Image ;
-            owl:onProperty <http://xmlns.com/foaf/0.1/depicted_by> ],
-        omoschema:AnnotationPropertyMixin,
-        linkml:mixin .
-
-omoschema:ObjectProperty a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "ObjectProperty" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Property ;
-            owl:onProperty owl:inverseOf ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty oio:is_cyclic ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:NamedIndividual ;
-            owl:onProperty RO:0001900 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty oio:is_transitive ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty owl:disjointWith ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Property ;
-            owl:onProperty owl:equivalentProperty ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty oio:shorthand ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty owl:propertyChainAxiom ],
-        omoschema:Property,
-        omoschema:PropertyExpression ;
-    skos:definition "A property that connects two objects in logical axioms" ;
-    skos:exactMatch owl:ObjectProperty .
-
-omoschema:TidyString a owl:Class,
-        linkml:TypeDefinition ;
-    rdfs:label "tidy string" ;
-    rdfs:subClassOf linkml:String .
-
-omoschema:annotations a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "annotations" ;
-    rdfs:range omoschema:Annotation .
-
-omoschema:disconnected_from a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "disconnected_from" ;
-    rdfs:range omoschema:Class ;
-    rdfs:subPropertyOf omoschema:shortcut_annotation_property .
-
-omoschema:has_rank a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_rank" ;
-    rdfs:range omoschema:Thing ;
-    skos:exactMatch <http://purl.obolibrary.org/obo/ncbitaxon/subsets/taxslim#has_rank> .
-
-omoschema:object a owl:ObjectProperty,
-        linkml:SlotDefinition .
-
-omoschema:predicate a owl:ObjectProperty,
-        linkml:SlotDefinition .
-
-omoschema:shortcut_annotation_property a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "shortcut_annotation_property" ;
-    rdfs:range linkml:String .
-
-oio:id a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "oboInOwl_id" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch oio:id .
-
-oio:ontology a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "oboInOwl_ontology" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch oio:ontology .
-
-owl:distinctMembers a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "distinctMembers" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:distinctMembers .
-
-owl:hasValue a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "hasValue" ;
-    rdfs:range omoschema:Any ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:hasValue .
-
-owl:maxQualifiedCardinality a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "maxQualifiedCardinality" ;
-    rdfs:range linkml:Integer ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:maxQualifiedCardinality .
-
-owl:members a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "members" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:members .
-
-owl:minCardinality a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "minCardinality" ;
-    rdfs:range linkml:Integer ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:minCardinality .
-
-owl:minQualifiedCardinality a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "minQualifiedCardinality" ;
-    rdfs:range linkml:Integer ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:minQualifiedCardinality .
-
-owl:onClass a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "onClass" ;
-    rdfs:range omoschema:ClassExpression ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:onClass .
-
-owl:qualifiedCardinality a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "qualifiedCardinality" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:qualifiedCardinality .
-
-owl:sameAs a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "sameAs" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:logical_predicate,
-        omoschema:match_aspect ;
-    skos:exactMatch owl:sameAs .
-
-skos:changeNote a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "changeNote" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch skos:changeNote .
-
-IAO:0000700 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_ontology_root_term" ;
-    rdfs:range omoschema:Class ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch IAO:0000700 .
-
-IAO:0010000 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_axiom_label" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch IAO:0010000 .
-
-RO:0001900 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "temporal_interpretation" ;
-    rdfs:range omoschema:NamedIndividual ;
-    skos:exactMatch RO:0001900 .
-
-RO:0002161 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "never_in_taxon" ;
-    rdfs:range omoschema:Class ;
-    skos:exactMatch RO:0002161 .
-
-RO:0002581 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "is_a_defining_property_chain_axiom" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch RO:0002581 .
-
-RO:0002582 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "is_a_defining_property_chain_axiom_where_second_argument_is_reflexive" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch RO:0002582 .
-
-omoschema:Anonymous a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Anonymous" ;
-    skos:definition "Abstract root class for all anonymous (non-named; lacking an identifier) expressions" .
-
-omoschema:DCC.Any a omoschema:DefinitionConstraintComponent,
-        owl:Class ;
-    rdfs:label "DefinitionConstraint" .
-
-omoschema:DCC.S0 a omoschema:DefinitionConstraintComponent,
-        owl:Class ;
-    rdfs:label "DefinitionPresence" .
-
-omoschema:DCC.S1 a omoschema:DefinitionConstraintComponent,
-        owl:Class ;
-    rdfs:label "Conventions" .
-
-omoschema:DCC.S1.1 a omoschema:DefinitionConstraintComponent,
-        owl:Class ;
-    rdfs:label "Harmonized" .
-
-omoschema:DCC.S11 a omoschema:DefinitionConstraintComponent,
-        owl:Class ;
-    rdfs:label "MatchTextAndLogical" .
-
-omoschema:DCC.S3 a omoschema:DefinitionConstraintComponent,
-        owl:Class ;
-    rdfs:label "GenusDifferentiaForm" .
-
-omoschema:DCC.S3.1 a omoschema:DefinitionConstraintComponent,
-        owl:Class ;
-    rdfs:label "SingleGenus" .
-
-omoschema:DCC.S7 a omoschema:DefinitionConstraintComponent,
-        owl:Class ;
-    rdfs:label "Circularity" .
-
-omoschema:NotObsoleteAspect a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "NotObsoleteAspect" ;
-    rdfs:subClassOf linkml:mixin ;
-    skos:definition "Auto-classifies anything that is not obsolete" .
-
-omoschema:excluded_from_QC_check a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "excluded_from_QC_check" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:excluded_axiom .
-
-omoschema:excluded_subClassOf a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "excluded_subClassOf" ;
-    rdfs:range omoschema:Class ;
-    rdfs:subPropertyOf omoschema:excluded_axiom .
-
-omoschema:excluded_synonym a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "excluded_synonym" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:excluded_axiom ;
-    skos:exactMatch skos:hiddenSynonym .
-
-omoschema:should_conform_to a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "should_conform_to" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:excluded_axiom .
-
-omoschema:version_property a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "version_property" ;
-    rdfs:range linkml:String .
-
-dcterms:license a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "license" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch dcterms:license .
-
-dcterms:title a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "title" ;
-    rdfs:range omoschema:NarrativeText ;
-    skos:exactMatch dcterms:title .
-
-oio:date_retrieved a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "date_retrieved" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch oio:date_retrieved .
-
-oio:evidence a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "evidence" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch oio:evidence .
-
-oio:external_ontology a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "external_ontology" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch oio:external_ontology .
-
-oio:hasSynonymType a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_synonym_type" ;
-    rdfs:range omoschema:AnnotationProperty ;
-    skos:exactMatch oio:hasSynonymType .
-
-oio:is_class_level a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "is_class_level" ;
-    rdfs:range linkml:Boolean ;
-    skos:exactMatch oio:is_class_level .
-
-oio:is_cyclic a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "is_cyclic" ;
-    rdfs:range linkml:Boolean ;
-    skos:exactMatch oio:is_cyclic .
-
-oio:is_inferred a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "is_inferred" ;
-    rdfs:range linkml:Boolean ;
-    skos:exactMatch oio:is_inferred .
-
-oio:is_metadata_tag a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "is_metadata_tag" ;
-    rdfs:range linkml:Boolean ;
-    skos:exactMatch oio:is_metadata_tag .
-
-oio:is_transitive a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "is_transitive" ;
-    rdfs:range linkml:Boolean ;
-    skos:exactMatch oio:is_transitive .
-
-oio:notes a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "notes" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch oio:notes .
-
-oio:url a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "url" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch oio:url .
-
-rdf:type a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "type" ;
-    rdfs:range linkml:Uriorcurie ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch rdf:type .
-
-rdfs:domain a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "domain" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch rdfs:domain .
-
-rdfs:range a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "range" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch rdfs:range .
-
-owl:allValuesFrom a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "allValuesFrom" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:allValuesFrom .
-
-owl:annotatedProperty a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "annotatedProperty" ;
-    rdfs:range omoschema:AnnotationProperty ;
-    rdfs:subPropertyOf omoschema:reification_predicate ;
-    skos:exactMatch rdf:predicate,
-        owl:annotatedProperty .
-
-owl:annotatedSource a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "annotatedSource" ;
-    rdfs:range omoschema:NamedObject ;
-    rdfs:subPropertyOf omoschema:reification_predicate ;
-    skos:exactMatch rdf:subject,
-        owl:annotatedSource .
-
-owl:annotatedTarget a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "annotatedTarget" ;
-    rdfs:range omoschema:Any ;
-    rdfs:subPropertyOf omoschema:reification_predicate ;
-    skos:exactMatch rdf:object,
-        owl:annotatedTarget .
-
-owl:equivalentProperty a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "equivalentProperty" ;
-    rdfs:range omoschema:Property ;
-    rdfs:subPropertyOf omoschema:logical_predicate,
-        omoschema:match_aspect ;
-    skos:exactMatch owl:equivalentProperty .
-
-owl:imports a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "imports" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch owl:imports .
-
-owl:inverseOf a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "inverseOf" ;
-    rdfs:range omoschema:Property ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:inverseOf .
-
-owl:onProperty a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "onProperty" ;
-    rdfs:range omoschema:PropertyExpression ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:onProperty .
-
-owl:propertyChainAxiom a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "propertyChainAxiom" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:propertyChainAxiom .
-
-owl:someValuesFrom a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "someValuesFrom" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:someValuesFrom .
-
-owl:versionIRI a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "versionIRI" ;
-    rdfs:range linkml:Uriorcurie ;
-    rdfs:subPropertyOf omoschema:version_property ;
-    skos:exactMatch owl:versionIRI .
-
-owl:versionInfo a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "versionInfo" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:version_property ;
-    skos:closeMatch pav:version ;
-    skos:exactMatch owl:versionInfo .
-
-IAO:0000111 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "editor_preferred_term" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf IAO:0000118 ;
-    skos:exactMatch IAO:0000111 .
-
-IAO:0000112 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "example_of_usage" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch IAO:0000112,
-        skos:example .
-
-IAO:0000114 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_curation_status" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch IAO:0000114 .
-
-IAO:0000116 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "editor_note" ;
-    rdfs:range omoschema:NarrativeText ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch IAO:0000116 .
-
-IAO:0000117 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "term_editor" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch IAO:0000117 .
-
-IAO:0000119 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "definition_source" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch IAO:0000119 .
-
-IAO:0000231 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_obsolescence_reason" ;
-    rdfs:domain omoschema:ObsoleteAspect ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:obsoletion_related_property ;
-    skos:exactMatch IAO:0000231 ;
-    skos:note "{'RULE': 'subject must be deprecated'}" .
-
-IAO:0000232 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "curator_note" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch IAO:0000232 .
-
-IAO:0000233 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "term_tracker_item" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch IAO:0000233 .
-
-IAO:0000234 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "ontology_term_requester" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch IAO:0000234 .
-
-IAO:0000412 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "imported_from" ;
-    rdfs:range omoschema:NamedIndividual ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch IAO:0000412 .
-
-IAO:0000589 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "OBO_foundry_unique_label" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf IAO:0000118 ;
-    skos:exactMatch IAO:0000589 .
-
-IAO:0100001 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "term_replaced_by" ;
-    rdfs:domain omoschema:ObsoleteAspect ;
-    rdfs:range omoschema:Any ;
-    rdfs:subPropertyOf omoschema:obsoletion_related_property ;
-    skos:exactMatch IAO:0100001,
-        dcterms:isReplacedBy ;
-    skos:note "{'RULE': 'subject must be deprecated'}" .
-
-OBI:0001847 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "ISA_alternative_term" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf IAO:0000118 ;
-    skos:exactMatch OBI:0001847 .
-
-OBI:9991118 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "IEDB_alternative_term" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf IAO:0000118 ;
-    skos:exactMatch OBI:9991118 .
-
-omoschema:Annotation a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Annotation" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty omoschema:object ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty omoschema:predicate ] ;
-    skos:definition "A reified property-object pair" .
-
-omoschema:Expression a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Expression" ;
-    rdfs:subClassOf linkml:mixin .
-
-omoschema:Image a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Image" ;
-    rdfs:subClassOf omoschema:NamedIndividual ;
-    skos:exactMatch IAO:0000101 .
-
-omoschema:Ontology a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Ontology" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Agent ;
-            owl:onProperty dcterms:creator ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Class ;
-            owl:onProperty IAO:0000700 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcterms:source ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:imports ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty owl:versionIRI ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rdfs:comment ],
-        [ a owl:Restriction ;
-            owl:onClass omoschema:NarrativeText ;
-            owl:onProperty dcterms:title ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass omoschema:Thing ;
-            owl:onProperty dcterms:license ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:created ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:versionInfo ;
-            owl:qualifiedCardinality 1 ],
-        omoschema:NamedObject ;
-    skos:definition "An OWL ontology" ;
-    skos:exactMatch owl:Ontology .
-
-omoschema:PropertyExpression a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "PropertyExpression" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty owl:disjointWith ],
-        omoschema:Expression,
-        linkml:mixin .
-
-omoschema:Subset a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Subset" ;
-    rdfs:subClassOf omoschema:AnnotationProperty ;
-    skos:definition "A collection of terms grouped for some purpose" ;
-    skos:exactMatch oio:Subset .
-
-omoschema:Term a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Term" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty skos:broadMatch ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty IAO:0000234 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000119 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:NamedIndividual ;
-            owl:onProperty IAO:0000412 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty skos:closeMatch ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty biolink:category ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:LabelType ;
-            owl:onProperty oio:hasRelatedSynonym ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty oio:creation_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Subset ;
-            owl:onProperty oio:inSubset ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <http://xmlns.com/foaf/0.1/page> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Thing ;
-            owl:onProperty omoschema:excluded_from_QC_check ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty IAO:0000231 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Ontology ;
-            owl:onProperty rdfs:isDefinedBy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:LabelType ;
-            owl:onProperty oio:hasBroadSynonym ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Class ;
-            owl:onProperty omoschema:excluded_subClassOf ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:LabelType ;
-            owl:onProperty rdfs:label ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Image ;
-            owl:onProperty <http://xmlns.com/foaf/0.1/depicted_by> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty oio:created_by ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty omoschema:excluded_synonym ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty IAO:0000114 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty OBI:0001847 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:CURIELiteral ;
-            owl:onProperty oio:hasDbXref ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Agent ;
-            owl:onProperty dcterms:contributor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty oio:hasAlternativeId ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Any ;
-            owl:onProperty oio:consider ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty rdfs:seeAlso ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Thing ;
-            owl:onProperty omoschema:should_conform_to ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Any ;
-            owl:onProperty IAO:0100001 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rdfs:comment ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000233 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty skos:narrowMatch ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000117 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Thing ;
-            owl:onProperty sdo:image ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000232 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:NarrativeText ;
-            owl:onProperty IAO:0000115 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000112 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:LabelType ;
-            owl:onProperty oio:hasNarrowSynonym ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty dcterms:conformsTo ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000111 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcterms:date ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:created ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Thing ;
-            owl:onProperty skos:exactMatch ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000118 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:LabelType ;
-            owl:onProperty oio:hasExactSynonym ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty IAO:0000589 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Agent ;
-            owl:onProperty dcterms:creator ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:NarrativeText ;
-            owl:onProperty IAO:0000116 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty oio:hasOBONamespace ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty owl:deprecated ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty OBI:9991118 ],
-        omoschema:HasCategory,
-        omoschema:HasLifeCycle,
-        omoschema:HasMappings,
-        omoschema:HasMinimalMetadata,
-        omoschema:HasProvenance,
-        omoschema:HasSynonyms,
-        omoschema:HasUserInformation,
-        omoschema:NamedObject ;
-    skos:altLabel "term" ;
-    skos:definition "A NamedThing that includes classes, properties, but not ontologies" .
-
-omoschema:core_property a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "core_property" ;
-    rdfs:range linkml:String ;
-    skos:definition "abstract grouping of core properties" .
-
-omoschema:id a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "id" ;
-    rdfs:range linkml:Uriorcurie ;
-    rdfs:subPropertyOf omoschema:core_property ;
-    skos:definition "this maps to the URI in RDF" .
-
-omoschema:reification_predicate a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "reification_predicate" ;
-    rdfs:range linkml:String .
-
-dcterms:conformsTo a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "conformsTo" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch dcterms:conformsTo .
-
-dcterms:contributor a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "contributor" ;
-    rdfs:range omoschema:Agent ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:closeMatch prov:wasAttributedTo ;
-    skos:exactMatch dcterms:contributor .
-
-dcterms:date a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "date" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:closeMatch pav:authoredOn ;
-    skos:definition "when the term was updated" ;
-    skos:exactMatch dcterms:date .
-
-dcterms:source a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "source" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch dcterms:source,
-        oio:source .
-
-sdo:image a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "image" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch sdo:image .
-
-oio:consider a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "consider" ;
-    rdfs:domain omoschema:ObsoleteAspect ;
-    rdfs:range omoschema:Any ;
-    rdfs:subPropertyOf omoschema:obsoletion_related_property ;
-    skos:exactMatch oio:consider ;
-    skos:note "{'RULE': 'subject must be deprecated'}" .
-
-oio:creation_date a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "creation_date" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch oio:creation_date .
-
-oio:hasAlternativeId a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_alternative_id" ;
-    rdfs:domain omoschema:NotObsoleteAspect ;
-    rdfs:range linkml:Uriorcurie ;
-    rdfs:seeAlso "https://github.com/owlcs/owlapi/issues/317" ;
-    rdfs:subPropertyOf omoschema:obsoletion_related_property ;
-    skos:definition "Relates a live term to a deprecated ID that was merged in" ;
-    skos:exactMatch oio:hasAlternativeId ;
-    skos:note "{'RULE': 'object must NOT be deprecated'}" .
-
-oio:hasBroadSynonym a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_broad_synonym" ;
-    rdfs:range omoschema:LabelType ;
-    rdfs:subPropertyOf oio:hasSynonym ;
-    skos:exactMatch oio:hasBroadSynonym .
-
-oio:hasNarrowSynonym a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_narrow_synonym" ;
-    rdfs:range omoschema:LabelType ;
-    rdfs:subPropertyOf oio:hasSynonym ;
-    skos:exactMatch oio:hasNarrowSynonym .
-
-oio:hasOBONamespace a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_obo_namespace" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch oio:hasOBONamespace .
-
-oio:hasRelatedSynonym a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_related_synonym" ;
-    rdfs:range omoschema:LabelType ;
-    skos:exactMatch oio:hasRelatedSynonym .
-
-oio:inSubset a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "in_subset" ;
-    rdfs:range omoschema:Subset ;
-    skos:definition "Maps an ontology element to a subset it belongs to" ;
-    skos:exactMatch oio:inSubset .
-
-oio:shorthand a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "shorthand" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch oio:shorthand .
-
-rdfs:isDefinedBy a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "isDefinedBy" ;
-    rdfs:range omoschema:Ontology ;
-    skos:closeMatch dcterms:publisher,
-        pav:importedFrom ;
-    skos:exactMatch rdfs:isDefinedBy .
-
-owl:deprecated a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "deprecated" ;
-    rdfs:domain omoschema:ObsoleteAspect ;
-    rdfs:range linkml:Boolean ;
-    rdfs:subPropertyOf omoschema:obsoletion_related_property ;
-    skos:altLabel "is obsolete" ;
-    skos:exactMatch owl:deprecated .
-
-<http://xmlns.com/foaf/0.1/depicted_by> a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "depicted_by" ;
-    rdfs:range omoschema:Image ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch <http://xmlns.com/foaf/0.1/depicted_by> .
-
-<http://xmlns.com/foaf/0.1/page> a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "page" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch <http://xmlns.com/foaf/0.1/page> .
-
-biolink:category a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "category" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch biolink:category .
-
-omoschema:CURIELiteral a owl:Class,
-        linkml:TypeDefinition ;
-    rdfs:label "CURIELiteral" ;
-    rdfs:subClassOf linkml:String .
-
-omoschema:NamedObject a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "NamedObject" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty omoschema:id ;
-            owl:qualifiedCardinality 1 ],
-        omoschema:Thing ;
-    skos:altLabel "IRI",
-        "identified object",
-        "named entity" ;
-    skos:definition "Anything with an IRI" .
-
-omoschema:excluded_axiom a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "excluded_axiom" ;
-    rdfs:range linkml:String .
-
-omoschema:match_aspect a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "match_aspect" ;
-    rdfs:range linkml:String .
+    rdfs:seeAlso "rdfs:seeAlso" ;
+    rdfs:subPropertyOf tibts:versionInformation ;
+    skos:definition """Ontologies should be managed with version control software like git. Ideally, the development process of an ontology is open and takes place on platforms like GitLab.com. The ontology should point to the issue tracker of its own development environment so that others may report bugs or suggestions to the developers.
+
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://github.com/owlcs/miro/blob/master/miro.md#c3-communication
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+""" ;
+    skos:exactMatch <http://example.org/UNKNOWN/doap/bug-database> ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
 dcterms:created a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "created" ;
     rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:closeMatch pav:createdOn ;
-    skos:definition "when the term came into being" ;
-    skos:exactMatch dcterms:created .
+    rdfs:seeAlso "dc:date",
+        "dcterms:issued",
+        "pav:createdOn",
+        "prov:generatedAtTime",
+        "schema:dateCreated",
+        "schema:dateIssued",
+        "schema:datePublished" ;
+    rdfs:subPropertyOf tibts:versionInformation ;
+    skos:definition "A property to provide the date when the ontology or a term thereof came into being." ;
+    skos:exactMatch dcterms:created ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
 dcterms:creator a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "creator" ;
-    rdfs:range omoschema:Agent ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:closeMatch prov:wasAttributedTo ;
-    skos:exactMatch dcterms:creator .
+    rdfs:range linkml:Uriorcurie ;
+    rdfs:seeAlso "dc:creator",
+        "pav:createdBy",
+        "prov:wasAttributedTo",
+        "schema:creator" ;
+    rdfs:subPropertyOf dcterms:contributor ;
+    skos:definition """The ontology should state who was or is responsible for its development. It is recommended to not only provide the creators’ names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:creator predicat. For a literal representations of a creator the predicate dc:creator is recommended to be in line with DCMI specs.
 
-oio:created_by a owl:ObjectProperty,
+This metadatum is also recommended as required by:
+
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch dcterms:creator ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
+
+dcterms:isReferencedBy a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "created_by" ;
+    rdfs:label "documentation" ;
     rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:provenance_property ;
-    skos:exactMatch oio:created_by .
+    rdfs:seeAlso "foaf:homepage" ;
+    rdfs:subPropertyOf tibts:versionInformation ;
+    skos:definition """To familiarize interested others with the concepts and scope of your ontology, you should consider creating some kind of documentation. A relatively easy way to do this, is to use the tool [Widoco](https://pad.gwdg.de/). It generates the documentation from the ontology and a resulting html-document can be published, for example with GitLab Pages. This auto-generated document can contain customary additions that help users to understand the ontology better.
+""" ;
+    skos:exactMatch dcterms:isReferencedBy ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
-oio:hasDbXref a owl:ObjectProperty,
+dcterms:modified a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "database_cross_reference" ;
-    rdfs:range omoschema:CURIELiteral ;
-    rdfs:subPropertyOf omoschema:match ;
-    skos:exactMatch oio:hasDbXref .
-
-oio:hasExactSynonym a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_exact_synonym" ;
-    rdfs:range omoschema:LabelType ;
-    rdfs:subPropertyOf oio:hasSynonym ;
-    skos:exactMatch oio:hasExactSynonym .
-
-oio:hasSynonym a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "synonym" ;
-    rdfs:range omoschema:LabelType ;
-    rdfs:subPropertyOf IAO:0000118 ;
-    skos:exactMatch oio:hasSynonym .
-
-rdfs:seeAlso a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "seeAlso" ;
-    rdfs:range omoschema:Thing ;
-    skos:exactMatch rdfs:seeAlso .
-
-owl:cardinality a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "cardinality" ;
+    rdfs:label "modificationDate" ;
     rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:cardinality .
+    rdfs:seeAlso "pav:curatedOn",
+        "schema:dateModified" ;
+    rdfs:subPropertyOf tibts:versionInformation ;
+    skos:definition "A property to provide the date when a ressource was updated." ;
+    skos:exactMatch dcterms:modified ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
-owl:complementOf a owl:ObjectProperty,
+dcterms:source a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "complementOf" ;
+    rdfs:label "derivedFrom" ;
     rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:complementOf .
+    rdfs:seeAlso "dc:source",
+        "pav:derivedFrom",
+        "prov:wasDerivedFrom" ;
+    rdfs:subPropertyOf tibts:provenanceProperty ;
+    skos:definition "A property to provide one or more sources from which a ressource was derived." ;
+    skos:exactMatch dcterms:source ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
-owl:equivalentClass a owl:ObjectProperty,
+owl:imports a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "equivalentClass" ;
-    rdfs:range omoschema:ClassExpression ;
-    rdfs:subPropertyOf omoschema:logical_predicate,
-        omoschema:match_aspect ;
-    skos:exactMatch owl:equivalentClass .
-
-owl:intersectionOf a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "intersectionOf" ;
-    rdfs:range omoschema:ClassExpression ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:intersectionOf .
-
-owl:oneOf a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "oneOf" ;
-    rdfs:range omoschema:ClassExpression ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:oneOf .
-
-owl:unionOf a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "unionOf" ;
+    rdfs:label "imports" ;
     rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:unionOf .
+    rdfs:subPropertyOf tibts:versionInformation ;
+    skos:definition """Version information may also be accompanied by a description about changes between one version of the ontology and its predecessor.
 
-IAO:0000115 a owl:ObjectProperty,
+This metadatum is also recommended as required by:
+
+  * https://github.com/owlcs/miro/blob/master/miro.md#e4-incorporation-of-other-ontologies
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+""" ;
+    skos:exactMatch owl:imports .
+
+owl:versionIRI a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "definition" ;
-    rdfs:range omoschema:NarrativeText ;
-    rdfs:subPropertyOf omoschema:core_property ;
-    skos:exactMatch IAO:0000115,
-        skos:definition ;
-    skos:note "SHOULD be in Aristotelian (genus-differentia) form" .
+    rdfs:label "versionURI" ;
+    rdfs:range linkml:String ;
+    rdfs:seeAlso "schema:schemaVersion" ;
+    rdfs:subPropertyOf tibts:versionInformation ;
+    skos:definition """A version URI is a persistent identifier for a version of an ontology and is used just like its PURL to reliably retrieve a former version of an ontology. Since a PURL usually only points to the latest version of an ontology, each ontology version should additionally state its version URI.
+The textual version information is usually part of a version URI of an ontology.
+Here is an example from the Academic Event Ontology:
+```http://purl.obolibrary.org/obo/aeon/aeon-full.owl
+http://purl.obolibrary.org/obo/aeon/releases/2022-11-25/aeon-full.owl```
 
-omoschema:AnnotationProperty a owl:Class,
+Here is an example from ListDB Ontology:
+```https://w3id.org/listdb/onto/
+https://w3id.org/listdb/onto/0.0.1```
+
+Here is an example from the GND Ontology:
+```https://d-nb.info/standards/elementset/gnd#
+https://d-nb.info/standards/elementset/gnd_20221010```
+
+This metadatum is also recommended as required by:
+
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://doi.org/10.1371/journal.pcbi.1009041
+  * http://ceur-ws.org/Vol-3127/#paper-15
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch owl:versionIRI ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
+
+owl:versionInfo a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "versionInfo" ;
+    rdfs:range linkml:String ;
+    rdfs:seeAlso "pav:version",
+        "schema:schemaVersion" ;
+    rdfs:subPropertyOf tibts:versionInformation ;
+    skos:definition """Some ontologies make use of semantic versioning and employ strings like 1.0.0 as a tag to distinguish one version of their ontology from a successor. Others employ the modification date, e.g. 2022-12-21.
+
+This metadatum is also recommended as required by:
+
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://doi.org/10.1371/journal.pcbi.1009041
+  * http://ceur-ws.org/Vol-3127/#paper-15
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch owl:versionInfo ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
+
+adms:versionNotes a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "versionNotes" ;
+    rdfs:range linkml:String ;
+    rdfs:seeAlso "vann:changes" ;
+    rdfs:subPropertyOf tibts:versionInformation ;
+    skos:definition """Version information may also be accompanied by a description about changes between one version of the ontology and its predecessor.
+
+This metadatum is also recommended as required by:
+
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://doi.org/10.1371/journal.pcbi.1009041
+  * http://ceur-ws.org/Vol-3127/#paper-15
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+""" ;
+    skos:exactMatch adms:versionNotes ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
+
+dcterms:contributor a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "contributor" ;
+    rdfs:range linkml:Uriorcurie ;
+    rdfs:seeAlso "prov:wasAttributedTo" ;
+    rdfs:subPropertyOf tibts:provenanceProperty ;
+    skos:definition """The ontology should state who was or is contributing to its development. It is recommended to not only provide the contributor's names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:contributor predicat. For a literal representations of a creator the predicate dc:contributor is recommended to be in line with DCMI specs.
+
+This metadatum is also recommended as required by:
+
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch dcterms:contributor ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
+
+tibts:OptionalMetadata a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "AnnotationProperty" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty oio:shorthand ],
-        omoschema:Property ;
-    skos:definition "A property used in non-logical axioms" ;
-    skos:exactMatch owl:AnnotationProperty .
-
-omoschema:ObsoleteAspect a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "ObsoleteAspect" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:LabelType ;
-            owl:onProperty rdfs:label ],
-        linkml:mixin ;
-    skos:definition "Auto-classifies anything that is obsolete" .
-
-omoschema:match a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "match" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:match_aspect .
-
-omoschema:obsoletion_related_property a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "obsoletion_related_property" ;
-    rdfs:range linkml:String ;
-    skos:definition "Grouping class for all properties related to lifecycle" .
-
-rdfs:comment a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "comment" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:informative_property ;
-    skos:exactMatch rdfs:comment ;
-    skos:note "in obo format, a term cannot have more than one comment" .
-
-rdfs:subClassOf a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "subClassOf" ;
-    rdfs:range omoschema:ClassExpression ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch rdfs:subClassOf .
-
-skos:broadMatch a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "broadMatch" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:match ;
-    skos:exactMatch skos:broadMatch .
-
-skos:closeMatch a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "closeMatch" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:match ;
-    skos:exactMatch skos:closeMatch .
-
-skos:exactMatch a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "exactMatch" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:match ;
-    skos:exactMatch skos:exactMatch .
-
-skos:narrowMatch a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "narrowMatch" ;
-    rdfs:range omoschema:Thing ;
-    rdfs:subPropertyOf omoschema:match ;
-    skos:exactMatch skos:narrowMatch .
-
-owl:disjointWith a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "disjointWith" ;
-    rdfs:range linkml:String ;
-    rdfs:subPropertyOf omoschema:logical_predicate ;
-    skos:exactMatch owl:disjointWith .
-
-linkml:TypeDefinition a owl:Class ;
-    rdfs:label "type_definition" .
-
-omoschema:Agent a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Agent" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty omoschema:id ;
-            owl:qualifiedCardinality 1 ],
-        omoschema:NamedIndividual ;
-    skos:exactMatch prov:Agent .
-
-rdfs:label a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "label" ;
-    rdfs:range omoschema:LabelType ;
-    rdfs:subPropertyOf omoschema:core_property ;
-    skos:exactMatch rdfs:label,
-        skos:prefLabel ;
-    skos:note "MUST be unique within an ontology",
-        "SHOULD be unique across OBO",
-        "SHOULD follow OBO label guidelines" .
-
-IAO:0000118 a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "alternative_term" ;
-    rdfs:range linkml:String ;
-    skos:exactMatch IAO:0000118,
-        skos:altLabel .
-
-omoschema:AnnotationPropertyMixin a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "AnnotationPropertyMixin" ;
+    rdfs:label "OptionalMetadata" ;
     rdfs:subClassOf linkml:mixin ;
-    skos:definition "Groups all annotation property bundles" .
+    skos:definition "A mixin that provides the optional properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
 
-omoschema:DefinitionConstraintComponent a owl:Class,
-        linkml:EnumDefinition ;
-    rdfs:label "DefinitionConstraintComponent" ;
-    rdfs:seeAlso "https://github.com/INCATools/ontology-access-kit/issues/305" ;
-    owl:unionOf ( omoschema:DCC.Any omoschema:DCC.S0 omoschema:DCC.S1 omoschema:DCC.S1.1 omoschema:DCC.S3 omoschema:DCC.S3.1 omoschema:DCC.S7 omoschema:DCC.S11 ) ;
-    linkml:permissible_values omoschema:DCC.Any,
-        omoschema:DCC.S0,
-        omoschema:DCC.S1,
-        omoschema:DCC.S1.1,
-        omoschema:DCC.S11,
-        omoschema:DCC.S3,
-        omoschema:DCC.S3.1,
-        omoschema:DCC.S7 .
-
-omoschema:NamedIndividual a owl:Class,
+tibts:RecommendedMetadata a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "NamedIndividual" ;
-    rdfs:subClassOf omoschema:Term ;
-    skos:definition "An instance that has a IRI" ;
-    skos:exactMatch owl:NamedIndividual .
-
-omoschema:Any a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Any" ;
-    skos:exactMatch linkml:Any .
-
-omoschema:NarrativeText a owl:Class,
-        linkml:TypeDefinition ;
-    rdfs:label "narrative text" ;
-    rdfs:subClassOf linkml:String .
-
-omoschema:Property a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Property" ;
+    rdfs:label "RecommendedMetadata" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:LabelType ;
-            owl:onProperty rdfs:label ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Property ;
-            owl:onProperty skos:exactMatch ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rdfs:domain ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty oio:is_class_level ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:NarrativeText ;
-            owl:onProperty IAO:0000115 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Property ;
-            owl:onProperty skos:narrowMatch ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Property ;
-            owl:onProperty skos:broadMatch ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Property ;
-            owl:onProperty skos:closeMatch ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty rdfs:range ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Property ;
-            owl:onProperty rdfs:subClassOf ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:Boolean ;
-            owl:onProperty oio:is_metadata_tag ],
-        omoschema:Term ;
-    skos:exactMatch rdf:Property .
-
-omoschema:informative_property a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "informative_property" ;
-    rdfs:range linkml:String .
-
-omoschema:Class a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Class" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:ClassExpression ;
-            owl:onProperty owl:equivalentClass ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Class ;
-            owl:onProperty skos:broadMatch ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Class ;
-            owl:onProperty RO:0002161 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Thing ;
-            owl:onProperty omoschema:has_rank ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:ClassExpression ;
-            owl:onProperty owl:oneOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:NarrativeText ;
-            owl:onProperty IAO:0000115 ],
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:alternative ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty owl:unionOf ],
+            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+        linkml:mixin ;
+    skos:definition "A mixin that provides the recommended properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
+
+tibts:RequiredMetadata a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "RequiredMetadata" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
         [ a owl:Restriction ;
-            owl:onClass omoschema:LabelType ;
-            owl:onProperty rdfs:label ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty dcterms:license ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
-            owl:onProperty owl:cardinality ],
+            owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:Class ;
-            owl:onProperty omoschema:disconnected_from ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty owl:complementOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty owl:disjointWith ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Class ;
-            owl:onProperty skos:closeMatch ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Class ;
-            owl:onProperty skos:narrowMatch ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:ClassExpression ;
-            owl:onProperty owl:intersectionOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Class ;
-            owl:onProperty rdfs:subClassOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:Class ;
-            owl:onProperty skos:exactMatch ],
-        omoschema:ClassExpression,
-        omoschema:Term ;
-    skos:altLabel "concept",
-        "term" ;
-    skos:closeMatch skos:Concept ;
-    skos:exactMatch owl:Class .
+            owl:onProperty dcterms:title ;
+            owl:qualifiedCardinality 1 ],
+        linkml:mixin ;
+    skos:definition "A mixin that provides the required properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
 
-omoschema:provenance_property a owl:ObjectProperty,
+tibts:provenanceProperty a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "provenance_property" ;
-    rdfs:range linkml:String .
+    rdfs:label "provenanceProperty" ;
+    rdfs:range linkml:String ;
+    skos:definition "An abstract property to group all properties that deal with provenance of a ressource." .
 
-omoschema:ClassExpression a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "ClassExpression" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:unionOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:ClassExpression ;
-            owl:onProperty rdfs:subClassOf ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:ClassExpression ;
-            owl:onProperty owl:intersectionOf ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass omoschema:ClassExpression ;
-            owl:onProperty owl:oneOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom omoschema:ClassExpression ;
-            owl:onProperty owl:equivalentClass ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty owl:disjointWith ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:cardinality ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty owl:complementOf ],
-        omoschema:Expression,
-        linkml:mixin .
-
-omoschema:LabelType a owl:Class,
-        linkml:TypeDefinition ;
-    rdfs:label "label type" ;
-    rdfs:subClassOf omoschema:TidyString .
-
-omoschema:logical_predicate a owl:ObjectProperty,
+<http://example.org/UNKNOWN/vann/preferredNamespacePrefix> a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "logical_predicate" ;
-    rdfs:range linkml:String .
+    rdfs:label "preferredPrefix" ;
+    rdfs:range linkml:String ;
+    rdfs:seeAlso "idot:preferredPrefix" ;
+    skos:definition """The official prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) (e.g. **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/).
+
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.",
+        "The ontology should declare its own preferred prefix. The prefix should be unique. You can check whether an ontology prefix is already in use on services like [prefix.cc](https://prefix.cc) or [bioregistry.io](https://bioregistry.io)." .
+
+<http://identifiers.org/alternatePrefix> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "alternativePrefix" ;
+    rdfs:range linkml:String ;
+    skos:definition "A prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) that is not the officially preferren one but an alternative that may be used in different contexts (e.g. **DCTERMS** or **dct** instead of the [preferredPrefix](preferredPrefix) **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/)." ;
+    skos:exactMatch <http://identifiers.org/alternatePrefix> ;
+    skos:note "This property is recommended to be used when there are multiple prefixes in use for a namespace, to allow resolvability of CURIEs." .
+
+<http://purl.obolibrary.org/obo/MOD_acronym> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "acronym" ;
+    rdfs:range linkml:String ;
+    rdfs:seeAlso "http://omv.ontoware.org/2005/05/ontology#acronym" ;
+    skos:definition """The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.
+
+This metadatum is also recommended as required by:
+
+        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+        * https://w3id.org/mod/2.0
+        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+        * https://bioportal.bioontology.org/ontologies/OMV
+""" ;
+    skos:exactMatch <http://purl.obolibrary.org/obo/MOD_acronym> ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.",
+        "This property is declared only as recommended in this schema although it is technically required within the configuration of the TIB TS, as it can be derived directly from the required [preferredPrefix](preferredPrefix) if not present." .
+
+dcterms:alternative a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "alternativeTitle" ;
+    rdfs:range linkml:String ;
+    skos:definition "An alternative title or name of an ontology or SKOS vocabulary." ;
+    skos:exactMatch dcterms:alternative .
+
+dcterms:license a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "license" ;
+    rdfs:range linkml:Uriorcurie ;
+    rdfs:seeAlso "http://creativecommons.org/ns#license",
+        "http://dbpedia.org/ontology/license",
+        "http://purl.org/dc/elements/1.1/rights",
+        "http://purl.org/dc/terms/rights" ;
+    skos:definition """The license of the ontology/vocabulary. Ontologies and SKOS vocabularies should refer to license documents on the web via PIDs. The license text helps others to evaluate how they may reuse the ontology/vocabulary.
+Only ontologies with an open license will be published on the TIB Terminology Service.
+
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://doi.org/10.1371/journal.pcbi.1009041
+  * http://ceur-ws.org/Vol-3127/#paper-15 
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch dcterms:license ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
+
+dcterms:title a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "title" ;
+    rdfs:range linkml:String ;
+    rdfs:seeAlso "dc:title",
+        "schema:name" ;
+    skos:definition """The title or name of an ontology or SKOS vocabulary.
+
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://github.com/owlcs/miro/blob/master/miro.md#a1-ontology-name
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch dcterms:title ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
+
+<http://www.w3.org/ns/dcat#accessURL> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "purl" ;
+    rdfs:range linkml:Uriorcurie ;
+    rdfs:seeAlso "owl:ontologyIRI",
+        "vann:preferredNamespaceUri" ;
+    skos:altLabel "namspace URI" ;
+    skos:definition """The PURL of an ontology is its persistent identifier. It is usually used by within the ontology to state:
+`<https://www.domain.de/myOntology> rdf:type owl:Ontology.` 
+It is usually able to locate and retrieve the ontology on the world wide web, so pasting it into your web browser should retrieve a digital document. Furthermore, it is often configured to do content negotiation so that different related resources can be retrieved with the same identifier - e.g. the human-readable ontology documentation or different serializations of an ontology.        
+Ontologies usually also use the PURL to identify their classes and properties, e.g. in statements like:          
+    `<https://www.domain.de/myOntology#someProperty> rdf:type owl:AnnotationProperty.`
+A working PURL is required to retrieve the ontology for indexing by the TIB Terminology Service.
+This metadatum is also recommended by:
+
+  * http://purl.obolibrary.org/meta/context.jsonld    
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * [ Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch <http://www.w3.org/ns/dcat#accessURL> ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
 linkml:ClassDefinition a owl:Class ;
     rdfs:label "class_definition" .
 
-omoschema:Thing a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Thing" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty rdf:type ] ;
-    skos:exactMatch owl:Thing .
+tibts:versionInformation a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "versionInformation" ;
+    rdfs:range linkml:String ;
+    rdfs:subPropertyOf tibts:provenanceProperty ;
+    skos:definition "An abstract property to group all püroperties that deal with versioning of a ressource." .
 
 linkml:SlotDefinition a owl:Class ;
     rdfs:label "slot_definition" .
