@@ -5,18 +5,90 @@ type Ontology implements RequiredMetadata, RecommendedMetadata, OptionalMetadata
     preferredPrefix: String!
     acronym: String
     license: Uriorcurie!
+    creator: [Uriorcurie]!
+    versionInfo: String!
+    versionIRI: String
+    versionNotes: String!
+    created: String!
+    modificationDate: [String]!
+    description: String!
+    issueTracker: String!
+    documentation: String!
+    imports: String!
+    contributor: [Uriorcurie]
+    contactInfo: String
+    fundingInfo: String
+    audience: String
+    domainCovered: String
+    languageCovered: String
+    languageExpressedIn: String
+    status: String
+    sourceRepository: String
+    distributions: String
+    applicationExample: String
+    references: String
+    citations: String
+    derivedFrom: [String]
+    rootTerms: String
+    relatedVersions: String
+    socialMediaAccount: String
+    identifierPattern: String
+    format: String
+    homepage: String
+    publisher: String
+    comments: String
+    exampleIdentifier: String
+    exampleClass: String
+    mailingList: String
+    logo: String
+    otherIdentifier: String
+    developmentEnvironment: String
+    mappingRessources: String
+    competencyQuestions: String
+    appliedMethodology: String
     alternativeTitle: String
     alternativePrefix: String
   }
 
 interface OptionalMetadata
   {
+    relatedVersions: String
+    socialMediaAccount: String
+    identifierPattern: String
+    format: String
+    homepage: String
+    publisher: String
+    comments: String
+    exampleIdentifier: String
+    exampleClass: String
+    mailingList: String
+    logo: String
+    otherIdentifier: String
+    developmentEnvironment: String
+    mappingRessources: String
+    competencyQuestions: String
+    appliedMethodology: String
+    alternativeTitle: String
+    alternativePrefix: String
   }
 
 interface RecommendedMetadata
   {
-    alternativeTitle: String
-    alternativePrefix: String
+    contributor: [Uriorcurie]
+    contactInfo: String
+    fundingInfo: String
+    audience: String
+    domainCovered: String
+    languageCovered: String
+    languageExpressedIn: String
+    status: String
+    sourceRepository: String
+    distributions: String
+    applicationExample: String
+    references: String
+    citations: String
+    derivedFrom: [String]
+    rootTerms: String
   }
 
 interface RequiredMetadata
@@ -26,6 +98,16 @@ interface RequiredMetadata
     preferredPrefix: String!
     acronym: String
     license: Uriorcurie!
+    creator: [Uriorcurie]!
+    versionInfo: String!
+    versionIRI: String
+    versionNotes: String!
+    created: String!
+    modificationDate: [String]!
+    description: String!
+    issueTracker: String!
+    documentation: String!
+    imports: String!
   }
 
 type SkosConceptScheme implements RequiredMetadata, RecommendedMetadata, OptionalMetadata
@@ -35,6 +117,47 @@ type SkosConceptScheme implements RequiredMetadata, RecommendedMetadata, Optiona
     preferredPrefix: String!
     acronym: String
     license: Uriorcurie!
+    creator: [Uriorcurie]!
+    versionInfo: String!
+    versionIRI: String
+    versionNotes: String!
+    created: String!
+    modificationDate: [String]!
+    description: String!
+    issueTracker: String!
+    documentation: String!
+    imports: String!
+    contributor: [Uriorcurie]
+    contactInfo: String
+    fundingInfo: String
+    audience: String
+    domainCovered: String
+    languageCovered: String
+    languageExpressedIn: String
+    status: String
+    sourceRepository: String
+    distributions: String
+    applicationExample: String
+    references: String
+    citations: String
+    derivedFrom: [String]
+    rootTerms: String
+    relatedVersions: String
+    socialMediaAccount: String
+    identifierPattern: String
+    format: String
+    homepage: String
+    publisher: String
+    comments: String
+    exampleIdentifier: String
+    exampleClass: String
+    mailingList: String
+    logo: String
+    otherIdentifier: String
+    developmentEnvironment: String
+    mappingRessources: String
+    competencyQuestions: String
+    appliedMethodology: String
     alternativeTitle: String
     alternativePrefix: String
   }

@@ -4,6 +4,7 @@
 @prefix linkml: <https://w3id.org/linkml/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pav: <http://purl.org/pav/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix tibts: <hhttp://terminology.tib.eu/schema> .
@@ -14,13 +15,120 @@ tibts:Ontology a owl:Class,
     rdfs:label "Ontology" ;
     rdfs:seeAlso "schema:Ontology" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:exampleClass ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom linkml:Uriorcurie ;
+                        owl:onProperty dcterms:creator ] [ a owl:Restriction ;
+                        owl:onProperty dcterms:creator ;
+                        owl:someValuesFrom linkml:Uriorcurie ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/doap/bug-database> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:homepage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty dcterms:contributor ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:logo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:languageCovered ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:otherIdentifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:references ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:identifierPattern ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:domainCovered ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom linkml:String ;
+                        owl:onProperty dcterms:modified ] [ a owl:Restriction ;
+                        owl:onProperty dcterms:modified ;
+                        owl:someValuesFrom linkml:String ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:exampleIdentifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:applicationExample ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:versionInfo ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty dcterms:title ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty dcterms:alternative ],
+            owl:onProperty tibts:contactInfo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:created ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:developmentEnvironment ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:isReferencedBy ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty adms:versionNotes ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:versionIRI ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:citations ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:appliedMethodology ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:audience ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:imports ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
@@ -28,19 +136,78 @@ tibts:Ontology a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+            owl:onProperty tibts:format ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:mailingList ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:distributions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:socialMediaAccount ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:publisher ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty dcterms:license ;
+            owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onClass linkml:String ;
             owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:competencyQuestions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:relatedVersions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:alternative ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:mappingRessources ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:languageExpressedIn ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:fundingInfo ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/dcterm/description> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty dcterms:license ;
-            owl:qualifiedCardinality 1 ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcterms:source ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:sourceRepository ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:comments ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:rootTerms ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:status ],
         tibts:OptionalMetadata,
         tibts:RecommendedMetadata,
         tibts:RequiredMetadata ;
@@ -54,19 +221,151 @@ tibts:SkosConceptScheme a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+            owl:onProperty tibts:sourceRepository ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
+            owl:onProperty tibts:rootTerms ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:applicationExample ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:comments ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:publisher ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom linkml:Uriorcurie ;
+                        owl:onProperty dcterms:creator ] [ a owl:Restriction ;
+                        owl:onProperty dcterms:creator ;
+                        owl:someValuesFrom linkml:Uriorcurie ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:references ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:versionIRI ],
         [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
+            owl:onProperty tibts:exampleClass ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:identifierPattern ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:domainCovered ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:exampleIdentifier ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:imports ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty dcterms:contributor ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:relatedVersions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:fundingInfo ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/doap/bug-database> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:appliedMethodology ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:logo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcterms:source ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:contactInfo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:audience ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:socialMediaAccount ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:format ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:developmentEnvironment ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:languageCovered ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:mappingRessources ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:status ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:versionInfo ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:homepage ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:alternative ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:mailingList ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:created ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:competencyQuestions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
         [ a owl:Restriction ;
             owl:onClass linkml:Uriorcurie ;
             owl:onProperty dcterms:license ;
@@ -78,7 +377,41 @@ tibts:SkosConceptScheme a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass linkml:String ;
-            owl:onProperty dcterms:alternative ],
+            owl:onProperty tibts:distributions ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty adms:versionNotes ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:languageExpressedIn ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/dcterm/description> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:citations ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom linkml:String ;
+                        owl:onProperty dcterms:modified ] [ a owl:Restriction ;
+                        owl:onProperty dcterms:modified ;
+                        owl:someValuesFrom linkml:String ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:isReferencedBy ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:otherIdentifier ],
         tibts:OptionalMetadata,
         tibts:RecommendedMetadata,
         tibts:RequiredMetadata ;
@@ -93,11 +426,11 @@ tibts:SkosConceptScheme a owl:Class,
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
     dcterms:title "Ontology Metadata Schema of the TIB Terminology Service" ;
     pav:version "0.0.1" ;
-    linkml:generation_date "2023-03-07T13:57:00" ;
+    linkml:generation_date "2023-03-07T14:23:32" ;
     linkml:metamodel_version "1.7.0" ;
     linkml:source_file "ontology_metadata.yaml" ;
-    linkml:source_file_date "2023-03-07T13:56:48" ;
-    linkml:source_file_size 23450 .
+    linkml:source_file_date "2023-03-07T14:23:20" ;
+    linkml:source_file_size 25171 .
 
 linkml:SubsetDefinition a owl:Class ;
     rdfs:label "subset_definition" .
@@ -107,6 +440,369 @@ linkml:TypeDefinition a owl:Class ;
 
 linkml:topValue a owl:DatatypeProperty ;
     rdfs:label "value" .
+
+tibts:OptionalMetadata a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "OptionalMetadata" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:developmentEnvironment ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:competencyQuestions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:relatedVersions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:identifierPattern ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:socialMediaAccount ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:comments ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:format ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:appliedMethodology ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:exampleIdentifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:homepage ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:logo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://identifiers.org/alternatePrefix> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:alternative ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:otherIdentifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:publisher ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:mailingList ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:mappingRessources ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:exampleClass ],
+        linkml:mixin ;
+    skos:definition "A mixin that provides the optional properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
+
+tibts:RecommendedMetadata a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "RecommendedMetadata" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:citations ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:audience ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:domainCovered ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:rootTerms ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcterms:source ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:languageExpressedIn ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:contactInfo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:status ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:applicationExample ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:fundingInfo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:sourceRepository ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty dcterms:contributor ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:references ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:distributions ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty tibts:languageCovered ],
+        linkml:mixin ;
+    skos:definition "A mixin that provides the recommended properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
+
+tibts:RequiredMetadata a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "RequiredMetadata" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty dcterms:license ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:versionInfo ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:versionIRI ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom linkml:String ;
+                        owl:onProperty dcterms:modified ] [ a owl:Restriction ;
+                        owl:onProperty dcterms:modified ;
+                        owl:someValuesFrom linkml:String ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom linkml:Uriorcurie ;
+                        owl:onProperty dcterms:creator ] [ a owl:Restriction ;
+                        owl:onProperty dcterms:creator ;
+                        owl:someValuesFrom linkml:Uriorcurie ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty adms:versionNotes ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/dcterm/description> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:isReferencedBy ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:Uriorcurie ;
+            owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:created ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty dcterms:title ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty <http://example.org/UNKNOWN/doap/bug-database> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass linkml:String ;
+            owl:onProperty owl:imports ;
+            owl:qualifiedCardinality 1 ],
+        linkml:mixin ;
+    skos:definition "A mixin that provides the required properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
+
+tibts:applicationExample a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "applicationExample" ;
+    rdfs:range linkml:String .
+
+tibts:appliedMethodology a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "appliedMethodology" ;
+    rdfs:range linkml:String .
+
+tibts:audience a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "audience" ;
+    rdfs:range linkml:String .
+
+tibts:citations a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "citations" ;
+    rdfs:range linkml:String .
+
+tibts:comments a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "comments" ;
+    rdfs:range linkml:String .
+
+tibts:competencyQuestions a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "competencyQuestions" ;
+    rdfs:range linkml:String .
+
+tibts:contactInfo a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "contactInfo" ;
+    rdfs:range linkml:String .
+
+tibts:developmentEnvironment a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "developmentEnvironment" ;
+    rdfs:range linkml:String .
+
+tibts:distributions a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "distributions" ;
+    rdfs:range linkml:String .
+
+tibts:domainCovered a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "domainCovered" ;
+    rdfs:range linkml:String .
+
+tibts:exampleClass a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "exampleClass" ;
+    rdfs:range linkml:String .
+
+tibts:exampleIdentifier a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "exampleIdentifier" ;
+    rdfs:range linkml:String .
+
+tibts:format a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "format" ;
+    rdfs:range linkml:String .
+
+tibts:fundingInfo a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "fundingInfo" ;
+    rdfs:range linkml:String .
+
+tibts:homepage a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "homepage" ;
+    rdfs:range linkml:String .
+
+tibts:identifierPattern a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "identifierPattern" ;
+    rdfs:range linkml:String .
+
+tibts:languageCovered a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "languageCovered" ;
+    rdfs:range linkml:String .
+
+tibts:languageExpressedIn a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "languageExpressedIn" ;
+    rdfs:range linkml:String .
+
+tibts:logo a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "logo" ;
+    rdfs:range linkml:String .
+
+tibts:mailingList a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "mailingList" ;
+    rdfs:range linkml:String .
+
+tibts:mappingRessources a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "mappingRessources" ;
+    rdfs:range linkml:String .
+
+tibts:otherIdentifier a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "otherIdentifier" ;
+    rdfs:range linkml:String .
+
+tibts:provenanceProperty a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "provenanceProperty" ;
+    rdfs:range linkml:String ;
+    skos:definition "An abstract property to group all properties that deal with provenance of a ressource." .
+
+tibts:publisher a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "publisher" ;
+    rdfs:range linkml:String .
+
+tibts:references a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "references" ;
+    rdfs:range linkml:String .
+
+tibts:relatedVersions a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "relatedVersions" ;
+    rdfs:range linkml:String .
+
+tibts:rootTerms a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "rootTerms" ;
+    rdfs:range linkml:String .
+
+tibts:socialMediaAccount a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "socialMediaAccount" ;
+    rdfs:range linkml:String .
+
+tibts:sourceRepository a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "sourceRepository" ;
+    rdfs:range linkml:String .
+
+tibts:status a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "status" ;
+    rdfs:range linkml:String .
 
 <http://example.org/UNKNOWN/dcterm/description> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -154,6 +850,60 @@ This metadatum is also recommended as required by:
     skos:exactMatch <http://example.org/UNKNOWN/doap/bug-database> ;
     skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
+<http://example.org/UNKNOWN/vann/preferredNamespacePrefix> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "preferredPrefix" ;
+    rdfs:range linkml:String ;
+    rdfs:seeAlso "idot:preferredPrefix" ;
+    skos:definition """The official prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) (e.g. **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/).
+
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.",
+        "The ontology should declare its own preferred prefix. The prefix should be unique. You can check whether an ontology prefix is already in use on services like [prefix.cc](https://prefix.cc) or [bioregistry.io](https://bioregistry.io)." .
+
+<http://identifiers.org/alternatePrefix> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "alternativePrefix" ;
+    rdfs:range linkml:String ;
+    skos:definition "A prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) that is not the officially preferren one but an alternative that may be used in different contexts (e.g. **DCTERMS** or **dct** instead of the [preferredPrefix](preferredPrefix) **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/)." ;
+    skos:exactMatch <http://identifiers.org/alternatePrefix> ;
+    skos:note "This property is recommended to be used when there are multiple prefixes in use for a namespace, to allow resolvability of CURIEs." .
+
+<http://purl.obolibrary.org/obo/MOD_acronym> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "acronym" ;
+    rdfs:range linkml:String ;
+    rdfs:seeAlso "http://omv.ontoware.org/2005/05/ontology#acronym" ;
+    skos:definition """The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.
+
+This metadatum is also recommended as required by:
+
+        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+        * https://w3id.org/mod/2.0
+        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
+        * https://bioportal.bioontology.org/ontologies/OMV
+""" ;
+    skos:exactMatch <http://purl.obolibrary.org/obo/MOD_acronym> ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.",
+        "This property is declared only as recommended in this schema although it is technically required within the configuration of the TIB TS, as it can be derived directly from the required [preferredPrefix](preferredPrefix) if not present." .
+
+dcterms:alternative a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "alternativeTitle" ;
+    rdfs:range linkml:String ;
+    skos:definition "An alternative title or name of an ontology or SKOS vocabulary." ;
+    skos:exactMatch dcterms:alternative .
+
 dcterms:created a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "created" ;
@@ -170,28 +920,6 @@ dcterms:created a owl:ObjectProperty,
     skos:exactMatch dcterms:created ;
     skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
-dcterms:creator a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "creator" ;
-    rdfs:range linkml:Uriorcurie ;
-    rdfs:seeAlso "dc:creator",
-        "pav:createdBy",
-        "prov:wasAttributedTo",
-        "schema:creator" ;
-    rdfs:subPropertyOf dcterms:contributor ;
-    skos:definition """The ontology should state who was or is responsible for its development. It is recommended to not only provide the creators’ names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:creator predicat. For a literal representations of a creator the predicate dc:creator is recommended to be in line with DCMI specs.
-
-This metadatum is also recommended as required by:
-
-  * https://w3id.org/mod/2.0
-  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
-  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community
-  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
-  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
-""" ;
-    skos:exactMatch dcterms:creator ;
-    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
-
 dcterms:isReferencedBy a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "documentation" ;
@@ -203,15 +931,29 @@ dcterms:isReferencedBy a owl:ObjectProperty,
     skos:exactMatch dcterms:isReferencedBy ;
     skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
-dcterms:modified a owl:ObjectProperty,
+dcterms:license a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "modificationDate" ;
-    rdfs:range linkml:String ;
-    rdfs:seeAlso "pav:curatedOn",
-        "schema:dateModified" ;
-    rdfs:subPropertyOf tibts:versionInformation ;
-    skos:definition "A property to provide the date when a ressource was updated." ;
-    skos:exactMatch dcterms:modified ;
+    rdfs:label "license" ;
+    rdfs:range linkml:Uriorcurie ;
+    rdfs:seeAlso "http://creativecommons.org/ns#license",
+        "http://dbpedia.org/ontology/license",
+        "http://purl.org/dc/elements/1.1/rights",
+        "http://purl.org/dc/terms/rights" ;
+    skos:definition """The license of the ontology/vocabulary. Ontologies and SKOS vocabularies should refer to license documents on the web via PIDs. The license text helps others to evaluate how they may reuse the ontology/vocabulary.
+Only ontologies with an open license will be published on the TIB Terminology Service.
+
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * https://doi.org/10.1371/journal.pcbi.1009041
+  * http://ceur-ws.org/Vol-3127/#paper-15 
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch dcterms:license ;
     skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
 dcterms:source a owl:ObjectProperty,
@@ -224,6 +966,27 @@ dcterms:source a owl:ObjectProperty,
     rdfs:subPropertyOf tibts:provenanceProperty ;
     skos:definition "A property to provide one or more sources from which a ressource was derived." ;
     skos:exactMatch dcterms:source ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
+
+dcterms:title a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "title" ;
+    rdfs:range linkml:String ;
+    rdfs:seeAlso "dc:title",
+        "schema:name" ;
+    skos:definition """The title or name of an ontology or SKOS vocabulary.
+
+This metadatum is also recommended as required by:
+
+  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
+  * http://purl.obolibrary.org/meta/context.jsonld
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://github.com/owlcs/miro/blob/master/miro.md#a1-ontology-name
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch dcterms:title ;
     skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
 owl:imports a owl:ObjectProperty,
@@ -242,7 +1005,7 @@ This metadatum is also recommended as required by:
 
 owl:versionIRI a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "versionURI" ;
+    rdfs:label "versionIRI" ;
     rdfs:range linkml:String ;
     rdfs:seeAlso "schema:schemaVersion" ;
     rdfs:subPropertyOf tibts:versionInformation ;
@@ -311,177 +1074,6 @@ This metadatum is also recommended as required by:
     skos:exactMatch adms:versionNotes ;
     skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
-dcterms:contributor a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "contributor" ;
-    rdfs:range linkml:Uriorcurie ;
-    rdfs:seeAlso "prov:wasAttributedTo" ;
-    rdfs:subPropertyOf tibts:provenanceProperty ;
-    skos:definition """The ontology should state who was or is contributing to its development. It is recommended to not only provide the contributor's names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:contributor predicat. For a literal representations of a creator the predicate dc:contributor is recommended to be in line with DCMI specs.
-
-This metadatum is also recommended as required by:
-
-  * https://w3id.org/mod/2.0
-  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
-  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community
-  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
-  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
-""" ;
-    skos:exactMatch dcterms:contributor ;
-    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
-
-tibts:OptionalMetadata a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "OptionalMetadata" ;
-    rdfs:subClassOf linkml:mixin ;
-    skos:definition "A mixin that provides the optional properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
-
-tibts:RecommendedMetadata a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "RecommendedMetadata" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:alternative ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <http://identifiers.org/alternatePrefix> ],
-        linkml:mixin ;
-    skos:definition "A mixin that provides the recommended properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
-
-tibts:RequiredMetadata a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "RequiredMetadata" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass linkml:String ;
-            owl:onProperty <http://purl.obolibrary.org/obo/MOD_acronym> ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty dcterms:license ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:Uriorcurie ;
-            owl:onProperty <http://www.w3.org/ns/dcat#accessURL> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:onClass linkml:String ;
-            owl:onProperty dcterms:title ;
-            owl:qualifiedCardinality 1 ],
-        linkml:mixin ;
-    skos:definition "A mixin that provides the required properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service." .
-
-tibts:provenanceProperty a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "provenanceProperty" ;
-    rdfs:range linkml:String ;
-    skos:definition "An abstract property to group all properties that deal with provenance of a ressource." .
-
-<http://example.org/UNKNOWN/vann/preferredNamespacePrefix> a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "preferredPrefix" ;
-    rdfs:range linkml:String ;
-    rdfs:seeAlso "idot:preferredPrefix" ;
-    skos:definition """The official prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) (e.g. **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/).
-
-This metadatum is also recommended as required by:
-
-  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
-  * http://purl.obolibrary.org/meta/context.jsonld
-  * https://w3id.org/mod/2.0
-  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
-  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
-  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
-  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
-""" ;
-    skos:exactMatch <http://example.org/UNKNOWN/vann/preferredNamespacePrefix> ;
-    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.",
-        "The ontology should declare its own preferred prefix. The prefix should be unique. You can check whether an ontology prefix is already in use on services like [prefix.cc](https://prefix.cc) or [bioregistry.io](https://bioregistry.io)." .
-
-<http://identifiers.org/alternatePrefix> a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "alternativePrefix" ;
-    rdfs:range linkml:String ;
-    skos:definition "A prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) that is not the officially preferren one but an alternative that may be used in different contexts (e.g. **DCTERMS** or **dct** instead of the [preferredPrefix](preferredPrefix) **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/)." ;
-    skos:exactMatch <http://identifiers.org/alternatePrefix> ;
-    skos:note "This property is recommended to be used when there are multiple prefixes in use for a namespace, to allow resolvability of CURIEs." .
-
-<http://purl.obolibrary.org/obo/MOD_acronym> a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "acronym" ;
-    rdfs:range linkml:String ;
-    rdfs:seeAlso "http://omv.ontoware.org/2005/05/ontology#acronym" ;
-    skos:definition """The ID is used as a short name for the ontology or SKOS vocabulary on the TIB Terminology Service ontology list. It can be the same string as the preferred prefix. It should be unique and not contain a hyphen.
-
-This metadatum is also recommended as required by:
-
-        * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
-        * https://w3id.org/mod/2.0
-        * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md
-        * https://bioportal.bioontology.org/ontologies/OMV
-""" ;
-    skos:exactMatch <http://purl.obolibrary.org/obo/MOD_acronym> ;
-    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate.",
-        "This property is declared only as recommended in this schema although it is technically required within the configuration of the TIB TS, as it can be derived directly from the required [preferredPrefix](preferredPrefix) if not present." .
-
-dcterms:alternative a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "alternativeTitle" ;
-    rdfs:range linkml:String ;
-    skos:definition "An alternative title or name of an ontology or SKOS vocabulary." ;
-    skos:exactMatch dcterms:alternative .
-
-dcterms:license a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "license" ;
-    rdfs:range linkml:Uriorcurie ;
-    rdfs:seeAlso "http://creativecommons.org/ns#license",
-        "http://dbpedia.org/ontology/license",
-        "http://purl.org/dc/elements/1.1/rights",
-        "http://purl.org/dc/terms/rights" ;
-    skos:definition """The license of the ontology/vocabulary. Ontologies and SKOS vocabularies should refer to license documents on the web via PIDs. The license text helps others to evaluate how they may reuse the ontology/vocabulary.
-Only ontologies with an open license will be published on the TIB Terminology Service.
-
-This metadatum is also recommended as required by:
-
-  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
-  * http://purl.obolibrary.org/meta/context.jsonld
-  * https://w3id.org/mod/2.0
-  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
-  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
-  * https://doi.org/10.1371/journal.pcbi.1009041
-  * http://ceur-ws.org/Vol-3127/#paper-15 
-  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
-""" ;
-    skos:exactMatch dcterms:license ;
-    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
-
-dcterms:title a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "title" ;
-    rdfs:range linkml:String ;
-    rdfs:seeAlso "dc:title",
-        "schema:name" ;
-    skos:definition """The title or name of an ontology or SKOS vocabulary.
-
-This metadatum is also recommended as required by:
-
-  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852
-  * http://purl.obolibrary.org/meta/context.jsonld
-  * https://w3id.org/mod/2.0
-  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
-  * https://github.com/owlcs/miro/blob/master/miro.md#a1-ontology-name
-  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
-  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
-""" ;
-    skos:exactMatch dcterms:title ;
-    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
-
 <http://www.w3.org/ns/dcat#accessURL> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "purl" ;
@@ -506,8 +1098,60 @@ This metadatum is also recommended by:
     skos:exactMatch <http://www.w3.org/ns/dcat#accessURL> ;
     skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
+dcterms:contributor a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "contributor" ;
+    rdfs:range linkml:Uriorcurie ;
+    rdfs:seeAlso "prov:wasAttributedTo" ;
+    rdfs:subPropertyOf tibts:provenanceProperty ;
+    skos:definition """The ontology should state who was or is contributing to its development. It is recommended to not only provide the contributor's names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:contributor predicat. For a literal representations of a creator the predicate dc:contributor is recommended to be in line with DCMI specs.
+
+This metadatum is also recommended as required by:
+
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch dcterms:contributor ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
+
 linkml:ClassDefinition a owl:Class ;
     rdfs:label "class_definition" .
+
+dcterms:creator a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "creator" ;
+    rdfs:range linkml:Uriorcurie ;
+    rdfs:seeAlso "dc:creator",
+        "pav:createdBy",
+        "prov:wasAttributedTo",
+        "schema:creator" ;
+    rdfs:subPropertyOf dcterms:contributor ;
+    skos:definition """The ontology should state who was or is responsible for its development. It is recommended to not only provide the creators’ names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:creator predicat. For a literal representations of a creator the predicate dc:creator is recommended to be in line with DCMI specs.
+
+This metadatum is also recommended as required by:
+
+  * https://w3id.org/mod/2.0
+  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf
+  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community
+  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html
+  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)
+""" ;
+    skos:exactMatch dcterms:creator ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
+
+dcterms:modified a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "modificationDate" ;
+    rdfs:range linkml:String ;
+    rdfs:seeAlso "pav:curatedOn",
+        "schema:dateModified" ;
+    rdfs:subPropertyOf tibts:versionInformation ;
+    skos:definition "A property to provide the date when a ressource was updated." ;
+    skos:exactMatch dcterms:modified ;
+    skos:note "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate." .
 
 tibts:versionInformation a owl:ObjectProperty,
         linkml:SlotDefinition ;

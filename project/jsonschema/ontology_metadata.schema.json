@@ -16,20 +16,167 @@
                     "description": "An alternative title or name of an ontology or SKOS vocabulary.",
                     "type": "string"
                 },
+                "applicationExample": {
+                    "type": "string"
+                },
+                "appliedMethodology": {
+                    "type": "string"
+                },
+                "audience": {
+                    "type": "string"
+                },
+                "citations": {
+                    "type": "string"
+                },
+                "comments": {
+                    "type": "string"
+                },
+                "competencyQuestions": {
+                    "type": "string"
+                },
+                "contactInfo": {
+                    "type": "string"
+                },
+                "contributor": {
+                    "description": "The ontology should state who was or is contributing to its development. It is recommended to not only provide the contributor's names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:contributor predicat. For a literal representations of a creator the predicate dc:contributor is recommended to be in line with DCMI specs.\n\nThis metadatum is also recommended as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "created": {
+                    "description": "A property to provide the date when the ontology or a term thereof came into being.",
+                    "type": "string"
+                },
+                "creator": {
+                    "description": "The ontology should state who was or is responsible for its development. It is recommended to not only provide the creators\u2019 names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:creator predicat. For a literal representations of a creator the predicate dc:creator is recommended to be in line with DCMI specs.\n\nThis metadatum is also recommended as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "derivedFrom": {
+                    "description": "A property to provide one or more sources from which a ressource was derived.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "The ontology should describe its own contents and scope with a few words or sentences in order to inform human users what the ontology tries to accomplish.\nThe description is displayed in the TIB Terminology Service ontology list and on the start page of each ontology - we therefore recommend to keep it short! For an extensive discussion about the ontology you may want to consider the publication of a traditional academic article or a detailed documentation.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * http://ceur-ws.org/Vol-3127/#paper-15\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "type": "string"
+                },
+                "developmentEnvironment": {
+                    "type": "string"
+                },
+                "distributions": {
+                    "type": "string"
+                },
+                "documentation": {
+                    "description": "To familiarize interested others with the concepts and scope of your ontology, you should consider creating some kind of documentation. A relatively easy way to do this, is to use the tool [Widoco](https://pad.gwdg.de/). It generates the documentation from the ontology and a resulting html-document can be published, for example with GitLab Pages. This auto-generated document can contain customary additions that help users to understand the ontology better.\n",
+                    "type": "string"
+                },
+                "domainCovered": {
+                    "type": "string"
+                },
+                "exampleClass": {
+                    "type": "string"
+                },
+                "exampleIdentifier": {
+                    "type": "string"
+                },
+                "format": {
+                    "type": "string"
+                },
+                "fundingInfo": {
+                    "type": "string"
+                },
+                "homepage": {
+                    "type": "string"
+                },
+                "identifierPattern": {
+                    "type": "string"
+                },
+                "imports": {
+                    "description": "Version information may also be accompanied by a description about changes between one version of the ontology and its predecessor.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/owlcs/miro/blob/master/miro.md#e4-incorporation-of-other-ontologies\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n",
+                    "type": "string"
+                },
+                "issueTracker": {
+                    "description": "Ontologies should be managed with version control software like git. Ideally, the development process of an ontology is open and takes place on platforms like GitLab.com. The ontology should point to the issue tracker of its own development environment so that others may report bugs or suggestions to the developers.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n  * https://github.com/owlcs/miro/blob/master/miro.md#c3-communication\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n",
+                    "type": "string"
+                },
+                "languageCovered": {
+                    "type": "string"
+                },
+                "languageExpressedIn": {
+                    "type": "string"
+                },
                 "license": {
                     "description": "The license of the ontology/vocabulary. Ontologies and SKOS vocabularies should refer to license documents on the web via PIDs. The license text helps others to evaluate how they may reuse the ontology/vocabulary.\nOnly ontologies with an open license will be published on the TIB Terminology Service.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15 \n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "type": "string"
+                },
+                "logo": {
+                    "type": "string"
+                },
+                "mailingList": {
+                    "type": "string"
+                },
+                "mappingRessources": {
+                    "type": "string"
+                },
+                "modificationDate": {
+                    "description": "A property to provide the date when a ressource was updated.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "otherIdentifier": {
                     "type": "string"
                 },
                 "preferredPrefix": {
                     "description": "The official prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) (e.g. **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/).\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
                     "type": "string"
                 },
+                "publisher": {
+                    "type": "string"
+                },
                 "purl": {
                     "description": "The PURL of an ontology is its persistent identifier. It is usually used by within the ontology to state:\n`<https://www.domain.de/myOntology> rdf:type owl:Ontology.` \nIt is usually able to locate and retrieve the ontology on the world wide web, so pasting it into your web browser should retrieve a digital document. Furthermore, it is often configured to do content negotiation so that different related resources can be retrieved with the same identifier - e.g. the human-readable ontology documentation or different serializations of an ontology.        \nOntologies usually also use the PURL to identify their classes and properties, e.g. in statements like:          \n    `<https://www.domain.de/myOntology#someProperty> rdf:type owl:AnnotationProperty.`\nA working PURL is required to retrieve the ontology for indexing by the TIB Terminology Service.\nThis metadatum is also recommended by:\n\n  * http://purl.obolibrary.org/meta/context.jsonld    \n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * [ Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
                     "type": "string"
                 },
+                "references": {
+                    "type": "string"
+                },
+                "relatedVersions": {
+                    "type": "string"
+                },
+                "rootTerms": {
+                    "type": "string"
+                },
+                "socialMediaAccount": {
+                    "type": "string"
+                },
+                "sourceRepository": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
                 "title": {
                     "description": "The title or name of an ontology or SKOS vocabulary.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://github.com/owlcs/miro/blob/master/miro.md#a1-ontology-name\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "type": "string"
+                },
+                "versionIRI": {
+                    "description": "A version URI is a persistent identifier for a version of an ontology and is used just like its PURL to reliably retrieve a former version of an ontology. Since a PURL usually only points to the latest version of an ontology, each ontology version should additionally state its version URI.\nThe textual version information is usually part of a version URI of an ontology.\nHere is an example from the Academic Event Ontology:\n```http://purl.obolibrary.org/obo/aeon/aeon-full.owl\nhttp://purl.obolibrary.org/obo/aeon/releases/2022-11-25/aeon-full.owl```\n\nHere is an example from ListDB Ontology:\n```https://w3id.org/listdb/onto/\nhttps://w3id.org/listdb/onto/0.0.1```\n\nHere is an example from the GND Ontology:\n```https://d-nb.info/standards/elementset/gnd#\nhttps://d-nb.info/standards/elementset/gnd_20221010```\n\nThis metadatum is also recommended as required by:\n\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "type": "string"
+                },
+                "versionInfo": {
+                    "description": "Some ontologies make use of semantic versioning and employ strings like 1.0.0 as a tag to distinguish one version of their ontology from a successor. Others employ the modification date, e.g. 2022-12-21.\n\nThis metadatum is also recommended as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "type": "string"
+                },
+                "versionNotes": {
+                    "description": "Version information may also be accompanied by a description about changes between one version of the ontology and its predecessor.\n\nThis metadatum is also recommended as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n",
                     "type": "string"
                 }
             },
@@ -37,7 +184,16 @@
                 "purl",
                 "title",
                 "preferredPrefix",
-                "license"
+                "license",
+                "creator",
+                "versionInfo",
+                "versionNotes",
+                "created",
+                "modificationDate",
+                "description",
+                "issueTracker",
+                "documentation",
+                "imports"
             ],
             "title": "Ontology",
             "type": "object"
@@ -58,20 +214,167 @@
                     "description": "An alternative title or name of an ontology or SKOS vocabulary.",
                     "type": "string"
                 },
+                "applicationExample": {
+                    "type": "string"
+                },
+                "appliedMethodology": {
+                    "type": "string"
+                },
+                "audience": {
+                    "type": "string"
+                },
+                "citations": {
+                    "type": "string"
+                },
+                "comments": {
+                    "type": "string"
+                },
+                "competencyQuestions": {
+                    "type": "string"
+                },
+                "contactInfo": {
+                    "type": "string"
+                },
+                "contributor": {
+                    "description": "The ontology should state who was or is contributing to its development. It is recommended to not only provide the contributor's names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:contributor predicat. For a literal representations of a creator the predicate dc:contributor is recommended to be in line with DCMI specs.\n\nThis metadatum is also recommended as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "created": {
+                    "description": "A property to provide the date when the ontology or a term thereof came into being.",
+                    "type": "string"
+                },
+                "creator": {
+                    "description": "The ontology should state who was or is responsible for its development. It is recommended to not only provide the creators\u2019 names but also to link to their ORCID, ROR or Wikidata profiles if available. Using an IRI to identify the creator is a must when using the dcterms:creator predicat. For a literal representations of a creator the predicate dc:creator is recommended to be in line with DCMI specs.\n\nThis metadatum is also recommended as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://github.com/owlcs/miro/blob/master/miro.md#c2-development-community\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "derivedFrom": {
+                    "description": "A property to provide one or more sources from which a ressource was derived.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "description": {
+                    "description": "The ontology should describe its own contents and scope with a few words or sentences in order to inform human users what the ontology tries to accomplish.\nThe description is displayed in the TIB Terminology Service ontology list and on the start page of each ontology - we therefore recommend to keep it short! For an extensive discussion about the ontology you may want to consider the publication of a traditional academic article or a detailed documentation.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * http://ceur-ws.org/Vol-3127/#paper-15\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "type": "string"
+                },
+                "developmentEnvironment": {
+                    "type": "string"
+                },
+                "distributions": {
+                    "type": "string"
+                },
+                "documentation": {
+                    "description": "To familiarize interested others with the concepts and scope of your ontology, you should consider creating some kind of documentation. A relatively easy way to do this, is to use the tool [Widoco](https://pad.gwdg.de/). It generates the documentation from the ontology and a resulting html-document can be published, for example with GitLab Pages. This auto-generated document can contain customary additions that help users to understand the ontology better.\n",
+                    "type": "string"
+                },
+                "domainCovered": {
+                    "type": "string"
+                },
+                "exampleClass": {
+                    "type": "string"
+                },
+                "exampleIdentifier": {
+                    "type": "string"
+                },
+                "format": {
+                    "type": "string"
+                },
+                "fundingInfo": {
+                    "type": "string"
+                },
+                "homepage": {
+                    "type": "string"
+                },
+                "identifierPattern": {
+                    "type": "string"
+                },
+                "imports": {
+                    "description": "Version information may also be accompanied by a description about changes between one version of the ontology and its predecessor.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/owlcs/miro/blob/master/miro.md#e4-incorporation-of-other-ontologies\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n",
+                    "type": "string"
+                },
+                "issueTracker": {
+                    "description": "Ontologies should be managed with version control software like git. Ideally, the development process of an ontology is open and takes place on platforms like GitLab.com. The ontology should point to the issue tracker of its own development environment so that others may report bugs or suggestions to the developers.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n  * https://github.com/owlcs/miro/blob/master/miro.md#c3-communication\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n",
+                    "type": "string"
+                },
+                "languageCovered": {
+                    "type": "string"
+                },
+                "languageExpressedIn": {
+                    "type": "string"
+                },
                 "license": {
                     "description": "The license of the ontology/vocabulary. Ontologies and SKOS vocabularies should refer to license documents on the web via PIDs. The license text helps others to evaluate how they may reuse the ontology/vocabulary.\nOnly ontologies with an open license will be published on the TIB Terminology Service.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15 \n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "type": "string"
+                },
+                "logo": {
+                    "type": "string"
+                },
+                "mailingList": {
+                    "type": "string"
+                },
+                "mappingRessources": {
+                    "type": "string"
+                },
+                "modificationDate": {
+                    "description": "A property to provide the date when a ressource was updated.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "otherIdentifier": {
                     "type": "string"
                 },
                 "preferredPrefix": {
                     "description": "The official prefix of an ontology or vocabulary namespace according to the [W3C specification](https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName) (e.g. **dcterms** for [http://purl.org/dc/terms/](http://purl.org/dc/terms/).\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
                     "type": "string"
                 },
+                "publisher": {
+                    "type": "string"
+                },
                 "purl": {
                     "description": "The PURL of an ontology is its persistent identifier. It is usually used by within the ontology to state:\n`<https://www.domain.de/myOntology> rdf:type owl:Ontology.` \nIt is usually able to locate and retrieve the ontology on the world wide web, so pasting it into your web browser should retrieve a digital document. Furthermore, it is often configured to do content negotiation so that different related resources can be retrieved with the same identifier - e.g. the human-readable ontology documentation or different serializations of an ontology.        \nOntologies usually also use the PURL to identify their classes and properties, e.g. in statements like:          \n    `<https://www.domain.de/myOntology#someProperty> rdf:type owl:AnnotationProperty.`\nA working PURL is required to retrieve the ontology for indexing by the TIB Terminology Service.\nThis metadatum is also recommended by:\n\n  * http://purl.obolibrary.org/meta/context.jsonld    \n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * [ Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
                     "type": "string"
                 },
+                "references": {
+                    "type": "string"
+                },
+                "relatedVersions": {
+                    "type": "string"
+                },
+                "rootTerms": {
+                    "type": "string"
+                },
+                "socialMediaAccount": {
+                    "type": "string"
+                },
+                "sourceRepository": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
                 "title": {
                     "description": "The title or name of an ontology or SKOS vocabulary.\n\nThis metadatum is also recommended as required by:\n\n  * https://github.com/information-artifact-ontology/ontology-metadata/pull/106#issuecomment-1117383852\n  * http://purl.obolibrary.org/meta/context.jsonld\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://github.com/owlcs/miro/blob/master/miro.md#a1-ontology-name\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "type": "string"
+                },
+                "versionIRI": {
+                    "description": "A version URI is a persistent identifier for a version of an ontology and is used just like its PURL to reliably retrieve a former version of an ontology. Since a PURL usually only points to the latest version of an ontology, each ontology version should additionally state its version URI.\nThe textual version information is usually part of a version URI of an ontology.\nHere is an example from the Academic Event Ontology:\n```http://purl.obolibrary.org/obo/aeon/aeon-full.owl\nhttp://purl.obolibrary.org/obo/aeon/releases/2022-11-25/aeon-full.owl```\n\nHere is an example from ListDB Ontology:\n```https://w3id.org/listdb/onto/\nhttps://w3id.org/listdb/onto/0.0.1```\n\nHere is an example from the GND Ontology:\n```https://d-nb.info/standards/elementset/gnd#\nhttps://d-nb.info/standards/elementset/gnd_20221010```\n\nThis metadatum is also recommended as required by:\n\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "type": "string"
+                },
+                "versionInfo": {
+                    "description": "Some ontologies make use of semantic versioning and employ strings like 1.0.0 as a tag to distinguish one version of their ontology from a successor. Others employ the modification date, e.g. 2022-12-21.\n\nThis metadatum is also recommended as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
+                    "type": "string"
+                },
+                "versionNotes": {
+                    "description": "Version information may also be accompanied by a description about changes between one version of the ontology and its predecessor.\n\nThis metadatum is also recommended as required by:\n\n  * https://w3id.org/mod/2.0\n  * https://lov.linkeddata.es/Recommendations_Vocabulary_Design.pdf\n  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n",
                     "type": "string"
                 }
             },
@@ -79,7 +382,16 @@
                 "purl",
                 "title",
                 "preferredPrefix",
-                "license"
+                "license",
+                "creator",
+                "versionInfo",
+                "versionNotes",
+                "created",
+                "modificationDate",
+                "description",
+                "issueTracker",
+                "documentation",
+                "imports"
             ],
             "title": "SkosConceptScheme",
             "type": "object"

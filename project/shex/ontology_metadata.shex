@@ -2,11 +2,14 @@ BASE <hhttp://terminology.tib.eu/schema/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX dc: <http://purl.org/dc/terms/>
 PREFIX idot: <http://identifiers.org/>
 PREFIX vann: <http://example.org/UNKNOWN/vann/>
+PREFIX dcterm: <http://example.org/UNKNOWN/dcterm/>
+PREFIX doap: <http://example.org/UNKNOWN/doap/>
 
 
 linkml:String xsd:string
@@ -52,6 +55,47 @@ linkml:Nodeidentifier NONLITERAL
           vann:preferredNamespacePrefix @linkml:String ;
           <http://purl.obolibrary.org/obo/MOD_acronym> @linkml:String ? ;
           dc:license @linkml:Uriorcurie ;
+          dc:creator @linkml:Uriorcurie + ;
+          owl:versionInfo @linkml:String ;
+          owl:versionIRI @linkml:String ? ;
+          adms:versionNotes @linkml:String ;
+          dc:created @linkml:String ;
+          dc:modified @linkml:String + ;
+          dcterm:description @linkml:String ;
+          doap:bug-database @linkml:String ;
+          dc:isReferencedBy @linkml:String ;
+          owl:imports @linkml:String ;
+          dc:contributor @linkml:Uriorcurie * ;
+          <hhttp://terminology.tib.eu/schemacontactInfo> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemafundingInfo> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaaudience> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemadomainCovered> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemalanguageCovered> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemalanguageExpressedIn> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemastatus> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemasourceRepository> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemadistributions> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaapplicationExample> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemareferences> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemacitations> @linkml:String ? ;
+          dc:source @linkml:String * ;
+          <hhttp://terminology.tib.eu/schemarootTerms> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemarelatedVersions> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemasocialMediaAccount> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaidentifierPattern> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaformat> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemahomepage> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemapublisher> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemacomments> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaexampleIdentifier> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaexampleClass> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemamailingList> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemalogo> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaotherIdentifier> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemadevelopmentEnvironment> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemamappingRessources> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemacompetencyQuestions> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaappliedMethodology> @linkml:String ? ;
           dc:alternative @linkml:String ? ;
           idot:alternatePrefix @linkml:String ?
        ) ;
@@ -60,14 +104,46 @@ linkml:Nodeidentifier NONLITERAL
 }
 
 <hhttp://terminology.tib.eu/schemaOptionalMetadata> {
-    (  $<hhttp://terminology.tib.eu/schemaOptionalMetadata_tes> rdf:type . * ;
+    (  $<hhttp://terminology.tib.eu/schemaOptionalMetadata_tes> (  <hhttp://terminology.tib.eu/schemarelatedVersions>
+          @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemasocialMediaAccount> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaidentifierPattern> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaformat> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemahomepage> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemapublisher> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemacomments> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaexampleIdentifier> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaexampleClass> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemamailingList> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemalogo> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaotherIdentifier> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemadevelopmentEnvironment> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemamappingRessources> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemacompetencyQuestions> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaappliedMethodology> @linkml:String ? ;
+          dc:alternative @linkml:String ? ;
+          idot:alternatePrefix @linkml:String ?
+       ) ;
        rdf:type [ <hhttp://terminology.tib.eu/schemaOptionalMetadata> ] ?
     )
 }
 
 <hhttp://terminology.tib.eu/schemaRecommendedMetadata> {
-    (  $<hhttp://terminology.tib.eu/schemaRecommendedMetadata_tes> (  dc:alternative @linkml:String ? ;
-          idot:alternatePrefix @linkml:String ?
+    (  $<hhttp://terminology.tib.eu/schemaRecommendedMetadata_tes> (  dc:contributor @linkml:Uriorcurie * ;
+          <hhttp://terminology.tib.eu/schemacontactInfo> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemafundingInfo> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaaudience> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemadomainCovered> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemalanguageCovered> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemalanguageExpressedIn> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemastatus> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemasourceRepository> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemadistributions> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaapplicationExample> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemareferences> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemacitations> @linkml:String ? ;
+          dc:source @linkml:String * ;
+          <hhttp://terminology.tib.eu/schemarootTerms> @linkml:String ?
        ) ;
        rdf:type [ <hhttp://terminology.tib.eu/schemaRecommendedMetadata> ] ?
     )
@@ -77,7 +153,17 @@ linkml:Nodeidentifier NONLITERAL
     (  $<hhttp://terminology.tib.eu/schemaRequiredMetadata_tes> (  dc:title @linkml:String ;
           vann:preferredNamespacePrefix @linkml:String ;
           <http://purl.obolibrary.org/obo/MOD_acronym> @linkml:String ? ;
-          dc:license @linkml:Uriorcurie
+          dc:license @linkml:Uriorcurie ;
+          dc:creator @linkml:Uriorcurie + ;
+          owl:versionInfo @linkml:String ;
+          owl:versionIRI @linkml:String ? ;
+          adms:versionNotes @linkml:String ;
+          dc:created @linkml:String ;
+          dc:modified @linkml:String + ;
+          dcterm:description @linkml:String ;
+          doap:bug-database @linkml:String ;
+          dc:isReferencedBy @linkml:String ;
+          owl:imports @linkml:String
        ) ;
        rdf:type [ <hhttp://terminology.tib.eu/schemaRequiredMetadata> ]
     )
@@ -94,6 +180,47 @@ linkml:Nodeidentifier NONLITERAL
           vann:preferredNamespacePrefix @linkml:String ;
           <http://purl.obolibrary.org/obo/MOD_acronym> @linkml:String ? ;
           dc:license @linkml:Uriorcurie ;
+          dc:creator @linkml:Uriorcurie + ;
+          owl:versionInfo @linkml:String ;
+          owl:versionIRI @linkml:String ? ;
+          adms:versionNotes @linkml:String ;
+          dc:created @linkml:String ;
+          dc:modified @linkml:String + ;
+          dcterm:description @linkml:String ;
+          doap:bug-database @linkml:String ;
+          dc:isReferencedBy @linkml:String ;
+          owl:imports @linkml:String ;
+          dc:contributor @linkml:Uriorcurie * ;
+          <hhttp://terminology.tib.eu/schemacontactInfo> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemafundingInfo> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaaudience> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemadomainCovered> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemalanguageCovered> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemalanguageExpressedIn> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemastatus> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemasourceRepository> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemadistributions> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaapplicationExample> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemareferences> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemacitations> @linkml:String ? ;
+          dc:source @linkml:String * ;
+          <hhttp://terminology.tib.eu/schemarootTerms> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemarelatedVersions> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemasocialMediaAccount> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaidentifierPattern> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaformat> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemahomepage> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemapublisher> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemacomments> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaexampleIdentifier> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaexampleClass> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemamailingList> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemalogo> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaotherIdentifier> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemadevelopmentEnvironment> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemamappingRessources> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemacompetencyQuestions> @linkml:String ? ;
+          <hhttp://terminology.tib.eu/schemaappliedMethodology> @linkml:String ? ;
           dc:alternative @linkml:String ? ;
           idot:alternatePrefix @linkml:String ?
        ) ;

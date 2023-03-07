@@ -1,6 +1,6 @@
 {
   "name": "Ontology-Metadata-TIB",
-  "description": "The metadata schema of the TIB Terminology Service that formalizes which metadata annotations are required, recommended and optional for an OWL ontology or SKOS vocabulary that is supposed to be index in the TIB TS:",
+  "description": "The metadata schema of the TIB Terminology Service that formalizes which metadata annotations are required, recommended and optional for an OWL ontology or SKOS vocabulary that is supposed to be index in the TIB TS.",
   "title": "Ontology Metadata Schema of the TIB Terminology Service",
   "todos": [
     "We should define properties for definition_property, label_property and synonym_property so that the ontologies can self-declare which annotation property should be used in the indexing."
@@ -483,7 +483,13 @@
       "is_a": "contributor",
       "slot_uri": "http://purl.org/dc/terms/creator",
       "multivalued": true,
+      "owner": "RequiredMetadata",
+      "domain_of": [
+        "RequiredMetadata"
+      ],
       "range": "uriorcurie",
+      "required": true,
+      "recommended": true,
       "@type": "SlotDefinition"
     },
     {
@@ -503,13 +509,17 @@
       ],
       "is_a": "versionInformation",
       "slot_uri": "http://www.w3.org/2002/07/owl#versionInfo",
+      "owner": "RequiredMetadata",
+      "domain_of": [
+        "RequiredMetadata"
+      ],
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "versionURI",
-      "definition_uri": "hhttp://terminology.tib.eu/schemaversionURI",
+      "name": "versionIRI",
+      "definition_uri": "hhttp://terminology.tib.eu/schemaversionIRI",
       "description": "A version URI is a persistent identifier for a version of an ontology and is used just like its PURL to reliably retrieve a former version of an ontology. Since a PURL usually only points to the latest version of an ontology, each ontology version should additionally state its version URI.\nThe textual version information is usually part of a version URI of an ontology.\nHere is an example from the Academic Event Ontology:\n```http://purl.obolibrary.org/obo/aeon/aeon-full.owl\nhttp://purl.obolibrary.org/obo/aeon/releases/2022-11-25/aeon-full.owl```\n\nHere is an example from ListDB Ontology:\n```https://w3id.org/listdb/onto/\nhttps://w3id.org/listdb/onto/0.0.1```\n\nHere is an example from the GND Ontology:\n```https://d-nb.info/standards/elementset/gnd#\nhttps://d-nb.info/standards/elementset/gnd_20221010```\n\nThis metadatum is also recommended as required by:\n\n  * https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html\n  * https://doi.org/10.1371/journal.pcbi.1009041\n  * http://ceur-ws.org/Vol-3127/#paper-15\n  * https://github.com/agroportal/fairness/blob/master/doc/results/FAIR-questions.md\n  * [Best Practices for Implementing FAIR Vocabularies and Ontologies on the Web ](http://dgarijo.com/papers/best_practices2020.pdf)\n",
       "comments": [
         "For the RDF implementation, we recommend using the URI provided here as a standard, but the URI(s) listed under **See Also** might be used as alternative for this predicate."
@@ -523,6 +533,10 @@
       ],
       "is_a": "versionInformation",
       "slot_uri": "http://www.w3.org/2002/07/owl#versionIRI",
+      "owner": "RequiredMetadata",
+      "domain_of": [
+        "RequiredMetadata"
+      ],
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -542,6 +556,10 @@
       ],
       "is_a": "versionInformation",
       "slot_uri": "http://www.w3.org/ns/adms#versionNotes",
+      "owner": "RequiredMetadata",
+      "domain_of": [
+        "RequiredMetadata"
+      ],
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -568,6 +586,10 @@
       ],
       "is_a": "versionInformation",
       "slot_uri": "http://purl.org/dc/terms/created",
+      "owner": "RequiredMetadata",
+      "domain_of": [
+        "RequiredMetadata"
+      ],
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -590,6 +612,10 @@
       "is_a": "versionInformation",
       "slot_uri": "http://purl.org/dc/terms/modified",
       "multivalued": true,
+      "owner": "RequiredMetadata",
+      "domain_of": [
+        "RequiredMetadata"
+      ],
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -614,6 +640,10 @@
       ],
       "is_a": "versionInformation",
       "slot_uri": "http://example.org/UNKNOWN/dcterm/description",
+      "owner": "RequiredMetadata",
+      "domain_of": [
+        "RequiredMetadata"
+      ],
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -634,6 +664,10 @@
       ],
       "is_a": "versionInformation",
       "slot_uri": "http://example.org/UNKNOWN/doap/bug-database",
+      "owner": "RequiredMetadata",
+      "domain_of": [
+        "RequiredMetadata"
+      ],
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -657,6 +691,10 @@
       ],
       "is_a": "versionInformation",
       "slot_uri": "http://purl.org/dc/terms/isReferencedBy",
+      "owner": "RequiredMetadata",
+      "domain_of": [
+        "RequiredMetadata"
+      ],
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -671,6 +709,10 @@
       ],
       "is_a": "versionInformation",
       "slot_uri": "http://www.w3.org/2002/07/owl#imports",
+      "owner": "RequiredMetadata",
+      "domain_of": [
+        "RequiredMetadata"
+      ],
       "range": "string",
       "required": true,
       "@type": "SlotDefinition"
@@ -692,7 +734,168 @@
       "is_a": "provenanceProperty",
       "slot_uri": "http://purl.org/dc/terms/contributor",
       "multivalued": true,
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
       "range": "uriorcurie",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "contactInfo",
+      "definition_uri": "hhttp://terminology.tib.eu/schemacontactInfo",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemacontactInfo",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "fundingInfo",
+      "definition_uri": "hhttp://terminology.tib.eu/schemafundingInfo",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemafundingInfo",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "audience",
+      "definition_uri": "hhttp://terminology.tib.eu/schemaaudience",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemaaudience",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "domainCovered",
+      "definition_uri": "hhttp://terminology.tib.eu/schemadomainCovered",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemadomainCovered",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "languageCovered",
+      "definition_uri": "hhttp://terminology.tib.eu/schemalanguageCovered",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemalanguageCovered",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "languageExpressedIn",
+      "definition_uri": "hhttp://terminology.tib.eu/schemalanguageExpressedIn",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemalanguageExpressedIn",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "status",
+      "definition_uri": "hhttp://terminology.tib.eu/schemastatus",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemastatus",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sourceRepository",
+      "definition_uri": "hhttp://terminology.tib.eu/schemasourceRepository",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemasourceRepository",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "distributions",
+      "definition_uri": "hhttp://terminology.tib.eu/schemadistributions",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemadistributions",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "applicationExample",
+      "definition_uri": "hhttp://terminology.tib.eu/schemaapplicationExample",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemaapplicationExample",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "references",
+      "definition_uri": "hhttp://terminology.tib.eu/schemareferences",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemareferences",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "citations",
+      "definition_uri": "hhttp://terminology.tib.eu/schemacitations",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemacitations",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
       "@type": "SlotDefinition"
     },
     {
@@ -714,7 +917,25 @@
       "is_a": "provenanceProperty",
       "slot_uri": "http://purl.org/dc/terms/source",
       "multivalued": true,
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
       "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "rootTerms",
+      "definition_uri": "hhttp://terminology.tib.eu/schemarootTerms",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemarootTerms",
+      "owner": "RecommendedMetadata",
+      "domain_of": [
+        "RecommendedMetadata"
+      ],
+      "range": "string",
+      "recommended": true,
       "@type": "SlotDefinition"
     },
     {
@@ -729,9 +950,9 @@
         "http://identifiers.org/alternatePrefix"
       ],
       "slot_uri": "http://identifiers.org/alternatePrefix",
-      "owner": "RecommendedMetadata",
+      "owner": "OptionalMetadata",
       "domain_of": [
-        "RecommendedMetadata"
+        "OptionalMetadata"
       ],
       "range": "string",
       "recommended": true,
@@ -746,12 +967,204 @@
         "http://purl.org/dc/terms/alternative"
       ],
       "slot_uri": "http://purl.org/dc/terms/alternative",
-      "owner": "RecommendedMetadata",
+      "owner": "OptionalMetadata",
       "domain_of": [
-        "RecommendedMetadata"
+        "OptionalMetadata"
       ],
       "range": "string",
       "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "relatedVersions",
+      "definition_uri": "hhttp://terminology.tib.eu/schemarelatedVersions",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemarelatedVersions",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "socialMediaAccount",
+      "definition_uri": "hhttp://terminology.tib.eu/schemasocialMediaAccount",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemasocialMediaAccount",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "identifierPattern",
+      "definition_uri": "hhttp://terminology.tib.eu/schemaidentifierPattern",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemaidentifierPattern",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "format",
+      "definition_uri": "hhttp://terminology.tib.eu/schemaformat",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemaformat",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "homepage",
+      "definition_uri": "hhttp://terminology.tib.eu/schemahomepage",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemahomepage",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "publisher",
+      "definition_uri": "hhttp://terminology.tib.eu/schemapublisher",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemapublisher",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "comments",
+      "definition_uri": "hhttp://terminology.tib.eu/schemacomments",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemacomments",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "exampleIdentifier",
+      "definition_uri": "hhttp://terminology.tib.eu/schemaexampleIdentifier",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemaexampleIdentifier",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "exampleClass",
+      "definition_uri": "hhttp://terminology.tib.eu/schemaexampleClass",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemaexampleClass",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mailingList",
+      "definition_uri": "hhttp://terminology.tib.eu/schemamailingList",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemamailingList",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "logo",
+      "definition_uri": "hhttp://terminology.tib.eu/schemalogo",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemalogo",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "otherIdentifier",
+      "definition_uri": "hhttp://terminology.tib.eu/schemaotherIdentifier",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemaotherIdentifier",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "developmentEnvironment",
+      "definition_uri": "hhttp://terminology.tib.eu/schemadevelopmentEnvironment",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemadevelopmentEnvironment",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mappingRessources",
+      "definition_uri": "hhttp://terminology.tib.eu/schemamappingRessources",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemamappingRessources",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "competencyQuestions",
+      "definition_uri": "hhttp://terminology.tib.eu/schemacompetencyQuestions",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemacompetencyQuestions",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "appliedMethodology",
+      "definition_uri": "hhttp://terminology.tib.eu/schemaappliedMethodology",
+      "from_schema": "http://terminology.tib.eu/schema",
+      "slot_uri": "hhttp://terminology.tib.eu/schemaappliedMethodology",
+      "owner": "OptionalMetadata",
+      "domain_of": [
+        "OptionalMetadata"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     }
   ],
@@ -767,7 +1180,17 @@
         "title",
         "preferredPrefix",
         "acronym",
-        "license"
+        "license",
+        "creator",
+        "versionInfo",
+        "versionIRI",
+        "versionNotes",
+        "created",
+        "modificationDate",
+        "description",
+        "issueTracker",
+        "documentation",
+        "imports"
       ],
       "slot_usage": {},
       "class_uri": "hhttp://terminology.tib.eu/schemaRequiredMetadata",
@@ -780,8 +1203,21 @@
       "from_schema": "http://terminology.tib.eu/schema",
       "mixin": true,
       "slots": [
-        "alternativeTitle",
-        "alternativePrefix"
+        "contributor",
+        "contactInfo",
+        "fundingInfo",
+        "audience",
+        "domainCovered",
+        "languageCovered",
+        "languageExpressedIn",
+        "status",
+        "sourceRepository",
+        "distributions",
+        "applicationExample",
+        "references",
+        "citations",
+        "derivedFrom",
+        "rootTerms"
       ],
       "slot_usage": {},
       "class_uri": "hhttp://terminology.tib.eu/schemaRecommendedMetadata",
@@ -793,6 +1229,26 @@
       "description": "A mixin that provides the optional properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service.",
       "from_schema": "http://terminology.tib.eu/schema",
       "mixin": true,
+      "slots": [
+        "relatedVersions",
+        "socialMediaAccount",
+        "identifierPattern",
+        "format",
+        "homepage",
+        "publisher",
+        "comments",
+        "exampleIdentifier",
+        "exampleClass",
+        "mailingList",
+        "logo",
+        "otherIdentifier",
+        "developmentEnvironment",
+        "mappingRessources",
+        "competencyQuestions",
+        "appliedMethodology",
+        "alternativeTitle",
+        "alternativePrefix"
+      ],
       "slot_usage": {},
       "class_uri": "hhttp://terminology.tib.eu/schemaOptionalMetadata",
       "@type": "ClassDefinition"
@@ -822,6 +1278,47 @@
         "preferredPrefix",
         "acronym",
         "license",
+        "creator",
+        "versionInfo",
+        "versionIRI",
+        "versionNotes",
+        "created",
+        "modificationDate",
+        "description",
+        "issueTracker",
+        "documentation",
+        "imports",
+        "contributor",
+        "contactInfo",
+        "fundingInfo",
+        "audience",
+        "domainCovered",
+        "languageCovered",
+        "languageExpressedIn",
+        "status",
+        "sourceRepository",
+        "distributions",
+        "applicationExample",
+        "references",
+        "citations",
+        "derivedFrom",
+        "rootTerms",
+        "relatedVersions",
+        "socialMediaAccount",
+        "identifierPattern",
+        "format",
+        "homepage",
+        "publisher",
+        "comments",
+        "exampleIdentifier",
+        "exampleClass",
+        "mailingList",
+        "logo",
+        "otherIdentifier",
+        "developmentEnvironment",
+        "mappingRessources",
+        "competencyQuestions",
+        "appliedMethodology",
         "alternativeTitle",
         "alternativePrefix"
       ],
@@ -848,6 +1345,47 @@
         "preferredPrefix",
         "acronym",
         "license",
+        "creator",
+        "versionInfo",
+        "versionIRI",
+        "versionNotes",
+        "created",
+        "modificationDate",
+        "description",
+        "issueTracker",
+        "documentation",
+        "imports",
+        "contributor",
+        "contactInfo",
+        "fundingInfo",
+        "audience",
+        "domainCovered",
+        "languageCovered",
+        "languageExpressedIn",
+        "status",
+        "sourceRepository",
+        "distributions",
+        "applicationExample",
+        "references",
+        "citations",
+        "derivedFrom",
+        "rootTerms",
+        "relatedVersions",
+        "socialMediaAccount",
+        "identifierPattern",
+        "format",
+        "homepage",
+        "publisher",
+        "comments",
+        "exampleIdentifier",
+        "exampleClass",
+        "mailingList",
+        "logo",
+        "otherIdentifier",
+        "developmentEnvironment",
+        "mappingRessources",
+        "competencyQuestions",
+        "appliedMethodology",
         "alternativeTitle",
         "alternativePrefix"
       ],
@@ -858,9 +1396,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "ontology_metadata.yaml",
-  "source_file_date": "2023-03-07T13:56:48",
-  "source_file_size": 23450,
-  "generation_date": "2023-03-07T13:56:55",
+  "source_file_date": "2023-03-07T14:23:20",
+  "source_file_size": 25171,
+  "generation_date": "2023-03-07T14:23:27",
   "settings": [
     {
       "setting_key": "orcid_regex",

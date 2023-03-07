@@ -52,15 +52,57 @@ classes:
       - preferredPrefix
       - acronym
       - license
+      - creator
+      - versionInfo
+      - versionIRI
+      - versionNotes
+      - created
+      - modificationDate
+      - description
+      - issueTracker
+      - documentation
+      - imports
   RecommendedMetadata:
     mixin: true
     description: A mixin that provides the recommended properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service.
     slots:
-      - alternativeTitle
-      - alternativePrefix
+      - contributor
+      - contactInfo
+      - fundingInfo
+      - audience
+      - domainCovered
+      - languageCovered
+      - languageExpressedIn
+      - status
+      - sourceRepository
+      - distributions
+      - applicationExample
+      - references
+      - citations
+      - derivedFrom
+      - rootTerms
   OptionalMetadata:
     mixin: true
     description: A mixin that provides the optional properties needed to index an ontology or SKOS vocabulary in the TIB Terminology Service.
+    slots:
+      - relatedVersions
+      - socialMediaAccount
+      - identifierPattern
+      - format
+      - homepage
+      - publisher
+      - comments
+      - exampleIdentifier
+      - exampleClass
+      - mailingList
+      - logo
+      - otherIdentifier
+      - developmentEnvironment
+      - mappingRessources
+      - competencyQuestions
+      - appliedMethodology
+      - alternativeTitle
+      - alternativePrefix
 
   # Classes
   Ontology:
@@ -233,6 +275,7 @@ slots:
       - pav:createdBy
       - dc:creator
       - schema:creator
+    required: true
 
   versionInfo:
     is_a: versionInformation
@@ -255,7 +298,7 @@ slots:
       - pav:version
       - schema:schemaVersion
     required: true
-  versionURI:
+  versionIRI:
     is_a: versionInformation
     slot_uri: owl:versionIRI
     multivalued: false
@@ -424,6 +467,31 @@ slots:
     see_also:
       - prov:wasAttributedTo
     required: false
+    recommended: true
+  contactInfo:
+    recommended: true
+  fundingInfo:
+    recommended: true
+  audience:
+    recommended: true
+  domainCovered:
+    recommended: true
+  languageCovered:
+    recommended: true
+  languageExpressedIn:
+    recommended: true
+  status:
+    recommended: true
+  sourceRepository:
+    recommended: true
+  distributions:
+    recommended: true
+  applicationExample:
+    recommended: true
+  references:
+    recommended: true
+  citations:
+    recommended: true
   derivedFrom:
     is_a: provenanceProperty
     description: A property to provide one or more sources from which a ressource was derived.
@@ -435,6 +503,9 @@ slots:
       - dc:source
       - pav:derivedFrom
       - prov:wasDerivedFrom
+    recommended: true
+  rootTerms:
+    recommended: true
 
 ## optional metadata
   alternativePrefix:
@@ -451,3 +522,19 @@ slots:
     range: string
     required: false
     recommended: true
+  relatedVersions:
+  socialMediaAccount:
+  identifierPattern:
+  format:
+  homepage:
+  publisher:
+  comments:
+  exampleIdentifier:
+  exampleClass:
+  mailingList:
+  logo:
+  otherIdentifier:
+  developmentEnvironment:
+  mappingRessources:
+  competencyQuestions:
+  appliedMethodology:
