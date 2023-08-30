@@ -1,0 +1,161 @@
+@prefix : <http://www.example.com/voc> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:    <http://www.example.org/#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix : <http://publications.europa.eu/ontology/skosShapes#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix swa: <http://topbraid.org/swa#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tosh: <http://topbraid.org/tosh#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix euvocShapes: <http://publications.europa.eu/ontology/euvoc/euvocShapes#> .
+@prefix euvocShapesUtil: <http://eurovoc.europa.eu/euvocShapesUtil#> .
+@base <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+
+:ThesMetadataShape
+    a sh:NodeShape ;
+    sh:targetClass owl:Ontology ; 
+    sh:property [              
+        sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title) ] ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "The ontology does not have a label or title. Please add at least one."@en ;
+    ] ;
+    sh:property [
+        sh:path [sh:alternativePath (dc:description dcterms:description)] ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:message "The ontology does not have a description. Please add at least one."@en ;
+    ] ;
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:license dcterms:rights)] ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:message "The ontology does not have a license. Please add at least one."@en ;
+    ] ;
+    sh:property [
+        sh:path dc:creator ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:message "The ontology does not have a creator. Please add at least one."@en ;
+    ] ;
+    sh:property [
+        sh:path dcterms:abstract ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:message "The ontology does not have an abstract. Please add at least one."@en ;
+    ] ;
+    sh:property [
+        sh:path dcterms:issued ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:message "The ontology does not have an issued date. Please add."@en ;
+    ] ;
+    sh:property [
+        sh:path dcterms:issued ;
+        sh:severity sh:Warning ;
+        sh:datatype xsd:dateTime ;
+        sh:message "The issue date of the ontology does not conform to xsd:dateTime. Please adjust."@en ;
+    ] ;
+    sh:property [
+        sh:path dcterms:modified ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:message "The ontology does not have a modification date. Please add the last date of modifaction."@en ;
+    ] ;
+    sh:property [
+        sh:path dcterms:modified ;
+        sh:severity sh:Warning ;
+        sh:datatype xsd:dateTime ;
+        sh:message "The modification date of the ontology does not conform to xsd:dateTime. Please adjust."@en ;
+    ] ;
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:language <https://schema.org/inLanguage>) ];
+        sh:severity sh:Warning ;
+        sh:datatype xsd:language ;
+        sh:message "The language of the ontology is not typed as xsd:language. Please adjust."@en ;
+    ] ;
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:language <https://schema.org/inLanguage>) ] ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:message "The ontology does not specifiy which natural language it applies. Please add at least one."@en ;
+    ] ;
+    sh:property [
+        sh:path dcterms:subject ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:message "The ontology does not specify which subjects it has. Please add at least one subject. Use the identifier of a controlled vocabulary to do so. You can search for fitting terms on TIB's Terminology service (https://service.tib.eu/ts4tib/index)."@en ;
+    ] ;
+    sh:property [
+        sh:path dcterms:subject ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The subject of the ontology is not IRI. Please make sure to represent a subject via an IRI from a controlled vocabulary or an ontology."@en ;
+    ] ;
+    sh:property [
+        sh:path <http://usefulinc.com/ns/doap#bug-database> ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The issue tracker of the ontology is not provided via an IRI. Please make sure to provide a link to the issue tracker."@en ;
+    ] ;
+    sh:property [
+        sh:path <http://usefulinc.com/ns/doap#bug-database> ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:message "The ontology does not provide and issue tracker IRI. Please make sure to add one."@en ;
+    ] ;
+    sh:property [
+        sh:path dcterms:type ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:message "The ontology does not declare its type. Please pick a type from the NKOS type vocabulary."@en ;
+    ] ;
+    sh:property [
+        sh:path dcterms:type ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology type is not an IRI. Please pick a type from the NKOS type vocabulary. Refer to it via its identifier."@en ;
+    ] ;
+    sh:property [
+        sh:path owl:versionInfo ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "The ontology has no or more than one owl:versionInfo. Please check."@en ;
+    ] ;
+    sh:property [
+        sh:path <http://purl.org/vocab/vann/preferredNamespacePrefix> ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "The ontology does not declare its preferred namespace prefix. Please add it."@en ;
+    ] ;
+    sh:property [
+        sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "The ontology does not declare its preferred namespace URI. Please add it."@en ;
+    ] ;
+    sh:property [
+        sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology preferred namespace URI is not a URI. Please check."@en ;
+    ] ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type owl:topDataProperty owl:topObjectProperty ) .
