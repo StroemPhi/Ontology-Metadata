@@ -1,57 +1,180 @@
-@prefix : <http://www.example.com/voc> .
+@base <http://www.purl.org/OntoMeta> .
+@prefix ontom:    <http://www.purl.org/OntoMeta#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh:    <http://www.w3.org/ns/shacl#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix ex:    <http://www.example.org/#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix : <http://publications.europa.eu/ontology/skosShapes#> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix swa: <http://topbraid.org/swa#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dash: <http://datashapes.org/dash#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix tosh: <http://topbraid.org/tosh#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix euvocShapes: <http://publications.europa.eu/ontology/euvoc/euvocShapes#> .
-@prefix euvocShapesUtil: <http://eurovoc.europa.eu/euvocShapesUtil#> .
-@base <http://www.w3.org/2002/07/owl#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
 
+# I import SHACL so that we can look stuff up quickly locally
+[rdf:type owl:Ontology ; owl:imports <http://www.w3.org/ns/shacl#> ] .
 
-:ThesMetadataShape
-    a sh:NodeShape ;
+# Start of the Ontology Metadata Shape
+ontom:OntologyMetadataShape a sh:NodeShape ;
     sh:targetClass owl:Ontology ; 
+# MANDATORY METADATA
+## G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.w5pmqfs8xiuv 
+
+## Ontology title
+### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.1exx8hu4osgx
     sh:property [              
-        sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title) ] ;
+        sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title schema:name) ] ; 
         sh:minCount 1 ;
         sh:severity sh:Warning ;
-        sh:message "The ontology does not have a label or title. Please add at least one."@en ;
+        sh:message "The ontology must specify its label or title."@en ;
+        sh:name "Ontology title"@en ; # this if for forms with DASH
+        sh:order 1 ; # also for forms, order of fields
     ] ;
+
+## Preferred prefix
+### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.us2ezyzaf4h4
     sh:property [
-        sh:path [sh:alternativePath (dc:description dcterms:description)] ;
+        sh:path <http://purl.org/vocab/vann/preferredNamespacePrefix> ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
-        sh:message "The ontology does not have a description. Please add at least one."@en ;
+        sh:maxCount 1 ;
+        sh:message "The ontology must declare its preferred namespace prefix."@en ;
     ] ;
+
+## Ontology acronym
+### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.1iqmwa13y7u
     sh:property [
-        sh:path [sh:alternativePath (dcterms:license dcterms:rights)] ;
+        sh:path <https://w3id.org/mod#acronym> ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "The ontology must declare its preferred acronym."@en ;
+    ] ;
+
+## Ontology license
+### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.d63b5oqb03v
+### Der TS nimmt die Lizenz-IRI, aber gern auch ein Label - darüber hatten wir noch nicht gesprochen
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license)] ;
         sh:severity sh:Warning ;
         sh:minCount 1;
-        sh:message "The ontology does not have a license. Please add at least one."@en ;
+        # tbd/todo: specify a list of accepted licenses? e.g. from open definition
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology must specify its license by providing an IRI for the license. The license must be open."@en ;
     ] ;
+
+## Ontology creator
+### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.uc5cfjvqg7cv
+### Über regex-Prüfungen könnte man hier auch bestimmte Identifier enforcen
     sh:property [
-        sh:path dc:creator ;
+        sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo)];
         sh:severity sh:Warning ;
         sh:minCount 1;
-        sh:message "The ontology does not have a creator. Please add at least one."@en ;
+        sh:nodeKind sh:IRI;
+        sh:message "The ontology must state its creator. We recommend to provide PIDs for individuals (e.g. ORCiD) or organisations (e.g. ROR)."@en ;
     ] ;
+
+## Version information
+### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.88o633ocogle
+### Version IRI
+#### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.5o62yvmk2eo1
+    sh:property [
+        sh:path  owl:versionIRI ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "The ontology must state a stable, resolvable versionIRI."@en ;
+    ] ;
+
+### Creation date
+#### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.7i4grrp5qlng
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:created schema:dateCreated pav:createdOn dcterms:issued dcterms:date schema:datePublished prov:generatedAtTime schema:dateIssued)] ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+        sh:message "The ontology must specify its date of creation in xsd:dateTime format."@en ;
+    ] ;
+
+### Modification date
+#### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.i101l8f9ynz8
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:modified schema:dateModified pav:curatedOn)];
+        sh:severity sh:Warning ;
+        sh:minCount 1;  # tbd: aktuell nur mincount, weil mir auch schon Voks begegnet sind, die etliche modification dates reinschreiben
+        sh:datatype xsd:dateTime ;
+        sh:message "The ontology must specify its last modification date in xsd:dateTime format."@en ;
+    ] ;
+
+### Textual version information
+### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.i101l8f9ynz8
+    sh:property [
+        sh:path [sh:alternativePath (owl:versionInfo pav:version)];
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "The ontology must(?) specify information about its version. We recommend semantic versioning(?) or latest modification/relase date (?)."@en ; # tbd
+    ] ;
+
+### Version notes
+### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.txaafvbvbrys
+    sh:property [
+        sh:path [sh:alternativePath (adms:versionNotes vann:changes)]  ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:Literal ; 
+        sh:message "The ontology must(?) describe which updates have been made to the current ontology version compared to its preceeding version."@en ; # tbd
+    ] ;
+
+## Ontology description
+### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.bfn4i6l0oqot
+    sh:property [
+        sh:path [sh:alternativePath (dc:description dcterms:description schema:description)] ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:maxLength 500 ; #tbd Wir haben Ontologien mit sehr viel längeren Beschreibungen... Aber das könnte man auch in ein ausführliches Abstract schieben.
+        sh:nodeKind sh:Literal ;
+        sh:message "The ontology must provide a short description about its scope (approximately 300 characters)."@en ;
+    ] ;
+
+## Issue tracker
+### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.2wupy319ar5t
+    sh:property [
+        sh:path <http://usefulinc.com/ns/doap#bug-database> ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "The ontology must specify an IRI to a location where bugs and suggestions can be reported, ideally an *open* issue tracker at GitHub or GitLab or the like."@en ;
+    ] ;
+
+## Ontology documentation
+### G-doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.5fr9vwijs9cj
+    sh:property [
+        sh:path  <http://www.loc.gov/premis/rdf/v3/documentation> ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "The ontology must specify an IRI to its documentation."@en ;
+    ] ;
+
+# RECOMMENDED METADATA
+
     sh:property [
         sh:path dcterms:abstract ;
         sh:severity sh:Warning ;
@@ -69,18 +192,6 @@
         sh:severity sh:Warning ;
         sh:datatype xsd:dateTime ;
         sh:message "The issue date of the ontology does not conform to xsd:dateTime. Please adjust."@en ;
-    ] ;
-    sh:property [
-        sh:path dcterms:modified ;
-        sh:severity sh:Warning ;
-        sh:minCount 1;
-        sh:message "The ontology does not have a modification date. Please add the last date of modifaction."@en ;
-    ] ;
-    sh:property [
-        sh:path dcterms:modified ;
-        sh:severity sh:Warning ;
-        sh:datatype xsd:dateTime ;
-        sh:message "The modification date of the ontology does not conform to xsd:dateTime. Please adjust."@en ;
     ] ;
     sh:property [
         sh:path [sh:alternativePath (dcterms:language <https://schema.org/inLanguage>) ];
@@ -107,18 +218,6 @@
         sh:message "The subject of the ontology is not IRI. Please make sure to represent a subject via an IRI from a controlled vocabulary or an ontology."@en ;
     ] ;
     sh:property [
-        sh:path <http://usefulinc.com/ns/doap#bug-database> ;
-        sh:severity sh:Warning ;
-        sh:nodeKind sh:IRI ;
-        sh:message "The issue tracker of the ontology is not provided via an IRI. Please make sure to provide a link to the issue tracker."@en ;
-    ] ;
-    sh:property [
-        sh:path <http://usefulinc.com/ns/doap#bug-database> ;
-        sh:severity sh:Warning ;
-        sh:minCount 1 ;
-        sh:message "The ontology does not provide and issue tracker IRI. Please make sure to add one."@en ;
-    ] ;
-    sh:property [
         sh:path dcterms:type ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
@@ -129,20 +228,6 @@
         sh:severity sh:Warning ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology type is not an IRI. Please pick a type from the NKOS type vocabulary. Refer to it via its identifier."@en ;
-    ] ;
-    sh:property [
-        sh:path owl:versionInfo ;
-        sh:severity sh:Warning ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:message "The ontology has no or more than one owl:versionInfo. Please check."@en ;
-    ] ;
-    sh:property [
-        sh:path <http://purl.org/vocab/vann/preferredNamespacePrefix> ;
-        sh:severity sh:Warning ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:message "The ontology does not declare its preferred namespace prefix. Please add it."@en ;
     ] ;
     sh:property [
         sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;

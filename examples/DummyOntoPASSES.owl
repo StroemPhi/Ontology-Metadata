@@ -1,0 +1,39 @@
+@base <http://www.purl.org/OntoMeta/DummyOntoPASSES> .
+@prefix : <http://www.purl.org/OntoMeta/DummyOntoPASSES#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+
+#Mandatory metadata
+<http://www.purl.org/OntoMeta/DummyOntoPASSES> rdf:type owl:Ontology ;
+    dcterms:title "The English name of the ontology"@en , "Der deutsche Name der Ontologie"@de ;
+    vann:preferredNamespacePrefix "DOP"^^xsd:string ;
+    mod:acronym "DOP"^^xsd:string ;
+    dcterms:license <https://creativecommons.org/licenses/by/3.0/> ;
+    dc:creator <https://orcid.org/0000-0000-0000-0000>;
+    owl:versionIRI <http://www.purl.org/OntoMeta/DummyOntoPASSES/0.1> ;
+    dcterms:created "2023-08-31T10:15:00"^^xsd:dateTime ;
+    dcterms:modified "2023-08-31T10:19:00"^^xsd:dateTime ;
+    owl:versionInfo "0.1.0"^^xsd:string ;
+    adms:versionNotes "A description of changes between last version and current version of the ontology."@en ;
+    dcterms:description "A short description of the scope and contents of the ontology."@en ;
+    doap:bug-database <http:///github.com/person/project/issues> ;
+    premis:documentation <http://www.purl.org/OntoMeta/DummyOntoPASSES/docs>
+    .
+
+#Recommended metadata
+#<http://www.purl.org/OntoMeta/DummyOntoPASSES> rdf:type owl:Ontology ;
+
+
+#Optional metadata
+#<http://www.purl.org/OntoMeta/DummyOntoPASSES> rdf:type owl:Ontology ;
