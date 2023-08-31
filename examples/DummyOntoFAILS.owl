@@ -1,5 +1,5 @@
-@base <https://www.purl.org/OntoMetadata> .
-@prefix : <https://www.purl.org/OntoMetadata> .
+@base <http://www.purl.org/OntoMeta/DummyOntoFAILS> .
+@prefix : <http://www.purl.org/OntoMeta/DummyOntoFAILS> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -10,5 +10,4 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 
-[ rdf:type owl:Ontology
- ] .
+<http://www.purl.org/OntoMeta/DummyOntoFAILS> rdf:type owl:Ontology .
