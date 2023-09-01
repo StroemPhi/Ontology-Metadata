@@ -220,7 +220,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
 ## Contributor
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.5e04bi242aoh
-#alternative 1 - schöner für's generieren einer Doku bei SHACL Play
+#alternative 1 - schöner für's generieren einer Doku bei SHACL Play > kein deoppelte Vorkommen in Übersicht
     sh:property [
         sh:path  [sh:alternativePath (dcterms:contributor dc:contributor schema:contributor pav:contributedBy)] ;
         sh:severity sh:Warning ;
