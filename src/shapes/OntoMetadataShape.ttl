@@ -116,7 +116,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### Creation date
 #### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.7i4grrp5qlng
     sh:property [
-        sh:path [sh:alternativePath (dcterms:created schema:dateCreated pav:createdOn dcterms:issued dcterms:date schema:datePublished prov:generatedAtTime schema:dateIssued)] ;
+        sh:path [sh:alternativePath (dcterms:created schema:dateCreated pav:createdOn dcterms:issued dcterms:date schema:datePublished prov:generatedAtTime schema:dateIssued)] ; #tbd > issue date raus, eigener Punkt optional oder mandatory?
         sh:severity sh:Violation ;
         sh:minCount 1;
         sh:maxCount 1 ;
@@ -208,6 +208,82 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
 # RECOMMENDED METADATA
 
+## Contributor
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.5e04bi242aoh
+
+## Contact data
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.9825c1nzyhzr
+
+## Funding
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.tv6cuib399mn
+
+## Audience/ target group
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.430puu6a6nqs
+
+## Subject / domain / is about / keywords
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.c184ls1wmg36 
+
+    sh:property [
+        sh:path dcterms:subject ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology does not specify which subjects it has. Use identifiers of controlled vocabularies to do so. You can search for fitting terms on TIB's Terminology service (https://terminology.tib.eu)."@en ;
+        sh:description "The ontology should specify which subjects it has, by using identifiers of controlled vocabularies. You can search for fitting terms on TIB's Terminology service (https://terminology.tib.eu)."@en ;
+        sh:name "Subject(s)"@en ; # this if for forms with DASH
+    ] ;
+
+
+## Supported natural language / language(s) of ontoogy annotations
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.s2i8pcsdn9bo
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:language <https://schema.org/inLanguage>) ];
+        sh:severity sh:Warning ;
+        sh:datatype xsd:language ;
+        sh:minCount 1 ;
+        sh:message "The ontology does not specifiy which natural language it covers in annotations or the language is not typed as xsd:language."@en ;
+        sh:description "The ontology should specifiy which natural languages its annotations have. The language values should be typed as xsd:language."@en ;
+        sh:name "Language(s)"@en ; # this if for forms with DASH
+    ] ;
+
+
+## Logical framework
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.f7xf7fxdnzym
+
+## Ontology syntax
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.lwyd2i8tz8z3
+
+## Status
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.72qilfg8m0kp
+
+## Repository
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.j74ipx9l346g
+
+## Products/ distributions/ serializations
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.4c1i9g8fdlde 
+
+## Application example
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.yfwr77jiscxc 
+
+## References to publications (scientific articles)
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.69nyulc4710o 
+
+## Citation
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.dbktcswqv4vo
+
+## Derived from
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.o65a3zkljex9
+
+## Root terms
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.t8ofhr306sjm
+
+# OPTIONAL METADATA
+## https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.nt9rg3boaw6p
+
+## Abstract
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.2r7kudayonj7
+
     sh:property [
         sh:path dcterms:abstract ;
         sh:severity sh:Warning ;
@@ -218,33 +294,36 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         sh:description "The ontology should have an abstract."@en ;
         sh:name "Abstract"@en ; # this if for forms with DASH
     ] ;
-    sh:property [
-        sh:path dcterms:issued ;
-        sh:severity sh:Warning ;
-        sh:minCount 1;
-        sh:datatype xsd:dateTime ;
-        sh:message "The ontology does not have an issued date or the date does not conform to xsd:dateTime."@en ;
-        sh:description "The ontology should have an issued date that conforms to xsd:dateTime."@en ;
-        sh:name "Date issued"@en ; # this if for forms with DASH
-    ] ;
-    sh:property [
-        sh:path [sh:alternativePath (dcterms:language <https://schema.org/inLanguage>) ];
-        sh:severity sh:Warning ;
-        sh:datatype xsd:language ;
-        sh:minCount 1 ;
-        sh:message "The ontology does not specifiy which natural language it covers in annotations or the language is not typed as xsd:language."@en ;
-        sh:description "The ontology should specifiy which natural languages its annotations have. The language values should be typed as xsd:language."@en ;
-        sh:name "Language(s)"@en ; # this if for forms with DASH
-    ] ;
-    sh:property [
-        sh:path dcterms:subject ;
-        sh:severity sh:Warning ;
-        sh:minCount 1 ;
-        sh:nodeKind sh:IRI ;
-        sh:message "The ontology does not specify which subjects it has. Use identifiers of controlled vocabularies to do so. You can search for fitting terms on TIB's Terminology service (https://terminology.tib.eu)."@en ;
-        sh:description "The ontology should specify which subjects it has, by using identifiers of controlled vocabularies. You can search for fitting terms on TIB's Terminology service (https://terminology.tib.eu)."@en ;
-        sh:name "Subject(s)"@en ; # this if for forms with DASH
-    ] ;
+
+
+## Alternative Title
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.yaeqpjfuub34
+
+
+## Alternative prefix
+###  https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.yaeqpjfuub34
+
+## Related version/ version history
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.qmextm6dqh70
+
+### Prior version
+#### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.3yb5w8vkav71 
+
+### Related version
+#### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.kvmesjuzq56q
+
+### Compatible version 
+#### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.sdi4vu2dfvwa
+
+### Incompatible version
+#### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.a3t7xi35pm0s
+
+## Social media 
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.m43ql04sm8fr
+
+## KOS type
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.t43hvhmk2o1b
+
     sh:property [
         sh:path dcterms:type ;
         sh:severity sh:Warning ;
@@ -253,6 +332,65 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         sh:message "The ontology does not declare its type. Please pick a type from the NKOS type vocabulary and refer to it via its identifier."@en ;
         sh:description "The ontology should declare its type by referring to one of the entities in the NKOS type vocabulary (https://nkos.dublincore.org/nkostype/nkostype.rdf) via its IRI."@en ;
         sh:name "KOS type"@en ; # this if for forms with DASH
+    ] ;
+
+
+## Example identifier
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.sdr0qc5w3m0t
+
+## Identifier pattern
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.3o5j75ac147
+
+## Format/ media type/ content type
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.38comxqwn2em
+
+## Homepage
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.clp7pi6njzc0
+
+## Publisher
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.wjrgmpmdrs36
+
+## Comments
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.lik1t0nfvgch
+
+## Example class
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.fqexjsx8lhgu
+
+## Mailing list
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.mleecwa4ik0c
+
+## Logo/ depiction
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.mleecwa4ik0c
+
+## Other PIDs
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.pmlta5futosw
+
+## Development environment
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.7sppqtjrwr19
+
+## Alignments/ mappings
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.u01l1tf32j6d
+
+### Aligned resource
+#### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.u01l1tf32j6d
+
+### External resource containing the alignments
+#### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.u01l1tf32j6d
+
+## Competency Questions
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.lrbkoqfkgcof
+
+## Applied methodology
+### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.h76p0shx7x0a
+
+    sh:property [
+        sh:path dcterms:issued ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:datatype xsd:dateTime ;
+        sh:message "The ontology does not have an issued date or the date does not conform to xsd:dateTime."@en ;
+        sh:description "The ontology should have an issued date that conforms to xsd:dateTime."@en ;
+        sh:name "Date issued"@en ; # this if for forms with DASH
     ] ;
     sh:property [
         sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
