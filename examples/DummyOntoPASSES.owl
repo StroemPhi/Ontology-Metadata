@@ -13,6 +13,7 @@
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix schema: <https://schema.org/> .
 
 #Mandatory metadata
 <http://www.purl.org/OntoMeta/DummyOntoPASSES> rdf:type owl:Ontology ;
@@ -28,12 +29,17 @@
     adms:versionNotes "A description of changes between last version and current version of the ontology."@en ;
     dcterms:description "A short description of the scope and contents of the ontology."@en ;
     doap:bug-database <http:///github.com/person/project/issues> ;
-    premis:documentation <http://www.purl.org/OntoMeta/DummyOntoPASSES/docs>
-    .
+    premis:documentation <http://www.purl.org/OntoMeta/DummyOntoPASSES/docs> ;
 
 #Recommended metadata
-#<http://www.purl.org/OntoMeta/DummyOntoPASSES> rdf:type owl:Ontology ;
+    dcterms:issued "2003-08-11T00:00:00"^^xsd:dateTime ;
+    schema:inLanguage "de"^^xsd:language ;
+    dcterms:contributor <0000-0000-0000-0000> ;
+    dcterms:subject <https://purl.org/linsearch/inf> ;
+    dcterms:type <http://w3id.org/nkos/nkostype#ontology> ;
+    schema:funder <https://ror.org/018mejw64> ;
 
 
 #Optional metadata
-#<http://www.purl.org/OntoMeta/DummyOntoPASSES> rdf:type owl:Ontology ;
+    vann:preferredNamespaceUri <http://www.purl.org/OntoMeta/DummyOntoPASSES>
+.
