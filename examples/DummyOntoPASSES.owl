@@ -33,7 +33,7 @@
 
 #Recommended metadata
     dcterms:issued "2003-08-11T00:00:00"^^xsd:dateTime ;
-    schema:inLanguage "de"^^xsd:language ;
+    schema:inLanguage <https://id.loc.gov/vocabulary/iso639-2/deu> ;
     dcterms:contributor <0000-0000-0000-0000> ;
     dcterms:subject <https://purl.org/linsearch/inf> ;
     dcterms:type <http://w3id.org/nkos/nkostype#ontology> ;
@@ -41,5 +41,10 @@
 
 
 #Optional metadata
-    vann:preferredNamespaceUri <http://www.purl.org/OntoMeta/DummyOntoPASSES>
+    vann:preferredNamespaceUri <http://www.purl.org/OntoMeta/DummyOntoPASSES> ;
+    doap:audience "DummyOntoPASSES has been developed for ontology engineers to demonstrate ontology metadata recommendations by TIB Terminology Service. It can be used with the TIB Terminology Service Ontology Metadata Shape in SHACL validators and should trigger no violations or warnings."@en ;
+    mod:hasFormalityLevel "The DummyOntoPASSES aplies OWL2 EL (cf. https://www.w3.org/TR/2012/REC-owl2-profiles-20121211/#OWL_2_EL)"@en ;
+    <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://www.w3.org/ns/formats/Turtle> ;
+    <http://purl.org/ontology/bibo/status> "active"@en ;
+    doap:repository <https://github.com/StroemPhi/Ontology-Metadata/blob/master/examples/DummyOntoPASSES.owl> ;
 .
