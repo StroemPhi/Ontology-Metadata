@@ -13,8 +13,9 @@
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
-@prefix schema: <https://schema.org/> .
+@prefix schema: <http://schema.org/> .
 @prefix pav: <http://purl.org/pav/> .
+@prefix idot: <http://identifiers.org/idot/> .
 
 #Mandatory metadata
 <http://www.purl.org/OntoMeta/DummyOntoPASSES> rdf:type owl:Ontology ;
@@ -44,7 +45,7 @@
     <http://purl.org/ontology/bibo/status> "active"@en ;
     doap:repository <https://github.com/StroemPhi/Ontology-Metadata> ;
     <http://www.w3.org/ns/dcat#distribution> <http://www.purl.org/OntoMeta/DummyOntoPASSES.owl> ;
-    #application example
+    #application example missing
     dcterms:references <https://zenodo.org/record/0000000> ;
     dcterms:bibliographicCitation "TIB (2023): DummyOntoPASSES. An ontology demonstrating rich ontology metadata. PURL: http://www.purl.org/OntoMeta/DummyOntoPASSES."@en ;
     pav:derivedFrom <http://www.purl.org/SomeOtherOntology/0.0.1> ;
@@ -53,6 +54,18 @@
 
 #Optional metadata
     dcterms:type <http://w3id.org/nkos/nkostype#ontology> ;
+    dcterms:abstract "The ontology is about...."@en ;
+    dcterms:alternative "An alternative title of the ontology,e.g. a working title for the ontology draft."@en ;
+    idot:alternatePrefix "dop01" ;
+    owl:priorVersion <http://www.purl.org/OntoMeta/DummyOntoPASSES/0.0> ;
+    schema:version <http://www.purl.org/OntoMeta/DummyOntoPASSES/0.3> ;
+    owl:backwardCompatibleWith <http://www.purl.org/OntoMeta/DummyOntoPASSES/0.0> ;
+    owl:incompatibleWith <http://www.purl.org/OntoMeta/DummyOntoPASSES/0.3> ;
+    # social media
+    dcterms:type <http://w3id.org/nkos/nkostype#ontology> ;
+    <http://identifiers.org/exampleIdentifier> <http://www.purl.org/OntoMeta/DummyOntoPASSES#1> ;
+    <http://identifiers.org/identifierPattern> "[0-9]+" ;
+    <http://xmlns.com/foaf/0.1/homepage> <https://purl.org/OntoMeta/home> ;
 
 # not yet categorized
     dcterms:issued "2003-08-11T00:00:00"^^xsd:dateTime ;
