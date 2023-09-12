@@ -904,6 +904,26 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ## Format/ media type/ content type
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.38comxqwn2em
 
+    sh:property [
+        sh:path [sh:alternativePath (<http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>)] ;
+        sh:severity sh:Violation ;
+        sh:xone (
+            # for the TS rdf+xml and turtle are confirmed, we did not test the others yet
+            [sh:hasValue <https://www.iana.org/assignments/media-types/application/rdf+xml> ;] 
+            [sh:hasValue <https://www.iana.org/assignments/media-types/text/turtle> ;]
+            [sh:hasValue <https://www.iana.org/assignments/media-types/application/trig> ;]
+            [sh:hasValue <https://www.iana.org/assignments/media-types/text/n3> ;]
+            [sh:hasValue <https://www.iana.org/assignments/media-types/application/n-triples> ;]
+            [sh:hasValue <https://www.iana.org/assignments/media-types/application/n-quads> ;]
+            [sh:hasValue <https://www.iana.org/assignments/media-types/application/ld+json> ;]
+            # [sh:hasValue <> ;]
+            # [sh:hasValue <> ;]
+        );
+        sh:message "The media type of the ontology is not one of the allowed values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml)"@en ;
+        sh:description "The media type of the ontology must be one of the allowed values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml)."@en ;
+        sh:name "Media type"@en ;
+    ] ;
+
 ## Homepage
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.clp7pi6njzc0
 
@@ -919,27 +939,72 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
 ## Publisher
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.wjrgmpmdrs36
+# tbd > Test schreibt keine maximale Anzahl an Publishern vor, und triggert sobald ein Wert nicht dem pattern entspricht - selbst dann, wenn der Ontology Editor bereits drei dem Pattern entsprechende Publisher-IDs nennt
+    sh:property [
+        sh:path [sh:alternativePath (<http://purl.org/dc/terms/publisher> <http://purl.org/dc/elements/1.1/publisher> <http://schema.org/publisher>)] ;
+        sh:severity sh:Violation ;
+        sh:nodeKind sh:IRI ;
+        sh:xone (
+            # pattern sources: Wikidata entries of the identifier types
+            [sh:pattern "https://ror.org/([a-z0-9]{9})" ; ]
+            [sh:pattern "https://isni.org/isni/[0]{4}[0-9]{4}[0-9]{4}[0-9]{3}[0-9X]" ;]
+            [sh:pattern "https://d-nb.info/gnd/(|(1[012]?[0-9]{7}[0-9X]|[47][0-9]{6}-[0-9]|[1-9][0-9]{0,7}-[0-9X]|3[0-9]{7}[0-9X]))$" ;]
+        ) ;
+        sh:message "The ontology does not specify its publisher as an IRI belonging to the ROR, ISNI or GND namespace."@en ;
+        sh:description "The ontology must specify its publisher as an IRI belonging to the ROR, ISNI or GND namespace."@en ; #tbd
+        sh:name "Publisher"@en ;
+    ] ;
 
 ## Comments
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.lik1t0nfvgch
 
+    sh:property [
+        sh:path <> ;
+        sh:severity sh:Violation ;
+        sh:datatype rdf:langString ;
+        sh:message "The comments about the ontology are not an rdf:langString."@en ;
+        sh:description "The comments about the ontology must be an rdf:langString."@en ;
+        sh:name "Comments (ontology level)"@en ; # this if for forms with DASH
+    ] ;
+
+
 ## Example class
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.fqexjsx8lhgu
+
+    sh:property [
+        sh:path <http://rdfs.org/ns/void#exampleResource> ;
+        sh:severity sh:Violation ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology does not declare its example class as an IRI."@en ;
+        sh:description "The ontology must declare its example classe via IRI."@en ;
+        sh:name "Example class"@en ; # this if for forms with DASH
+    ] ;
+
 
 ## Mailing list
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.mleecwa4ik0c
 
+#### no test?
+
 ## Logo/ depiction
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.mleecwa4ik0c
+
+#### no test?
 
 ## Other PIDs
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.pmlta5futosw
 
+#### no test?
+
 ## Development environment
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.7sppqtjrwr19
 
+#### no test?
+
 ## Alignments/ mappings
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.u01l1tf32j6d
+
+#### no test? > IRI/ PID
 
 ### Aligned resource
 #### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.u01l1tf32j6d
@@ -956,13 +1021,21 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ## Preferred Namespace URI
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.7hko77uoyrvg
 
+    # sh:property [
+    #     sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
+    #     sh:severity sh:Warning ;
+    #     sh:minCount 1 ;
+    #     sh:maxCount 1 ;
+    #     sh:message "The ontology does not declare its preferred namespace URI."@en ;
+    #     sh:description "The ontology should declare its preferred namespace URI."@en ;
+    #     sh:name "Preferred Namespace"@en ; # this if for forms with DASH
+    # ] ;
+
     sh:property [
         sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
-        sh:severity sh:Warning ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
+        sh:severity sh:Violation ;
         sh:nodeKind sh:IRI ;
-        sh:message "The ontology does not declare its preferred namespace URI."@en ;
+        sh:message "The ontology does not declare its preferred namespace URI as an IRI."@en ;
         sh:description "The ontology should declare its preferred namespace URI."@en ;
         sh:name "Preferred Namespace"@en ; # this if for forms with DASH
     ] ;

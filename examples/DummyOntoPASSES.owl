@@ -53,7 +53,6 @@
 
 
 #Optional metadata
-    dcterms:type <http://w3id.org/nkos/nkostype#ontology> ;
     dcterms:abstract "The ontology is about...."@en ;
     dcterms:alternative "An alternative title of the ontology,e.g. a working title for the ontology draft."@en ;
     idot:alternatePrefix "dop01" ;
@@ -65,11 +64,23 @@
     dcterms:type <http://w3id.org/nkos/nkostype#ontology> ;
     <http://identifiers.org/exampleIdentifier> <http://www.purl.org/OntoMeta/DummyOntoPASSES#1> ;
     <http://identifiers.org/identifierPattern> "[0-9]+" ;
+    dcterms:format <https://www.iana.org/assignments/media-types/application/rdf+xml> ;
     <http://xmlns.com/foaf/0.1/homepage> <https://purl.org/OntoMeta/home> ;
+    dcterms:publisher <https://isni.org/isni/0000000121746694>, <https://d-nb.info/gnd/1080328793> ;
+    rdfs:comment "Some remark about the ontology." ;
+    <http://rdfs.org/ns/void#exampleResource> <http://www.purl.org/OntoMeta/DummyOntoPASSES#1> ;
+    # mailing list
+    # logo/ depiction
+    # other PIDs
+    # development environment
+    # aligned resource, e.g. an ontology
+    # resource containing the alignments, e.g. a ttl file following sssom
+    # competency questions
+    # appliedmethodology
+    vann:preferredNamespaceUri <http://www.purl.org/OntoMeta/DummyOntoPASSES> ;
 
 # not yet categorized
-    dcterms:issued "2003-08-11T00:00:00"^^xsd:dateTime ;
-    vann:preferredNamespaceUri <http://www.purl.org/OntoMeta/DummyOntoPASSES> 
+    dcterms:issued "2003-08-11T00:00:00"^^xsd:dateTime 
 .
 
 <http://www.purl.org/OntoMeta/DummyOntoPASSES#1> a owl:Class .
