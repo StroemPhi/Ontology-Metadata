@@ -1,0 +1,79 @@
+PREFIX tibts: <hhttp://terminology.tib.eu/schema>
+PREFIX bioregistry.schema: <https://bioregistry.io/schema/#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX IAO: <http://purl.obolibrary.org/obo/IAO_>
+PREFIX OBI: <http://purl.obolibrary.org/obo/OBI_>
+PREFIX NCIT: <http://purl.obolibrary.org/obo/NCIT_>
+PREFIX NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_>
+PREFIX oio: <http://www.geneontology.org/formats/oboInOwl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX biolink: <https://w3id.org/biolink/vocab/>
+PREFIX sdo: <http://schema.org/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pav: <http://purl.org/pav/>
+PREFIX prov: <http://www.w3.org/ns/prov-o#>
+PREFIX orcid: <https://orcid.org/>
+
+SELECT ?g ?s ?p WHERE {
+ GRAPH ?g {
+  ?s rdf:type owl:Ontology ;
+     ?p ?o .
+  FILTER ( ?p NOT IN (
+   dcat:accessURL,
+   dcterms:title,
+   vann:preferredNamespacePrefix,
+   mod:acronym,
+   dcterms:license,
+   dcterms:creator,
+   owl:versionInfo,
+   owl:versionIRI,
+   adms:versionNotes,
+   dcterms:created,
+   dcterms:modified,
+   dcterm:description,
+   doap:bug-database,
+   dcterms:isReferencedBy,
+   owl:imports,
+   dcterms:contributor,
+   tibts:contactInfo,
+   tibts:fundingInfo,
+   tibts:audience,
+   tibts:domainCovered,
+   tibts:languageCovered,
+   tibts:languageExpressedIn,
+   tibts:status,
+   tibts:sourceRepository,
+   tibts:distributions,
+   tibts:applicationExample,
+   tibts:references,
+   tibts:citations,
+   dcterms:source,
+   tibts:rootTerms,
+   tibts:relatedVersions,
+   tibts:socialMediaAccount,
+   tibts:identifierPattern,
+   tibts:format,
+   tibts:homepage,
+   tibts:publisher,
+   tibts:comments,
+   tibts:exampleIdentifier,
+   tibts:exampleClass,
+   tibts:mailingList,
+   tibts:logo,
+   tibts:otherIdentifier,
+   tibts:developmentEnvironment,
+   tibts:mappingRessources,
+   tibts:competencyQuestions,
+   tibts:appliedMethodology,
+   dcterms:alternative,
+   idot:alternatePrefix,
+   rdf:type ))
+ }
+ 
+} 
+
+
+
