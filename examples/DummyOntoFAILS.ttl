@@ -11,3 +11,5 @@
 
 
 <http://www.purl.org/OntoMeta/DummyOntoFAILS> rdf:type owl:Ontology .
+
+<http://www.purl.org/OntoMeta/DummyOntoFAILS#1> a owl:Class .

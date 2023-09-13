@@ -154,6 +154,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
 ## Version information
 ### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.88o633ocogle
+
 ### Version IRI
 #### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.5o62yvmk2eo1
     sh:property [
@@ -374,7 +375,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
 ## Contact data
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.9825c1nzyhzr
-### im GDoc noch unclear if needed at all...
+### im GDoc noch unclear if needed at all... I would leave this out. Mail adresses in academia change all the time, the bug tracker should suffice to reach the maintainers of an ontology.
 
 ## Funding institution
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.tv6cuib399mn
@@ -619,6 +620,24 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ## Application example
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.yfwr77jiscxc 
 
+    sh:property [
+        sh:path <https://vocab.org/vann/example> ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:message "The ontology does not provide information about an example of its use/ application. Ideally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application that uses the ontology."@en ;
+        sh:description "The ontology should provide information about an example of its use/ application. Ideally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application that uses the ontology."@en ;
+        sh:name "Application example"@en ;
+    ] ;
+
+    sh:property [
+        sh:path <https://vocab.org/vann/example> ;
+        sh:severity sh:Violation ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology does not provide information about an example of its use/ application via IRI. Ideally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application that uses the ontology."@en ;
+        sh:description "The ontology must provide information about an example of its use/ application via IRI. Ideally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application that uses the ontology."@en ;
+        sh:name "Application example"@en ;
+    ] ;
+
 ## References to publications (scientific articles)
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.69nyulc4710o 
     sh:property [
@@ -834,7 +853,14 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ## Social media 
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.m43ql04sm8fr
 
-### too open, would not check for anything here
+    sh:property [
+        sh:path <http://xmlns.com/foaf/0.1/holdsAccount> ;
+        sh:severity sh:Violation ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology does not provide information about its social media accounts via IRI."@en;
+        sh:description "The ontology must provide information about its social media accounts via IRI."@en;
+        sh:name "Social media"@en;
+    ] ;
 
 ## KOS type
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.t43hvhmk2o1b
@@ -959,7 +985,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.lik1t0nfvgch
 
     sh:property [
-        sh:path <> ;
+        sh:path rdfs:comment ;
         sh:severity sh:Violation ;
         sh:datatype rdf:langString ;
         sh:message "The comments about the ontology are not an rdf:langString."@en ;
@@ -984,17 +1010,38 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ## Mailing list
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.mleecwa4ik0c
 
-#### no test?
+    sh:property [
+        sh:path <http://usefulinc.com/ns/doap#mailing-list> ;
+        sh:severity sh:Violation ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology mailing list is not provided as an IRI."@en ;
+        sh:description "The ontology mailing list must be provided as an IRI."@en ;
+        sh:name "Mailing list."@en ;
+    ];
 
 ## Logo/ depiction
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.mleecwa4ik0c
 
-#### no test?
+    sh:property [
+        sh:path [sh:alternativePath (<http://xmlns.com/foaf/0.1/logo> <http://schema.org/logo> <http://xmlns.com/foaf/0.1/depiction> <https://w3id.org/mod#depiction> <http://schema.org/image>)] ;
+        sh:severity sh:Violation ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology's related depictions are not provided via IRI."@en ;
+        sh:description "The ontology's related depictions must be provided via IRI."@en ;
+        sh:name "Logo/ depiction/ related visualizations."@en ;
+    ];
 
 ## Other PIDs
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.pmlta5futosw
 
-#### no test?
+    sh:property [
+        sh:path [sh:alternativePath (<http://purl.org/dc/terms/identifier> <http://purl.org/ontology/bibo/doi>)] ;
+        sh:severity sh:Violation ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology's related identifiers are not provided as IRIs."@en ;
+        sh:description "The ontology's related identifiers  must be provided as IRIs."@en ;
+        sh:name "Related identifiers."@en ;
+    ];
 
 ## Development environment
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.7sppqtjrwr19
@@ -1004,19 +1051,46 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ## Alignments/ mappings
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.u01l1tf32j6d
 
-#### no test? > IRI/ PID
-
 ### Aligned resource
 #### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.u01l1tf32j6d
+
+    sh:property [
+        sh:path [sh:alternativePath (<https://w3id.org/mod#hasEquivalencesWith> <http://w3id.org/nkos#alignedWith>)] ;
+        sh:severity sh:Violation ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology does not reference other ontologies it is aligned to via their IRIs."@en ;
+        sh:description "The ontology must reference other ontologies it is aligned to via their IRIs"@en ;
+        sh:name "Aligned resources."@en ;
+    ];
 
 ### External resource containing the alignments
 #### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.u01l1tf32j6d
 
+    sh:property [
+        sh:path [sh:alternativePath (<https://w3id.org/sssom/mapping_set_references>)] ;
+        sh:severity sh:Violation ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:message "The ontology does not provide a mapping set reference via IRI or blank node. Please refer to SSSOM for details about mapping set references (https://mapping-commons.github.io/sssom/MappingSetReference/)."@en ;
+        sh:description "The ontology must provide a mapping set reference via IRI or blank node.  Please refer to SSSOM for details about mapping set references (https://mapping-commons.github.io/sssom/MappingSetReference/)."@en ;
+        sh:name "Alignment files/ Mapping files"@en ;
+    ];
+
 ## Competency Questions
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.lrbkoqfkgcof
 
+    sh:property [
+        sh:path <https://w3id.org/mod#competencyQuestion> ;
+        sh:severity sh:Violation ;
+        sh:nodeKind sh:IRI ;
+        sh:message "The ontology does not provide information about its competency questions via IRI."@en ;
+        sh:description "The ontology must provide information about its competency questions via IRI."@en ;
+        sh:name "Competency questions"@en ;
+    ];
+
 ## Applied methodology
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.h76p0shx7x0a
+
+### no test?
 
 ## Preferred Namespace URI
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.7hko77uoyrvg
