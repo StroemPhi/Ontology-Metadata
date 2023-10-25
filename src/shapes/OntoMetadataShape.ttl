@@ -48,7 +48,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:message "The ontology title is not an rdf:langString, i.e. it does not carry a language tag. We recommend to add one."@en ;
-        sh:description "The ontology title must be an rdf:langString, i.e. it does not carry a language tag."@en ;
+        sh:description "This shape checks whether the ontology title literal value is an rdf:langString. It will produce an info message if the title does not carry a language tag."@en ;
         sh:name "Title"@en ; # this if for forms with DASH
         sh:order 1 ; # also for forms, order of fields
     ] ;
