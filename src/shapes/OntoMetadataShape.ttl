@@ -56,7 +56,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ## Preferred prefix/ ontology acronym
 ### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.us2ezyzaf4h4
 ### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.1iqmwa13y7u
-    sh:xone (
+    sh:or (
         [
             sh:property [
             sh:path <http://purl.org/vocab/vann/preferredNamespacePrefix> ;
