@@ -128,11 +128,11 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo)];
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI;
         sh:message "The ontology does not state its creator via IRI. We recommend to provide PIDs for individuals (e.g. ORCiD) or organisations (e.g. ROR)."@en ;
-        sh:description "The ontology must state its creator via IRI. We recommend to provide PIDs for individuals (e.g. ORCiD) or organisations (e.g. ROR)."@en ;
-        sh:name "Creator(s)"@en ; # this if for forms with DASH
+        sh:description "The ontology should state its creator via IRI. We recommend to provide PIDs for individuals (e.g. ORCiD) or organisations (e.g. ROR)."@en ;
+        sh:name "Creator(s)"@en ;
     ] ;
 
 ## Version information
