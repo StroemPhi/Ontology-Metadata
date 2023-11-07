@@ -28,6 +28,7 @@
 # Start of the Ontology Metadata Shape
 ontom:OntologyMetadataShape a sh:NodeShape ;
     sh:targetClass owl:Ontology ; 
+
 # MANDATORY METADATA
 ## G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.w5pmqfs8xiuv 
 
@@ -35,7 +36,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.1exx8hu4osgx
     sh:property [              
         sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title schema:name) ] ; 
-        sh:severity sh:Violation ;
+        sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:message "The ontology does not specify its label or title."@en ;
         sh:description "The ontology must specify its label or title."@en ;
@@ -84,7 +85,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://purl.org/vocab/vann/preferredNamespacePrefix> ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:datatype xsd:string ;
         sh:message "The ontology's preferred namespace prefix is not an xsd:string."@en ;
         sh:description "The ontology's preferred namespace prefix should be an xsd:string."@en ;
@@ -93,7 +94,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <https://w3id.org/mod#acronym> ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:datatype xsd:string ;
         sh:message "The ontology's acronym is not an xsd:string."@en ;
         sh:description "The ontology's acronym should be an xsd:string."@en ;
@@ -105,7 +106,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### Der TS nimmt die Lizenz-IRI, aber gern auch ein Label - darüber hatten wir noch nicht gesprochen
     sh:property [
         sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Warning ;
         sh:minCount 1;
         # tbd/todo: specify a list of accepted licenses? e.g. from open definition
         sh:nodeKind sh:IRI ;
@@ -119,7 +120,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### Über regex-Prüfungen könnte man hier auch bestimmte Identifier enforcen
     sh:property [
         sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo)];
-        sh:severity sh:Violation ;
+        sh:severity sh:Warning ;
         sh:minCount 1;
         sh:message "The ontology does not state its creator. We recommend to provide PIDs for individuals (e.g. ORCiD) or organisations (e.g. ROR)."@en ;
         sh:description "The ontology must state its creator. We recommend to provide PIDs for individuals (e.g. ORCiD) or organisations (e.g. ROR)."@en ;
@@ -142,7 +143,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 #### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.5o62yvmk2eo1
     sh:property [
         sh:path  owl:versionIRI ;
-        sh:severity sh:Info ;
+        sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:message "The ontology does not state exactly one versionIRI. The versionIRI should be stable and resolvable, i.e. a fixed version of the ontology should be retrievable from the provided IRI."@en ;
@@ -163,7 +164,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 #### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.7i4grrp5qlng
     sh:property [
         sh:path [sh:alternativePath (dcterms:created schema:dateCreated pav:createdOn prov:generatedAtTime )] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Warning ;
         sh:minCount 1;
         sh:maxCount 1 ;
         sh:message "The ontology does not specify exactly one date of creation. The date must be given in xsd:dateTime format."@en ;
@@ -173,7 +174,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (dcterms:created schema:dateCreated pav:createdOn prov:generatedAtTime )] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:datatype xsd:dateTime ;
         sh:message "The ontology does not specify its date of creation in xsd:dateTime format."@en ; 
         sh:description "The ontology must specify its date of creation in xsd:dateTime format."@en ;
@@ -204,7 +205,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.i101l8f9ynz8
     sh:property [
         sh:path [sh:alternativePath (owl:versionInfo pav:version)];
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:message "The ontology does not specify exactly one information about its version. We recommend semantic versioning(?) or latest modification/relase date (?)."@en ; # tbd
@@ -214,7 +215,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (owl:versionInfo pav:version)];
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:datatype xsd:string ;
         sh:message "The ontology does not specify its version information as xsd:string. We recommend semantic versioning(?) or latest modification/relase date (?)."@en ; # tbd
         sh:description "The ontology must(?) specify information about its version as xsd:string. We recommend semantic versioning(?) or latest modification/relase date (?)."@en ; #tbd
@@ -223,7 +224,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (owl:versionInfo pav:version)];
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:xone (
             [sh:pattern "^[0-9].[0-9].[0-9]$" ;]
             [sh:pattern "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" ;]
@@ -237,7 +238,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.txaafvbvbrys
     sh:property [
         sh:path [sh:alternativePath (adms:versionNotes vann:changes)]  ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:message "The ontology does not give exactly one update description (e.g. a comparison between this version and the directly preceeding version)."@en ; # tbd
@@ -247,7 +248,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (adms:versionNotes vann:changes)]  ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:Literal ; 
         sh:datatype rdf:langString ;
         sh:message "The ontology does not provide its version notes as an rdf:langString."@en ; # tbd
@@ -259,7 +260,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.bfn4i6l0oqot
     sh:property [
         sh:path [sh:alternativePath (dc:description dcterms:description schema:description)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:message "The ontology does not provide at least one short description about its scope."@en ;
         sh:description "The ontology must provide at least one short description about its scope. The description should be no more 500 characters long. There must be at most one description per language."@en ;
@@ -268,7 +269,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (dc:description dcterms:description schema:description)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:uniqueLang true ;
         sh:message "The ontology provides more than one short descriptions about its scope in the same language."@en ;
         sh:description "The ontology must provide at least one short description about its scope. The description should be no more 500 characters long. There must be at most one description per language."@en ;
@@ -277,7 +278,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (dc:description dcterms:description schema:description)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:maxLength 500 ; #tbd Wir haben Ontologien mit sehr viel längeren Beschreibungen... Aber das könnte man auch in ein ausführliches Abstract schieben.
         sh:message "The ontology description is too long (500 characters)."@en ;
         sh:description "The ontology must provide at least one short description about its scope. The description should be no more 500 characters long. There must be at most one description per language."@en ;
@@ -286,7 +287,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (dc:description dcterms:description schema:description)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:Literal ;
         sh:datatype rdf:langString ;
         sh:message "The ontology does not provide the short description about its scope as an rdf:langString."@en ;
@@ -298,7 +299,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### G-Doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.2wupy319ar5t
     sh:property [
         sh:path <http://usefulinc.com/ns/doap#bug-database> ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Warning ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -311,7 +312,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### G-doc https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.5fr9vwijs9cj
     sh:property [
         sh:path  <http://www.loc.gov/premis/rdf/v3/documentation> ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Warning ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -352,7 +353,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.tv6cuib399mn
     sh:property [
         sh:path <http://schema.org/funder> ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The funding institution values are not provided as IRIs. Funding institituons should be referenced by PIDs  (e.g. Research Organisation Registry identifiers, short ROR (https://ror.org/))."@en ;
         sh:description "The ontology should reference funding instutions by PIDs (e.g. Research Organisation Registry identifiers, short ROR (https://ror.org/))."@en ;
@@ -361,7 +362,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://schema.org/funder> ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message "The ontology does not reference any funding institution. The funding instution should be referenced by PIDs (e.g. Research Organisation Registry identifiers, short ROR (https://ror.org/))."@en ;
         sh:description "The ontology should reference funding organisations by PIDs (e.g. Research Organisation Registry identifiers, short ROR (https://ror.org/))."@en ;
@@ -373,7 +374,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.430puu6a6nqs
     sh:property [
         sh:path [sh:alternativePath (doap:audience schema:audience dcterms:audience)] ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message "The ontology does not specify its audience. The audience description should be a short, language-tagged text."@en ;
         sh:description "The ontology does not specify its audience. The audience description should be a short, language-tagged text."@en ;
@@ -383,7 +384,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (doap:audience schema:audience dcterms:audience)] ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:message "The audience description is not an rdf:langString."@en ;
         sh:description "The audience description should be an rdf:langString."@en ;
@@ -396,7 +397,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path dcterms:subject ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not specify which subjects it has. Use identifiers of controlled vocabularies to do so. You can search for fitting terms on TIB's Terminology service (https://terminology.tib.eu)."@en ;
@@ -406,7 +407,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path dcterms:subject ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not specify its subjects with IRIs. Use identifiers of controlled vocabularies to do so. You can search for fitting terms on TIB's Terminology service (https://terminology.tib.eu)."@en ;
         sh:description "The ontology should specify its subjects by using identifiers of controlled vocabularies. You can search for fitting terms on TIB's Terminology service (https://terminology.tib.eu)."@en ;
@@ -419,7 +420,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (dcterms:language <http://schema.org/inLanguage>) ];
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message "The ontology does not specifiy which natural language it covers in annotations."@en ;
         sh:description "The ontology should specifiy which natural languages its annotations have. The language values should be typed as xsd:language and use identifiers from 'ISO 639-2: Codes for the Representation of Names of Languages - Part 2: Alpha-3 Code for the Names of Languages' (cf. https://id.loc.gov/vocabulary/iso639-2.html)."@en ;
@@ -428,7 +429,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (dcterms:language <http://schema.org/inLanguage>) ];
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The information about natural languages applied in the ontology annotations is not provided via an IRI."@en ;
         sh:description "The information about natural languages applied in the ontology annotations must be provided via IRI. We recommend to use identifiers from 'ISO 639-2: Codes for the Representation of Names of Languages - Part 2: Alpha-3 Code for the Names of Languages' (cf. https://id.loc.gov/vocabulary/iso639-2.html)."@en ;
@@ -437,7 +438,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (dcterms:language <http://schema.org/inLanguage>) ];
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:pattern "^https://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$" ; # I'd say this suffices for now, especially when the list might be changing
         sh:message "The information about natural languages applied in the ontology does not match the pattern for language identifiers from 'ISO 639-2: Codes for the Representation of Names of Languages - Part 2: Alpha-3 Code for the Names of Languages' (cf. https://id.loc.gov/vocabulary/iso639-2.html)."@en ;
         sh:description "The information about natural languages applied in the ontology must match the pattern for language identifiers from 'ISO 639-2: Codes for the Representation of Names of Languages - Part 2: Alpha-3 Code for the Names of Languages' (cf. https://id.loc.gov/vocabulary/iso639-2.html)."@en ;
@@ -449,7 +450,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.f7xf7fxdnzym
     sh:property [
         sh:path <https://w3id.org/mod#hasFormalityLevel>;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message "The ontology does not specify which logical framework it applies."@en ;
         sh:description "The ontology should specify which logical framework it applies (e.g. 'OWL 2 EL profile' or 'SKOS')."@en ;
@@ -458,7 +459,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <https://w3id.org/mod#hasFormalityLevel>;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:message "The description of the logical framework of the ontology is not an rdf:langString."@en ;
         sh:description "The description of the logical framework of the ontology should be an rdf:langString."@en ;
@@ -470,7 +471,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.lwyd2i8tz8z3
     sh:property [
         sh:path <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message "The ontology does not specify its applied syntax. The value should be provided via IRI from the following controlled vocabulary: https://www.w3.org/ns/formats/."@en ;
         sh:description "The ontology should specify its applied syntax.  The value should be provided via IRI from the following controlled vocabulary: https://www.w3.org/ns/formats/."@en ;
@@ -479,7 +480,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not specify its applied syntax via IRI. The IRI should come from the following controlled vocabulary: https://www.w3.org/ns/formats/."@en ;
         sh:description "The ontology should specify its applied syntax via IRI. The IRI should come from the following controlled vocabulary: https://www.w3.org/ns/formats/."@en ;
@@ -488,7 +489,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:maxCount 1;
         sh:xone (
         #tbd: not all are relevant or digestable by the TS
@@ -526,7 +527,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.72qilfg8m0kp
     sh:property [
         sh:path <http://purl.org/ontology/bibo/status>;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1;
         sh:message "The ontology does not declare its current maintenance status. It should provide exactly one of the English-language values 'active', 'inactive', 'orphaned' or 'obsolete' (cf. https://obofoundry.org/docs/OntologyStatus.html)."@en ;
         sh:description "The ontology does not declare its current maintenance status. It should provide exactly one of the English-language values 'active', 'inactive', 'orphaned' or 'obsolete' (cf. https://obofoundry.org/docs/OntologyStatus.html)."@en ;
@@ -535,7 +536,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://purl.org/ontology/bibo/status>;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:maxCount 1;
         sh:xone (
             [sh:hasValue "active"@en ;] 
@@ -551,7 +552,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.j74ipx9l346g
     sh:property [
         sh:path <http://usefulinc.com/ns/doap#repository>;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1;
         sh:message "The ontology does not declare its code repository. The ontology should be on a code repository and the ontology should contain the repository's IRI."@en ;
         sh:description "The ontology should declare its code repository. The ontology should be on a code repository and the ontology should contain the repository's IRI."@en ;
@@ -560,7 +561,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://usefulinc.com/ns/doap#repository>;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI;
         sh:message "The ontology does not declare its code repository via IRI."@en ;
         sh:description "The ontology should declare its code repository via IRI."@en ;
@@ -571,7 +572,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.4c1i9g8fdlde 
    sh:property [
         sh:path [ sh:alternativePath (<http://www.w3.org/ns/dcat#distribution> schema:distribution dcterms:hasFormat)];
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message "The ontology does not specify IRIs for available alternative serializations of the ontology."@en ;
         sh:description "The ontology should specify IRIs for available alternative serializations of the ontology."@en ;
@@ -580,7 +581,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
    sh:property [
         sh:path [ sh:alternativePath (<http://www.w3.org/ns/dcat#distribution> schema:distribution dcterms:hasFormat)];
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not specify its available alternative serializations via IRI."@en ;
         sh:description "The ontology should specify its available alternative serializations via IRI"@en ;
@@ -593,7 +594,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <https://vocab.org/vann/example> ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message "The ontology does not provide information about an example of its use/ application. Ideally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application that uses the ontology."@en ;
         sh:description "The ontology should provide information about an example of its use/ application. Ideally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application that uses the ontology."@en ;
@@ -602,7 +603,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <https://vocab.org/vann/example> ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not provide information about an example of its use/ application via IRI. Ideally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application that uses the ontology."@en ;
         sh:description "The ontology must provide information about an example of its use/ application via IRI. Ideally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application that uses the ontology."@en ;
@@ -613,7 +614,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.69nyulc4710o 
     sh:property [
         sh:path dcterms:references ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message "The ontology does not make references to related publications introducing or discussing the ontology. The reference should be provided via PID, for example a DOI."@en ;
         sh:description "The ontology should make references to related publications introducing or discussing the ontology if available. The reference should be provided via PID, for example a DOI."@en ;
@@ -622,7 +623,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path dcterms:references ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not reference related publications introducing or discussing the ontology via IRI. The reference link should ideally be a PID, for example a DOI."@en ;
         sh:description "The ontology should reference related publications introducing or discussing the ontology via IRI. The reference link should ideally be a PID, for example a DOI."@en ;
@@ -633,7 +634,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.dbktcswqv4vo
     sh:property [
         sh:path dcterms:bibliographicCitation ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message "The ontology does not provide information about how it should be cited. The information should be provided as rdf:langString."@en ;
         sh:description "The ontology should provide information about how it should be cited. The information should be provided as rdf:langString."@en ;
@@ -642,7 +643,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path dcterms:bibliographicCitation ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:datatype rdf:langString ; #tbd
         sh:message "The ontology does not provide information about how it should be cited in text form. The information should be provided as rdf:langString."@en ;
         sh:description "The ontology must provide information about how it should be cited in text form (i.e. rdf:langString)."@en ;
@@ -653,7 +654,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.o65a3zkljex9
     sh:property [
         sh:path [sh:alternativePath (<http://purl.org/pav/derivedFrom> <http://www.w3.org/ns/prov#wasDerivedFrom>)] ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message "The ontology does not specify whether and from which ontologies it has been derived. The information should be provided via the owl:versionIRI of the related ontology."@en ;
         sh:description "The ontology should specify whether and from which ontologies it has been derived. The information should be provided via the owl:versionIRI of the related ontology."@en ;
@@ -662,7 +663,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<http://purl.org/pav/derivedFrom> <http://www.w3.org/ns/prov#wasDerivedFrom>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not specify the ontologies it has been derived from via IRI. The information should be provided via the owl:versionIRI of the related ontology."@en ;
         sh:description "The ontology must specify the ontologies it has been derived from via IRI. The information should be provided via the owl:versionIRI of the related ontology."@en ;
@@ -673,7 +674,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.t8ofhr306sjm
     sh:property [
         sh:path <http://purl.obolibrary.org/obo/IAO_0000700> ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message "The ontology does not declare whether and which specific classes shall be displayed as root terms in a tree-like visualization of the class hierarchy. The repsective classes (if any) need to be provided via their identifier."@en ;
         sh:description "The ontology should declare whether and which specific classes shall be displayed as root terms in a tree-like visualization of the class hierarchy. The repsective classes (if any) need to be provided via their identifier."@en ;
@@ -682,7 +683,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://purl.obolibrary.org/obo/IAO_0000700> ;
-        sh:severity sh:Warning ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not declare its root term classes via IRI (i.e. the classes identifiers)."@en ;
         sh:description "The ontology must declare its root term classes via IRI (i.e. the classes identifiers)."@en ;
@@ -709,7 +710,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 ### The following shapes set some constraints about the form of such optional metadata:
     sh:property [
         sh:path dcterms:abstract ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:Literal;
         sh:datatype rdf:langString ;
         sh:message "The ontology abstract is not an rdf:langString."@en ;
@@ -719,7 +720,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path dcterms:abstract ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:uniqueLang true ;
         sh:message "There are several ontology abstracts in the same language."@en ;
         sh:description "The must only be exactly one ontology abstract for each language."@en ;
@@ -741,7 +742,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<http://purl.org/dc/terms/alternative> <http://schema.org/alternateName>)];
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:message "The ontology's alternative title is not an rdf:langString."@en;
         sh:description "The ontology's alternative title must be an rdf:langString"@en;
@@ -753,7 +754,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://identifiers.org/idot/alternatePrefix> ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:datatype xsd:string ;
         sh:message "The ontology's alternative prefix is not an xsd:string."@en ;
         sh:description "The ontology's alternative prefix must be an xsd:string."@en ;
@@ -762,7 +763,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://identifiers.org/idot/alternatePrefix> ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:pattern "^[A-Za-z0-9]+$" ;
         sh:message "The ontology's alternative prefix does not exclusively consist of characters from A-Z, a-z or 0-9."@en ;
         sh:description "The ontology's alternative prefix must consist of characters from A-Z, a-z or 0-9."@en ;
@@ -777,7 +778,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<http://www.w3.org/2002/07/owl#priorVersion> <http://www.w3.org/ns/adms#prev> <http://purl.org/pav/previousVersion> <http://www.w3.org/ns/prov#wasRevisionOf> <http://purl.org/dc/terms/replaces> )] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology's prior version is not provided via an IRI. Ideally, a resolving ontology versionIRI should be used."@en ;
         sh:description "The ontology's prior version must be provided via IRI, ideally via a resolving versionIRI."@en ;
@@ -789,7 +790,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<http://purl.org/pav/hasCurrentVersion> <http://schema.org/version> <http://purl.org/dc/terms/hasVersion>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology's related version is not provided via an IRI. Ideally, a resolving ontology versionIRI should be used."@en ;
         sh:description "The ontology's related version must be provided via IRI, ideally via a resolving versionIRI."@en ;
@@ -801,7 +802,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<http://www.w3.org/2002/07/owl#backwardCompatibleWith>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "A compatible version of the ontology is not provided via an IRI. Ideally, a resolving ontology versionIRI should be used."@en ;
         sh:description "A compatible version of the ontology is not provided via an IRI, ideally via a resolving versionIRI."@en ;
@@ -813,7 +814,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<http://www.w3.org/2002/07/owl#incompatibleWith>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "An incompatible version of the ontology is not provided via an IRI. Ideally, a resolving ontology versionIRI should be used."@en ;
         sh:description "An incompatible version of the ontology is not provided via an IRI, ideally via a resolving versionIRI."@en ;
@@ -826,7 +827,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://xmlns.com/foaf/0.1/holdsAccount> ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not provide information about its social media accounts via IRI."@en;
         sh:description "The ontology must provide information about its social media accounts via IRI."@en;
@@ -838,7 +839,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path dcterms:type ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         # sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not declare its KOS type via identifier from the NKOS type vocabulary  (https://nkos.dublincore.org/nkostype/nkostype.rdf)."@en ;
@@ -848,7 +849,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path dcterms:type ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         # sh:pattern "http://w3id.org/nkos/nkostype#[a-z]+" ;
         sh:xone (
                 [sh:hasValue <http://w3id.org/nkos/nkostype#authority_file>]
@@ -878,7 +879,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
  
     sh:property [
         sh:path <http://identifiers.org/exampleIdentifier> ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         # sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not declare its example identifier as an IRI."@en ;
@@ -891,7 +892,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<http://identifiers.org/identifierPattern> <https://bioregistry.io/schema/#0000008>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:datatype xsd:string ;
         sh:message "The identifier pattern is not an xsd:string."@en ;
         sh:description "If the ontology declares an identifier pattern, it must be provided as xsd:string."@en ;
@@ -903,7 +904,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:xone (
             # for the TS rdf+xml and turtle are confirmed, we did not test the others yet
             [sh:hasValue <https://www.iana.org/assignments/media-types/application/rdf+xml> ;] 
@@ -926,7 +927,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<http://xmlns.com/foaf/0.1/homepage> <http://xmlns.com/foaf/0.1/page>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The homepage of the ontology is not provided as an IRI."@en ;
         sh:description "If the ontology names a homepage, it must be provided as an IRI."@en ;
@@ -939,7 +940,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 # tbd > Test schreibt keine maximale Anzahl an Publishern vor, und triggert sobald ein Wert nicht dem pattern entspricht - selbst dann, wenn der Ontology Editor bereits drei dem Pattern entsprechende Publisher-IDs nennt
     sh:property [
         sh:path [sh:alternativePath (<http://purl.org/dc/terms/publisher> <http://purl.org/dc/elements/1.1/publisher> <http://schema.org/publisher>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:xone (
             # pattern sources: Wikidata entries of the identifier types
@@ -957,7 +958,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path rdfs:comment ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:message "The comments about the ontology are not an rdf:langString."@en ;
         sh:description "The comments about the ontology must be an rdf:langString."@en ;
@@ -970,7 +971,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
 #    sh:property [
 #        sh:path <http://rdfs.org/ns/void#exampleResource> ;
-#        sh:severity sh:Violation ;
+#        sh:severity sh:Info ;
 #        sh:nodeKind sh:IRI ;
 #        sh:message "The ontology does not declare its example class as an IRI."@en ;
 #        sh:description "The ontology must declare its example classe via IRI."@en ;
@@ -984,7 +985,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://usefulinc.com/ns/doap#mailing-list> ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology mailing list is not provided as an IRI."@en ;
         sh:description "The ontology mailing list must be provided as an IRI."@en ;
@@ -996,7 +997,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<http://xmlns.com/foaf/0.1/logo> <http://schema.org/logo> <http://xmlns.com/foaf/0.1/depiction> <https://w3id.org/mod#depiction> <http://schema.org/image>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology's related depictions are not provided via IRI."@en ;
         sh:description "The ontology's related depictions must be provided via IRI."@en ;
@@ -1008,7 +1009,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<http://purl.org/dc/terms/identifier> <http://purl.org/ontology/bibo/doi>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology's related identifiers are not provided as IRIs."@en ;
         sh:description "The ontology's related identifiers  must be provided as IRIs."@en ;
@@ -1028,7 +1029,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<https://w3id.org/mod#hasEquivalencesWith> <http://w3id.org/nkos#alignedWith>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not reference other ontologies it is aligned to via their IRIs."@en ;
         sh:description "The ontology must reference other ontologies it is aligned to via their IRIs"@en ;
@@ -1040,7 +1041,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path [sh:alternativePath (<https://w3id.org/sssom/mapping_set_references>)] ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:BlankNodeOrIRI ;
         sh:message "The ontology does not provide a mapping set reference via IRI or blank node. Please refer to SSSOM for details about mapping set references (https://mapping-commons.github.io/sssom/MappingSetReference/)."@en ;
         sh:description "The ontology must provide a mapping set reference via IRI or blank node.  Please refer to SSSOM for details about mapping set references (https://mapping-commons.github.io/sssom/MappingSetReference/)."@en ;
@@ -1052,7 +1053,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <https://w3id.org/mod#competencyQuestion> ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not provide information about its competency questions via IRI."@en ;
         sh:description "The ontology must provide information about its competency questions via IRI."@en ;
@@ -1069,7 +1070,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     # sh:property [
     #     sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
-    #     sh:severity sh:Warning ;
+    #     sh:severity sh:Info ;
     #     sh:minCount 1 ;
     #     sh:maxCount 1 ;
     #     sh:message "The ontology does not declare its preferred namespace URI."@en ;
@@ -1079,27 +1080,23 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
 
     sh:property [
         sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
-        sh:severity sh:Violation ;
+        sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message "The ontology does not declare its preferred namespace URI as an IRI."@en ;
         sh:description "The ontology should declare its preferred namespace URI."@en ;
         sh:name "Preferred Namespace"@en ; # this if for forms with DASH
     ] ;
 
-
-# Not decided whether M, R or O
 ### Date issued
     sh:property [
         sh:path dcterms:issued ;
-        sh:severity sh:Warning ;
-        sh:minCount 1;
+        sh:severity sh:Info ;
+        #sh:minCount 1;
         sh:datatype xsd:dateTime ;
         sh:message "The ontology does not have an issued date or the date does not conform to xsd:dateTime."@en ;
         sh:description "The ontology should have an issued date that conforms to xsd:dateTime."@en ;
         sh:name "Date issued"@en ; # this if for forms with DASH
     ] ;
-
-
 
 # End of shape
     sh:closed false ;
