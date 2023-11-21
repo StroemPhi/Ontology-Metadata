@@ -8,7 +8,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix dash: <http://datashapes.org/dash#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcterms: <https://purl.org/dc/terms/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix schema: <http://schema.org/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
@@ -40,7 +40,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:message """The ontology does not have a label or title. 
-        Recommended property: <http://purl.org/dc/terms/title>. 
+        Recommended property: <https://purl.org/dc/terms/title>. 
         The title should be an rdf:langString.
         Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title "Some Ontology"@en ."""@en ;
         sh:description "This shape checks whether the ontology has a title or label. It will produce a warning message if the title is missing"@en ;
@@ -96,7 +96,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         # tbd/todo: specify a list of accepted licenses? e.g. from open definition
         sh:message """The ontology does not specify its license. 
         The license should be open. Read more about open licenses at https://opendefinition.org/licenses/.
-        Recommended property: <http://purl.org/dc/terms/license>
+        Recommended property: <https://purl.org/dc/terms/license>
         Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> .
         """@en ;
         sh:description "This shape checks whether the ontology provides license information. The license should be provided as an IRI (https://www.w3.org/TR/rdf11-concepts/#dfn-iri), not as a Literal. The license should be open (see more at https://opendefinition.org/licenses/)."@en ;
@@ -111,7 +111,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
             [sh:datatype xsd:anyURI ;]
         ) ;
         sh:message """The ontology license is not provided as an IRI or not typed as an xsd:anyURI. Do not provide the license as an xsd:string. 
-        Recommended property: <http://purl.org/dc/terms/license>
+        Recommended property: <https://purl.org/dc/terms/license>
         Example statement 1 (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> .
         Example statement 2 (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license "http://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI .
         The license should be open. Read more about open licenses at https://opendefinition.org/licenses/.
@@ -135,8 +135,8 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         Creators should be referenced via PIDs, e.g. ORCiDs for persons and RORs for organisations.
         Plain name strings can be provided in addition (for readability). 
         If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.
-        Recommended property: <http://purl.org/dc/terms/creator>
-        Example statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.
+        Recommended property: <https://purl.org/dc/terms/creator>
+        Example statement (text/turtle): <https://www.purl.org/SomeOntology> <https://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.
         """@en ;
         sh:description "This shape checks whether the ontology provides information about its creator. It will produce a warning message if no creator information is present."@en ;
         sh:name "Creator(s)"@en ;
@@ -151,8 +151,8 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         Creators should be referenced via PIDs, e.g. ORCiDs for persons and RORs for organisations.
         Plain name strings should only be provided in addition (for readability).
         If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.
-        Recommended property: <http://purl.org/dc/terms/creator>
-        Example statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.
+        Recommended property: <https://purl.org/dc/terms/creator>
+        Example statement (text/turtle): <https://www.purl.org/SomeOntology> <https://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.
         """@en ;
         sh:description "This shape checks whether the ontology states its creator as an IRI. It will produce an info message if creator information is given e.g. as xsd:string"@en ;
         sh:name "Creator(s)"@en ;
@@ -203,7 +203,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         sh:maxCount 1 ;
         sh:message """The ontology does not specify exactly one date of creation. 
         The date must be given in xsd:dateTime format.
-        Recommended property: <http://purl.org/dc/terms/created>
+        Recommended property: <https://purl.org/dc/terms/created>
         Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:created "2020-11-19T00:00:00"^^xsd:dateTime .
         """@en ;
         sh:description "This shape checks whether the ontology provides its creation date. It produces a warning message if not."@en ;
@@ -215,11 +215,11 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:datatype xsd:dateTime ;
         sh:message """The ontology does not specify its date of creation in xsd:dateTime format.
-        Recommended property: <http://purl.org/dc/terms/created>
+        Recommended property: <https://purl.org/dc/terms/created>
         Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:created "2020-11-19T00:00:00"^^xsd:dateTime .
         """@en ; 
         sh:description "This shape checks whether the ontology provides its creation date in xsd:dateTime format. It produces an info message if not."@en ;
-        sh:name "Creation date datatype"@en ; # this if for forms with DASH
+        sh:name "Creation date datatype"@en ; 
     ] ;
 
 ### Modification date
@@ -231,7 +231,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         sh:minCount 1;  # tbd: currently only minCount, because some resources list multiple modification dates
         sh:message """The ontology does not specify its latest modification date.
         The modification date should be given in xsd:dateTime format.
-        Recommended property: <http://purl.org/dc/terms/modified>
+        Recommended property: <https://purl.org/dc/terms/modified>
         Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:modified "2020-11-19T00:00:00"^^xsd:dateTime.
         """@en ;
         sh:description "This shape checks whether the ontology provides at least one modification date in xsd:dateTime format. It produces an info message if not."@en ;
@@ -243,7 +243,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:datatype xsd:dateTime ;
         sh:message """The ontology does not specify its modification date in xsd:dateTime format.
-                Recommended property: <http://purl.org/dc/terms/modified>
+                Recommended property: <https://purl.org/dc/terms/modified>
                 Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:modified "2020-11-19T00:00:00"^^xsd:dateTime.
                 """@en ;
         sh:description "This shape checks whether the ontology provides its modification date in xsd:dateTime format. It produces an info message if not."@en ;
@@ -337,7 +337,7 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         sh:minCount 1 ;
         sh:message """
             The ontology does not provide at least one short description about its scope.
-            Recommended property: <http://purl.org/dc/terms/description>
+            Recommended property: <https://purl.org/dc/terms/description>
             Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:description "SomeOntology defines a range of classes and properties which can be applied to do stuff in a particular domain."@en , "SomeOntology definiert eine Reihe von Klassen und Properties, die in einer bestimmten Domäne verwendet werden können, um etwas damit zu tun."@de .
         """@en ;
         sh:description "This shape checks whether the ontology provides a description. It produces an info message if not."@en ;
@@ -351,7 +351,7 @@ sh:property [
         sh:datatype rdf:langString ;
         sh:message """
             The ontology does not provide the short description about its scope as an rdf:langString.
-            Recommended property: <http://purl.org/dc/terms/description>
+            Recommended property: <https://purl.org/dc/terms/description>
             Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:description "SomeOntology defines a range of classes and properties which can be applied to do stuff in a particular domain."@en , "SomeOntology definiert eine Reihe von Klassen und Properties, die in einer bestimmten Domäne verwendet werden können, um etwas damit zu tun."@de .
         """@en ;
         sh:description "This shape checks whether the ontology provides its description as an rdf:langString. It produces an info message if not."@en ;
@@ -377,7 +377,7 @@ sh:property [
         sh:message """
             The ontology description is longer than 500 characters.
             It is recommened to keep the ontology description short.
-            To provide more information about the ontology, add an abstract (recommended property: <http://purl.org/dc/terms/abstract>) or add a reference to a related article (recommended property: <http://purl.org/dc/terms/references>).
+            To provide more information about the ontology, add an abstract (recommended property: <https://purl.org/dc/terms/abstract>) or add a reference to a related article (recommended property: <https://purl.org/dc/terms/references>).
         """@en ;
         sh:description "This shape cheks whether the ontology descriptions is longer than 500 characters. It produces an info message if it does."@en ;
         sh:name "Description length"@en ;
@@ -434,8 +434,8 @@ sh:property [
             Contributors should be referenced by PIDs, e.g. ORCiDs for persons and RORs for organisations.
             Plain name strings can be provided in addition (for readability). 
             If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.
-            Recommended property: <http://purl.org/dc/terms/contributor>
-            Example statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>.
+            Recommended property: <https://purl.org/dc/terms/contributor>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology> <https://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>.
         """@en ;
         sh:description "This shape checks whether the ontology provides information about its contributors. It will produce an info message if no contributor information is present."@en ;
         sh:name "Contributors"@en ;
@@ -451,8 +451,8 @@ sh:property [
             Contributors should be referenced via PIDs, e.g. ORCiDs for persons and RORs for organisations.
             Plain name strings should only be provided in addition (for readability).
             If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.
-            Recommended property: <http://purl.org/dc/terms/contributor>
-            Example statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>.
+            Recommended property: <https://purl.org/dc/terms/contributor>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology> <https://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>.
         """@en ;
         sh:description "This shape checks whether the ontology states its contributors via IRIs. It will produce an info message if contributor information is given e.g. as xsd:string."@en ;
         sh:name "Contributors"@en ; 
@@ -537,7 +537,7 @@ sh:property [
                 The ontology does not specify any subjects.
                 It is recommended to use identifiers of controlled vocabularies or ontologies to do so.
                 You can search for fitting terms on TIB's Terminology service (https://terminology.tib.eu).
-                Recommended property: <http://purl.org/dc/terms/subject>
+                Recommended property: <https://purl.org/dc/terms/subject>
                 Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:subject <https://d-nb.info/gnd/4067537-3>, <https://d-nb.info/gnd/4070177-3>, <http://uri.gbv.de/terminology/bk/42.15>, <https://github.com/tibonto/dfgfo/201-03>."""@en ;
         sh:description "This shape checks whether the ontology provides subjects. It produces an info message if it does not."@en ;
         sh:name "Subject(s)"@en ;
@@ -551,7 +551,7 @@ sh:property [
                 The ontology does not specify its subjects with IRIs.
                 It is recommended to use identifiers of controlled vocabularies or ontologies to do so.
                 You can search for fitting terms on TIB's Terminology service (https://terminology.tib.eu).
-                Recommended property: <http://purl.org/dc/terms/subject>
+                Recommended property: <https://purl.org/dc/terms/subject>
                 Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:subject <https://d-nb.info/gnd/4067537-3>, <https://d-nb.info/gnd/4070177-3>, <http://uri.gbv.de/terminology/bk/42.15>, <https://github.com/tibonto/dfgfo/201-03>.
                 """@en ;
         sh:description "This shape checks whether the ontology provides its subjects via IRIs. It produces an info message if it does not."@en ;
@@ -820,7 +820,7 @@ sh:property [
         sh:message """
                 The ontology does not provide links to related publications (e.g. introducing or discussing the ontology) or other resources.
                 The reference should be provided via PID, for example a DOI.
-                Recommended property: <http://purl.org/dc/terms/references>
+                Recommended property: <https://purl.org/dc/terms/references>
                 Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:references <http://doi.org/10.00000/some0.ontolo> .
                 """@en ;
         sh:description "This shape checks whether the ontology provides links to related resources. It produces an info message if the information is missing or not provided as an IRI."@en ;
@@ -837,7 +837,7 @@ sh:property [
         sh:message """
                 The ontology does not provide information about how it should be cited. 
                 The information should be provided as an rdf:langString.
-                Recommended property: <http://purl.org/dc/terms/bibliographicCitation>
+                Recommended property: <https://purl.org/dc/terms/bibliographicCitation>
                 Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:bibliographicCitation \"Last name, first name; last name, first name et al. (YYYY): Title. URL: https://w3id.org/SomeOntology/1.1.6\"@en .
                 """@en ;
         sh:description "This shape ckecks whether the ontology provides information about how it should be cited. It produces an info message if the information is missing."@en ;
@@ -850,7 +850,7 @@ sh:property [
          #tbd
         sh:message """
                 The ontology citation information should be provided as an rdf:langString.
-                Recommended property: <http://purl.org/dc/terms/bibliographicCitation>
+                Recommended property: <https://purl.org/dc/terms/bibliographicCitation>
                 Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:bibliographicCitation \"Last name, first name; last name, first name et al. (YYYY): Title. URL: https://w3id.org/SomeOntology/1.1.6\"@en .
                 """@en ;
         sh:description "This shape ckecks whether the ontology citation is provided as an rdf:langString. It produces an info message if it is not."@en ;
@@ -890,7 +890,7 @@ sh:property [
                 Recommended property: <http://purl.obolibrary.org/obo/IAO_0000700> 
                 Example statement (text/turtle): <https://www.purl.org/SomeOntology> obo:IAO_0000700 <https://www.purl.org/SomeOntology/12345654544545> .
                 """@en ;
-        sh:description "This shape checks whether the ontology declares its preferred root classes. It provides and info message if the information is missing or the information is not provided as IRIs."@en ;
+        sh:description "This shape checks whether the ontology declares its preferred root classes. It provides an info message if the information is missing or the information is not provided as IRIs."@en ;
         sh:name "Root classes"@en ;
     ] ;
 
@@ -899,16 +899,14 @@ sh:property [
 
 ## Abstract
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.2r7kudayonj7
-
 ### Shapes for optional metadata should only trigger, when their form is questionalble, not when they are missing. The following shape is explicitly excluded:
-
     # sh:property [
     #     sh:path dcterms:abstract ;
     #     sh:severity sh:Info ;
     #     sh:minCount 1;
     #     sh:message "The ontology does not have an abstract."@en ;
     #     sh:description "The ontology could have an abstract."@en ;
-    #     sh:name "Abstract"@en ; # this if for forms with DASH
+    #     sh:name "Abstract"@en ;
     # ] ;
 
 ### The following shapes set some constraints about the form of such optional metadata:
@@ -917,18 +915,26 @@ sh:property [
         sh:severity sh:Info ;
         sh:nodeKind sh:Literal;
         sh:datatype rdf:langString ;
-        sh:message "The ontology abstract is not an rdf:langString."@en ;
-        sh:description "The ontology abstract should be an rdf:langString."@en ;
-        sh:name "Abstract"@en ; # this if for forms with DASH
+        sh:message """The ontology abstract is not an rdf:langString.
+                Recommended property: <https://purl.org/dc/terms/abstract>
+                Example statetement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:abstract \"Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the description.\"@en .
+                """@en ;
+        sh:description "This shape checks whether the ontology abstract is an rdf:langString. It provides an info message if it is not."@en ;
+        sh:name "Abstract"@en ;
     ] ;
 
     sh:property [
         sh:path dcterms:abstract ;
         sh:severity sh:Info ;
         sh:uniqueLang true ;
-        sh:message "There are several ontology abstracts in the same language."@en ;
-        sh:description "The must only be exactly one ontology abstract for each language."@en ;
-        sh:name "Abstract"@en ; # this if for forms with DASH
+        sh:message """
+                There are several ontology abstracts in the same language.
+                There should only be one abstract per language.
+                Recommended property: <https://purl.org/dc/terms/abstract>
+                Example statements (text/turtle): <https://www.purl.org/SomeOntology> dcterms:abstract \"Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the description.\"@en, \"Freitext, der die Ontologie und ihre Genese beschreibt. Hier können umfangreiche Hintergrundinformationen zur Ontologie gegeben werden, die über eine Kurzbeschreibung ihres Scopes hinausgehen.\" .
+                """@en ;
+        sh:description "This shape checks whether multiple ontology abstracts in the same language are present. It produces an info message if there are multiple abstracts in the same language."@en ;
+        sh:name "Abstract"@en ;
     ] ;
 
 
@@ -936,7 +942,7 @@ sh:property [
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.yaeqpjfuub34
 
     # sh:property [
-    #     sh:path [sh:alternativePath (<http://purl.org/dc/terms/alternative> <http://schema.org/alternateName>)];
+    #     sh:path [sh:alternativePath (<https://purl.org/dc/terms/alternative> <http://schema.org/alternateName>)];
     #     sh:severity sh:Info ;
     #     sh:minCount 1 ;
     #     sh:message "The ontology does not have an alternative title."@en;
@@ -945,11 +951,15 @@ sh:property [
     # ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/dc/terms/alternative> <http://schema.org/alternateName>)];
+        sh:path [sh:alternativePath (<https://purl.org/dc/terms/alternative> <http://schema.org/alternateName>)];
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
-        sh:message "The ontology's alternative title is not an rdf:langString."@en;
-        sh:description "The ontology's alternative title must be an rdf:langString"@en;
+        sh:message """
+            The ontology's alternative title is not an rdf:langString.
+            Recommended property: <https://purl.org/dc/terms/alternative>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:alternative \"My Ontology\"@en .
+        """@en;
+        sh:description "This shape checks whether the ontology's alternative title is an rdf:langString. It produces an info message if it is not."@en;
         sh:name "Alternative title"@en;
     ] ;
 
@@ -960,17 +970,11 @@ sh:property [
         sh:path <http://identifiers.org/idot/alternatePrefix> ;
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
-        sh:message "The ontology's alternative prefix is not an xsd:string."@en ;
-        sh:description "The ontology's alternative prefix must be an xsd:string."@en ;
-        sh:name "Alternative prefix"@en ;
-    ] ;
-
-    sh:property [
-        sh:path <http://identifiers.org/idot/alternatePrefix> ;
-        sh:severity sh:Info ;
-        sh:pattern "^[A-Za-z0-9]+$" ;
-        sh:message "The ontology's alternative prefix does not exclusively consist of characters from A-Z, a-z or 0-9."@en ;
-        sh:description "The ontology's alternative prefix must consist of characters from A-Z, a-z or 0-9."@en ;
+        sh:message """The ontology's alternative prefix is not an xsd:string.
+                Recommended property: <http://identifiers.org/idot/alternatePrefix>
+                Example statement (text/turtle): <https://www.purl.org/SomeOntology> idot:alternatePrefix „mo“^^xsd:string .
+                """@en ;
+        sh:description "This shape checks whether the ontology's alternative prefix is an xsd:string. It produces an info message if it does not."@en ;
         sh:name "Alternative prefix"@en ;
     ] ;
 
@@ -981,11 +985,16 @@ sh:property [
 #### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.3yb5w8vkav71 
 
     sh:property [
-        sh:path [sh:alternativePath (<http://www.w3.org/2002/07/owl#priorVersion> <http://www.w3.org/ns/adms#prev> <http://purl.org/pav/previousVersion> <http://www.w3.org/ns/prov#wasRevisionOf> <http://purl.org/dc/terms/replaces> )] ;
+        sh:path [sh:alternativePath (<http://www.w3.org/2002/07/owl#priorVersion> <http://www.w3.org/ns/adms#prev> <http://purl.org/pav/previousVersion> <http://www.w3.org/ns/prov#wasRevisionOf> <https://purl.org/dc/terms/replaces> )] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message "The ontology's prior version is not provided via an IRI. Ideally, a resolving ontology versionIRI should be used."@en ;
-        sh:description "The ontology's prior version must be provided via IRI, ideally via a resolving versionIRI."@en ;
+        sh:message """
+            The ontology's prior version is not provided via an IRI. 
+            Ideally, a resolving ontology versionIRI should be used.
+            Recommended property: <http://www.w3.org/2002/07/owl#priorVersion>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology> owl:priorVersion <https://www.purl.org/SomeOntology/1.1.6> .
+            """@en ;
+        sh:description """This shape checks whether the ontology's prior version is provided as an IRI, ideally via a resolving versionIRI. It produces an info message if it is not."""@en ;
         sh:name "Prior version"@en ;
     ] ;
 
@@ -993,11 +1002,15 @@ sh:property [
 #### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.kvmesjuzq56q
 
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/pav/hasCurrentVersion> <http://schema.org/version> <http://purl.org/dc/terms/hasVersion>)] ;
+        sh:path [sh:alternativePath (<http://purl.org/pav/hasCurrentVersion> <http://schema.org/version> <https://purl.org/dc/terms/hasVersion>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message "The ontology's related version is not provided via an IRI. Ideally, a resolving ontology versionIRI should be used."@en ;
-        sh:description "The ontology's related version must be provided via IRI, ideally via a resolving versionIRI."@en ;
+        sh:message """
+        The ontology's related version is not provided via an IRI. Ideally, a resolving ontology versionIRI should be used.
+        Recommended property: <http://purl.org/dc/terms/isVersionOf>
+        Example statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.6> dcterms:isVersionOf <https://www.purl.org/SomeOntology>.
+        """@en ;
+        sh:description "This shape checks whether the ontology's related versions are provided as IRIs, ideally via a resolving versionIRI. It produces an info message if they are not."@en ;
         sh:name "Related version"@en ;
     ] ;
 
@@ -1008,8 +1021,12 @@ sh:property [
         sh:path [sh:alternativePath (<http://www.w3.org/2002/07/owl#backwardCompatibleWith>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message "A compatible version of the ontology is not provided via an IRI. Ideally, a resolving ontology versionIRI should be used."@en ;
-        sh:description "A compatible version of the ontology is not provided via an IRI, ideally via a resolving versionIRI."@en ;
+        sh:message """
+        A compatible version of the ontology is not provided via an IRI. Ideally, a resolving ontology versionIRI should be used.
+        Recommended property: <http://www.w3.org/2002/07/owl#backwardCompatibleWith>
+        Example statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.7> owl:backwardCompatibleWith <https://www.purl.org/SomeOntology/1.1.6> .
+        """@en ;
+        sh:description "This shape checks whether the ontology provides links to compatible versions of the ontology via IRIs. It produces an info message if they are not."@en ;
         sh:name "Compatible version"@en ;
     ] ;
 
@@ -1020,23 +1037,19 @@ sh:property [
         sh:path [sh:alternativePath (<http://www.w3.org/2002/07/owl#incompatibleWith>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message "An incompatible version of the ontology is not provided via an IRI. Ideally, a resolving ontology versionIRI should be used."@en ;
-        sh:description "An incompatible version of the ontology is not provided via an IRI, ideally via a resolving versionIRI."@en ;
+        sh:message """
+            An incompatible version of the ontology is not provided via an IRI. Ideally, a resolving ontology versionIRI should be used.
+            Recommended property: <http://www.w3.org/2002/07/owl#incompatibleWith>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.7> owl:incompatibleWith <https://www.purl.org/SomeOntology/1.1.6> .
+            """@en ;
+        sh:description "This shape checks whether the ontology provides links to incompatible versions of the ontology via IRIs. It produces an info message, if it does not."@en ;
         sh:name "Incompatible version"@en ;
     ] ;
 
 
 ## Social media 
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.m43ql04sm8fr
-
-    sh:property [
-        sh:path <http://xmlns.com/foaf/0.1/holdsAccount> ;
-        sh:severity sh:Info ;
-        sh:nodeKind sh:IRI ;
-        sh:message "The ontology does not provide information about its social media accounts via IRI."@en;
-        sh:description "The ontology must provide information about its social media accounts via IRI."@en;
-        sh:name "Social media"@en;
-    ] ;
+### no test?
 
 ## KOS type
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.t43hvhmk2o1b
@@ -1046,16 +1059,7 @@ sh:property [
         sh:severity sh:Info ;
         # sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message "The ontology does not declare its KOS type via identifier from the NKOS type vocabulary  (https://nkos.dublincore.org/nkostype/nkostype.rdf)."@en ;
-        sh:description "If the ontology declares a KOS type, it must do so by using an identifier from the NKOS type vocabulary (https://nkos.dublincore.org/nkostype/nkostype.rdf)."@en ;
-        sh:name "KOS type"@en ; # this if for forms with DASH
-    ] ;
-
-    sh:property [
-        sh:path dcterms:type ;
-        sh:severity sh:Info ;
-        # sh:pattern "http://w3id.org/nkos/nkostype#[a-z]+" ;
-        sh:xone (
+                sh:xone (
                 [sh:hasValue <http://w3id.org/nkos/nkostype#authority_file>]
                 [sh:hasValue <http://w3id.org/nkos/nkostype#categorization_schema>]
                 [sh:hasValue <http://w3id.org/nkos/nkostype#classification_schema>]
@@ -1073,9 +1077,13 @@ sh:property [
                 [sh:hasValue <http://w3id.org/nkos/nkostype#terminology>]
                 [sh:hasValue <http://w3id.org/nkos/nkostype#thesaurus>]
             ) ;
-        sh:message "The ontology's KOS type identifier is not from the NKOS type vocabulary  (https://nkos.dublincore.org/nkostype/nkostype.rdf)."@en ;
-        sh:description "If the ontology declares a KOS type, the provided IRI must be from the NKOS type vocabulary namespace (https://nkos.dublincore.org/nkostype/nkostype.rdf)."@en ;
-        sh:name "KOS type"@en ; # this if for forms with DASH
+        sh:message """
+                The ontology does not declare its KOS type via identifier from the NKOS type vocabulary (https://nkos.dublincore.org/nkostype/nkostype.rdf).
+                Recommended property: <https://purl.org/dc/terms/type>
+                Example statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.7> dcterms:type <http://w3id.org/nkos/nkostype#ontology> .
+                """@en ;
+        sh:description "This shape checks whether the ontology declares a KOS-type as an IRI from the NKOS type vocabulary. It produces an info message if it does not."@en ;
+        sh:name "KOS type"@en ;
     ] ;
 
 ## Example identifier
@@ -1086,9 +1094,13 @@ sh:property [
         sh:severity sh:Info ;
         # sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message "The ontology does not declare its example identifier as an IRI."@en ;
-        sh:description "If the ontology declares an example identifier, it must do so by using an identifier."@en ;
-        sh:name "Example identifier"@en ; # this if for forms with DASH
+        sh:message """
+                The ontology does not declare its example identifier as an IRI.
+                Recommended property: <http://identifiers.org/exampleIdentifier>
+                Example statement (text/turtle): <https://www.purl.org/SomeOntology> idot:exampleIdentifier <https://www.purl.org/SomeOntology/1234-XY> .
+                """@en ;
+        sh:description "This shape checks whether the ontology declares example identifiers as IRIs. It produces an info message if it does not."@en ;
+        sh:name "Example identifier"@en ;
     ] ;
 
 ## Identifier pattern
@@ -1098,16 +1110,20 @@ sh:property [
         sh:path [sh:alternativePath (<http://identifiers.org/identifierPattern> <https://bioregistry.io/schema/#0000008>)] ;
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
-        sh:message "The identifier pattern is not an xsd:string."@en ;
-        sh:description "If the ontology declares an identifier pattern, it must be provided as xsd:string."@en ;
-        sh:name "Identifier pattern"@en ; # this if for forms with DASH
+        sh:message """
+            The identifier pattern is not an xsd:string.
+            Recommended property: <http://identifiers.org/identifierPattern>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology> idot:identifierPattern \"^\\d{4}-[A-Z]{2}$\"^^xsd:string .
+            """@en ;
+        sh:description "This shape checks whether the ontology declares an identifier pattern as xsd:string. It produces an info message if it does not."@en ;
+        sh:name "Identifier pattern"@en ;
     ] ;
 
 ## Format/ media type/ content type
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.38comxqwn2em
 
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>)] ;
+        sh:path [sh:alternativePath (<https://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>)] ;
         sh:severity sh:Info ;
         sh:xone (
             # for the TS rdf+xml and turtle are confirmed, we did not test the others yet
@@ -1118,11 +1134,13 @@ sh:property [
             [sh:hasValue <https://www.iana.org/assignments/media-types/application/n-triples> ;]
             [sh:hasValue <https://www.iana.org/assignments/media-types/application/n-quads> ;]
             [sh:hasValue <https://www.iana.org/assignments/media-types/application/ld+json> ;]
-            # [sh:hasValue <> ;]
-            # [sh:hasValue <> ;]
         );
-        sh:message "The media type of the ontology is not one of the allowed values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml)"@en ;
-        sh:description "The media type of the ontology must be one of the allowed values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml)."@en ;
+        sh:message """
+            The media type of the ontology is not one of the allowed values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml)
+            Recommended property: <https://purl.org/dc/terms/format>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:format \"application/ld+json\"^^xsd:string .
+        """@en ;
+        sh:description "This shape checks whether the ontology's media type is one of the allowed values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml). It produces an info message if it is not."@en ;
         sh:name "Media type"@en ;
     ] ;
 
@@ -1133,27 +1151,36 @@ sh:property [
         sh:path [sh:alternativePath (<http://xmlns.com/foaf/0.1/homepage> <http://xmlns.com/foaf/0.1/page>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message "The homepage of the ontology is not provided as an IRI."@en ;
-        sh:description "If the ontology names a homepage, it must be provided as an IRI."@en ;
-        sh:name "Homepage"@en ; # this if for forms with DASH
+        sh:message """
+            The homepage of the ontology is not provided as an IRI.
+            Recommended property: <http://xmlns.com/foaf/0.1/homepage>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology> foaf:homepage <https://www.example.com/SomeOntologyInfo> .
+        """@en ;
+        sh:description "This shape checks whether the ontology homepage is provided as an IRI. It produces an info message if it is not."@en ;
+        sh:name "Homepage"@en ;
     ] ;
-
 
 ## Publisher
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.wjrgmpmdrs36
 # tbd > Test schreibt keine maximale Anzahl an Publishern vor, und triggert sobald ein Wert nicht dem pattern entspricht - selbst dann, wenn der Ontology Editor bereits drei dem Pattern entsprechende Publisher-IDs nennt
+# shacl validator tests two conditions (nodeKind and pattern) > if both are violated, it gives two error messages, which are not distinguished > confusing for user?
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/dc/terms/publisher> <http://purl.org/dc/elements/1.1/publisher> <http://schema.org/publisher>)] ;
+        sh:path [sh:alternativePath (<https://purl.org/dc/terms/publisher> <http://purl.org/dc/elements/1.1/publisher> <http://schema.org/publisher>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:xone (
             # pattern sources: Wikidata entries of the identifier types
+            # tbd - shall we use patterns?
             [sh:pattern "https://ror.org/([a-z0-9]{9})" ; ]
             [sh:pattern "https://isni.org/isni/[0]{4}[0-9]{4}[0-9]{4}[0-9]{3}[0-9X]" ;]
             [sh:pattern "https://d-nb.info/gnd/(|(1[012]?[0-9]{7}[0-9X]|[47][0-9]{6}-[0-9]|[1-9][0-9]{0,7}-[0-9X]|3[0-9]{7}[0-9X]))$" ;]
         ) ;
-        sh:message "The ontology does not specify its publisher as an IRI belonging to the ROR, ISNI or GND namespace."@en ;
-        sh:description "The ontology must specify its publisher as an IRI belonging to the ROR, ISNI or GND namespace."@en ; #tbd
+        sh:message """
+            The ontology does not specify its publisher as an IRI belonging to the ROR, ISNI or GND namespace or the value does not mathch the identifier patterns.
+            Recommended property: <https://purl.org/dc/terms/publisher>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:publisher <https://isni.org/isni/0000000121746694> .
+        """@en ;
+        sh:description "This shape checks whether the ontology specifies its publisher as an IRI belonging to the ROR, ISNI or GND namespace. It produces an info message if not."@en ;
         sh:name "Publisher"@en ;
     ] ;
 
@@ -1164,9 +1191,13 @@ sh:property [
         sh:path rdfs:comment ;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
-        sh:message "The comments about the ontology are not an rdf:langString."@en ;
-        sh:description "The comments about the ontology must be an rdf:langString."@en ;
-        sh:name "Comments (ontology level)"@en ; # this if for forms with DASH
+        sh:message """
+                The comments about the ontology are not an rdf:langString.
+                Recommended property: <http://www.w3.org/2000/01/rdf-schema#comment>
+                Example statement (text/turtle): <https://www.purl.org/SomeOntology> rdfs:comment “SomeOntology does not actually exist.”@en .
+                """@en ;
+        sh:description "This shape checks whether the comments about the ontology are provided as an rdf:langString. It produces an info message if they are not."@en ;
+        sh:name "Comments (ontology level)"@en ;
     ] ;
 
 
@@ -1191,9 +1222,13 @@ sh:property [
         sh:path <http://usefulinc.com/ns/doap#mailing-list> ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message "The ontology mailing list is not provided as an IRI."@en ;
-        sh:description "The ontology mailing list must be provided as an IRI."@en ;
-        sh:name "Mailing list."@en ;
+        sh:message """
+                The ontology mailing list is not provided as an IRI.
+                Recommended property: <http://usefulinc.com/ns/doap#mailing-list>
+                Example statement (text/turtle): <https://www.purl.org/SomeOntology> doap:mailing-list <someontology@list.de> .
+                """@en ;
+        sh:description "This shape checks whether the ontology mailing list is provided as an IRI. It produces an info message if it is not."@en ;
+        sh:name "Mailing list"@en ;
     ];
 
 ## Logo/ depiction
@@ -1203,31 +1238,40 @@ sh:property [
         sh:path [sh:alternativePath (<http://xmlns.com/foaf/0.1/logo> <http://schema.org/logo> <http://xmlns.com/foaf/0.1/depiction> <https://w3id.org/mod#depiction> <http://schema.org/image>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message "The ontology's related depictions are not provided via IRI."@en ;
-        sh:description "The ontology's related depictions must be provided via IRI."@en ;
-        sh:name "Logo/ depiction/ related visualizations."@en ;
+        sh:message """
+            The ontology's related depictions are not provided via IRI.
+            Recommended property: <http://xmlns.com/foaf/0.1/logo>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology> foaf:logo <https://www.example.com/MyOntoLogo.jpg>
+        """@en ;
+        sh:description "This shape checks whether the ontology's related depictions are provided via IRI. It produces an info message if they are not."@en ;
+        sh:name "Logo/ depiction/ related visualizations"@en ;
     ];
 
 ## Other PIDs
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.pmlta5futosw
 
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/dc/terms/identifier> <http://purl.org/ontology/bibo/doi>)] ;
+        sh:path [sh:alternativePath (<https://purl.org/dc/terms/identifier> <http://purl.org/ontology/bibo/doi>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message "The ontology's related identifiers are not provided as IRIs."@en ;
-        sh:description "The ontology's related identifiers  must be provided as IRIs."@en ;
-        sh:name "Related identifiers."@en ;
+        sh:message """
+            The ontology's related identifiers are not provided as IRIs.
+            Recommended property: <https://purl.org/dc/terms/identifier>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:identifier <https://doi.org/10.5281/zenodo.0000000> .
+        """@en ;
+        sh:description "This shape checks whether the ontology's related identifiers  are provided as IRIs. It produces an info message if they are not."@en ;
+        sh:name "Related identifiers"@en ;
     ];
 
 ## Development environment
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.7sppqtjrwr19
-
 #### no test?
 
 ## Alignments/ mappings
 ### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.u01l1tf32j6d
 
+    # to be added
+    
 ### Aligned resource
 #### https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit#bookmark=id.u01l1tf32j6d
 
@@ -1235,9 +1279,13 @@ sh:property [
         sh:path [sh:alternativePath (<https://w3id.org/mod#hasEquivalencesWith> <http://w3id.org/nkos#alignedWith>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message "The ontology does not reference other ontologies it is aligned to via their IRIs."@en ;
-        sh:description "The ontology must reference other ontologies it is aligned to via their IRIs"@en ;
-        sh:name "Aligned resources."@en ;
+        sh:message """
+            The ontology does not reference other ontologies it is aligned to via their IRIs.
+            Recommended property: <https://w3id.org/mod#hasEquivalencesWith>
+            Example statement (text/turtle): <https://www.purl.org/SomeOntology> mod:hasEquivalencesWith <https://www.purl.org/SomeOtherOntology> .
+        """@en ;
+        sh:description "This shape checks whether the ontology references ontologies it is aligned to via IRIs. It produces an info message if it does not."@en ;
+        sh:name "Aligned resources"@en ;
     ];
 
 ### External resource containing the alignments
@@ -1247,8 +1295,12 @@ sh:property [
         sh:path [sh:alternativePath (<https://w3id.org/sssom/mapping_set_references>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:message "The ontology does not provide a mapping set reference via IRI or blank node. Please refer to SSSOM for details about mapping set references (https://mapping-commons.github.io/sssom/MappingSetReference/)."@en ;
-        sh:description "The ontology must provide a mapping set reference via IRI or blank node.  Please refer to SSSOM for details about mapping set references (https://mapping-commons.github.io/sssom/MappingSetReference/)."@en ;
+        sh:message """
+            The ontology does not provide a mapping set reference via IRI or blank node. Please refer to SSSOM for details about mapping set references (https://mapping-commons.github.io/sssom/MappingSetReference/).
+        Recommended property: <https://w3id.org/sssom/mapping_set_references>
+        Example statement (text/turtle): <https://www.purl.org/SomeOntology> sssom:mapping_set_references <https://www.purl.org/SomeOntology/MappingSetReference1>.
+        """@en ;
+        sh:description "This shape checks whether the ontology provide mapping set references via IRI or blank node. It produces an info message if it does not."@en ;
         sh:name "Alignment files/ Mapping files"@en ;
     ];
 
@@ -1258,9 +1310,17 @@ sh:property [
     sh:property [
         sh:path <https://w3id.org/mod#competencyQuestion> ;
         sh:severity sh:Info ;
-        sh:nodeKind sh:IRI ;
-        sh:message "The ontology does not provide information about its competency questions via IRI."@en ;
-        sh:description "The ontology must provide information about its competency questions via IRI."@en ;
+        sh:xone (
+         [sh:nodeKind sh:IRI ;]   
+         [sh:datatype rdf:langString ;]
+        );
+        sh:message """
+                The ontology does not provide information about its competency questions via IRI or as an rdf:langString.
+                Recommended property: <https://w3id.org/mod#competencyQuestion>
+                Example statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#competencyQuestion> \"Who developed an ontology?\"@en .
+                Example statement 2 (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#competencyQuestion> <https://www.purl.org/SomeOntology/CompetencyQuestions> .
+                """@en ;
+        sh:description "This shape checks whether the ontology provides competency questions as rdf:langString or an IRI to an online document. It produces an info message if it does not."@en ;
         sh:name "Competency questions"@en ;
     ];
 
@@ -1279,27 +1339,40 @@ sh:property [
     #     sh:maxCount 1 ;
     #     sh:message "The ontology does not declare its preferred namespace URI."@en ;
     #     sh:description "The ontology should declare its preferred namespace URI."@en ;
-    #     sh:name "Preferred Namespace"@en ; # this if for forms with DASH
+    #     sh:name "Preferred Namespace"@en ; 
     # ] ;
 
     sh:property [
         sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message "The ontology does not declare its preferred namespace URI as an IRI."@en ;
-        sh:description "The ontology should declare its preferred namespace URI."@en ;
-        sh:name "Preferred Namespace"@en ; # this if for forms with DASH
+        sh:message """
+                The ontology does not declare its preferred namespace URI as an IRI.
+                Recommended property: <http://purl.org/vocab/vann/preferredNamespaceUri>
+                Example statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/vocab/vann/preferredNamespaceUri> <https://w3id/Example/SomeOntology> .
+                """@en ;
+        sh:description "This shape checks whether the ontology declares its preferred namespace URI as an IRI. It produces an info message if it does not."@en ;
+        sh:name "Preferred Namespace"@en ;
     ] ;
 
 ### Date issued
     sh:property [
-        sh:path dcterms:issued ;
+        sh:path [
+            sh:alternativePath (
+                <https://purl.org/dc/terms/issued>
+                <http://schema.org/datePublished>
+                <https://schema.org/dateIssued>
+                )
+            ] ;
         sh:severity sh:Info ;
-        #sh:minCount 1;
         sh:datatype xsd:dateTime ;
-        sh:message "The ontology does not have an issued date or the date does not conform to xsd:dateTime."@en ;
+        sh:message """
+            The ontology's issue date does not conform to xsd:dateTime.
+            Recommended property: <https://purl.org/dc/terms/issued>
+            Example statement: <https://www.purl.org/SomeOntology> <https://purl.org/dc/terms/> \"2023-11-21\"^^xsd:dateTime .
+        """@en ;
         sh:description "The ontology should have an issued date that conforms to xsd:dateTime."@en ;
-        sh:name "Date issued"@en ; # this if for forms with DASH
+        sh:name "Date issued"@en ; 
     ] ;
 
 # End of shape
