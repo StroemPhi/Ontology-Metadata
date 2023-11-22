@@ -133,10 +133,15 @@ ontom:OntologyMetadataShape a sh:NodeShape ;
         sh:message """The ontology does not state its creator. 
         The ontology should at least name one person who was involved in developing the ontology.
         Creators should be referenced via PIDs, e.g. ORCiDs for persons and RORs for organisations.
-        Plain name strings can be provided in addition (for readability). 
         If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.
         Recommended property: <https://purl.org/dc/terms/creator>
         Example statement (text/turtle): <https://www.purl.org/SomeOntology> <https://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.
+
+        Plain name strings could be provided in addition (for readability).
+        Example statements 2 (text/turtle): 
+            <https://www.purl.org/SomeOntology> <https://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.
+            <https://orcid.org/0000-0000-0000-0000> <http://xmlns.com/foaf/0.1/firstName> "Max" ;
+                <http://xmlns.com/foaf/0.1/lastName> "Muster" .
         """@en ;
         sh:description "This shape checks whether the ontology provides information about its creator. It will produce a warning message if no creator information is present."@en ;
         sh:name "Creator(s)"@en ;
@@ -432,10 +437,15 @@ sh:property [
         sh:message """
             The ontology does not specify any contributors.
             Contributors should be referenced by PIDs, e.g. ORCiDs for persons and RORs for organisations.
-            Plain name strings can be provided in addition (for readability). 
             If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.
             Recommended property: <https://purl.org/dc/terms/contributor>
             Example statement (text/turtle): <https://www.purl.org/SomeOntology> <https://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>.
+
+            Plain name strings can be provided in addition (for readability). 
+            Example statements 2 (text/turtle): 
+                <https://www.purl.org/SomeOntology> <https://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>.
+                <https://orcid.org/0000-0000-0000-0000> <http://xmlns.com/foaf/0.1/firstName> "Max" ;
+                    <http://xmlns.com/foaf/0.1/lastName> "Muster" .
         """@en ;
         sh:description "This shape checks whether the ontology provides information about its contributors. It will produce an info message if no contributor information is present."@en ;
         sh:name "Contributors"@en ;
